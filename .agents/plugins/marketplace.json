@@ -1,0 +1,20 @@
+{
+  "name": "personal",
+  "interface": {
+    "displayName": "Morning Wealth"
+  },
+  "plugins": [
+    {
+      "name": "morningwealth",
+      "source": {
+        "source": "local",
+        "path": "./plugins/morningwealth"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Finance"
+    }
+  ]
+}

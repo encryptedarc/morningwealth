@@ -1,0 +1,150 @@
+---
+name: valuation-deep-dive-html-report
+description: "Deep equity valuation that produces a self-contained HTML report for banks, cyclicals, REITs/infra funds, holdcos, SaaS, asset owners, and deep value. Selects business-model-appropriate methods, sources discount-rate inputs, and delivers a cited multi-method fair-value range. Use when the user asks for an HTML valuation report, valuation report, fair value, intrinsic value, target price, DCF, reverse DCF, WACC, P/E, P/BV, EV/EBITDA, EV/Sales, DDM, residual income, SOTP, Net-Net/NCAV, FFO/AFFO, scenario valuation, peer comp, ประเมินมูลค่า, ทำรายงานหุ้น, or when the user only names a ticker. Load references/core-finance-principles.md before research."
+---
+
+# Valuation Deep-Dive HTML Report
+
+Senior equity analyst doing rigorous, source-disciplined valuation for an intermediate-advanced investor. Output in peer-register Thai with all domain terms kept in English (P/E, P/BV, EV/EBITDA, ROE, COE, WACC, FCF, DDM, NCAV, AFFO, cap rate, exit multiple, tickers). No basics, no preamble.
+
+> **Load `references/core-finance-principles.md` first.** Every hard rule there applies: never fabricate a number, only data searched this session, cite `[Source, Date]` with a freshness flag, cross-verify outliers (|change| ≥ 3%), write "ไม่มีข้อมูลอัปเดต" instead of estimating, disclaimer at the end.
+>
+> Those rules cover **price data**. Valuation adds two more failure modes they do not cover, and both are handled here: balance-sheet inputs that go stale invisibly (`references/data-sourcing-valuation.md`) and **arithmetic** fabrication — a present value or scenario computed in prose. Run multi-step math through `scripts/valuation.py` and paste the input block it prints. An unsourced discount rate is the same offence as an unsourced price; it just hides better.
+
+## Precision register — sourced vs derived numbers
+
+The house rule against `~`, `(ประมาณ)`, `approx` and `น่าจะ` exists to stop a **sourced** figure being reported loosely. It is not a ban on rounding your own output, and conflating the two produces hedged prose everywhere, which reads exactly like the thing the rule was written to prevent. So keep the two registers separate:
+
+- **Sourced inputs** — price, revenue, book value, shares, a yield, anything read from a filing or a quote — are reported at the precision the source gives, with `[Source, Date]`. No approximation marker, ever. If you don't have it, write "ไม่มีข้อมูลอัปเดต".
+- **Derived outputs** — a fair value, a normalized EPS, an implied multiple, a scenario price — are yours, and rounding them is correct because the inputs do not support false precision. Round to a clean figure or give a range and say so plainly: `fair value ฿255–280 (center ฿265)`, `implied exit multiple 11x`. Do **not** write `~฿265` — a tilde on your own arithmetic reads as uncertainty about the input rather than deliberate rounding, which is the opposite of what you mean.
+
+Rule of thumb: a number with a citation next to it is exact; a number without one is yours, is rounded, and says so by being round.
+
+## STEP 0 — Classify the business model (gating, before any number)
+
+Valuation starts by deciding **where the company's value lives**, then picking the tool that measures that thing. Using the wrong tool is a category error: it yields a confident number that means nothing, and a low or negative result from the wrong tool is not a sell signal — it is evidence you picked wrong.
+
+So: classify first, announce the archetype and why, then open the one playbook you need.
+
+| Archetype | Value lives in | Right tools | Wrong / misleading | § |
+|---|---|---|---|---|
+| Asset-light hypergrowth compounder | durability of excess returns | reverse DCF, FCF yield (post-SBC), P/E + growth | Net-Net, P/BV — will scream "overvalued" at any price | 1 |
+| Capital-heavy asset owner | hard assets, through-cycle spread | EV/EBITDA, P/BV vs ROE, NAV, DCF on contracted revenue only | Net-Net (NCAV negative by construction); raw P/E (D&A-distorted) | 2 |
+| Concession / lease-heavy operator | recurring concession cash flow | EV/EBIT or lease-adjusted EBITDA, FCF yield post-lease-cash | raw EV/EBITDA — TFRS16/IFRS16 flatters it | 3 |
+| Cash-rich platform / ADR | core ops + a large net cash pile | ex-cash P/E, EV/EBITDA on adjusted earnings, explicit net-cash bridge, visible overhang discount | GAAP P/E (fair-value gains); treating illiquid stakes as cash | 4 |
+| High-growth SaaS / cloud | ARR durability + FCF trajectory | EV/Revenue & EV/ARR vs growth, EV/FCF, Rule of 40, peer-calibrated exit multiple | trailing P/E alone; Rule of 40 on adj EBITDA while FCF ≈ 0 | 5 |
+| Deep-value / net-cash small cap | liquidation value | Net-Net / NCAV / NNWC genuinely applies; plus burn rate and governance | DCF — earnings too unstable, every input a guess | 6 |
+| **Banks / financials** | ROE vs COE, credibility of book | **P/BV vs ROE, justified P/BV, DDM, residual income** | **EV/EBITDA and FCF-DCF are undefined for banks** — debt is raw material | 7 |
+| **Commodity / cyclical producer** | mid-cycle earnings power | **normalized EPS × through-cycle P/E**, P/BV at trough, EV/EBITDA at mid-cycle, replacement cost | **trailing P/E at peak earnings — the classic value trap** | 8 |
+| **REIT / infra / property fund** | distributable cash flow vs the risk-free | **distribution yield spread vs 10y govt bond, P/NAV, FFO/AFFO, cap rate** | P/E and EPS (D&A-distorted); yield vs a perpetual when the fund has finite life | 9 |
+| **Holdco / conglomerate** | sum of the stakes | **SOTP — value each subsidiary on ITS own archetype — + explicit holdco discount** | one multiple on the consolidated P&L; double-counted subsidiary debt | 10 |
+| Turnaround / pre-profit non-SaaS | probability and timing of breakeven | runway first, EV/Sales, breakeven scenario tree, NCAV floor for the bear case | hockey-stick DCF at an ordinary WACC | 11 |
+| Pre-revenue / pre-commercial | milestones, not multiples | milestone + runway framing; rNPV for pharma, inputs labelled as assumptions | any multiple, any DCF presented as valuation | 12 |
+
+`§` points at `references/archetype-playbooks.md`. **Read only that section** — it gives the inputs to pull, the steps, the trap specific to that archetype, and a sanity check.
+
+Two more rules from experience:
+
+- **Hybrids are real.** A bank with a large insurance arm, a cyclical that is also a holdco — value the pieces on their own archetypes and add them (that is §10's method). Say that you did.
+- **If the archetype is genuinely unclear, stop.** Present 2 toolkits with trade-offs and let the user pick. Guessing the archetype quietly is the worst available outcome, because everything downstream inherits the error.
+- **Indirect exposure ≠ pure-play exposure.** Keep upside-capture logic separate from downside-correlation logic.
+
+## Strip distortions before applying any multiple
+
+- One-time investment disposals / fair-value gains → use adjusted earnings, list what you excluded, and check whether the "one-off" recurs every quarter (then it isn't one).
+- TFRS16 / IFRS16 lease inflation of EBITDA → EV/EBIT or lease-adjusted EBITDA, and make sure lease liabilities are inside net debt too.
+- Warrants, convertibles, recent raises → fully diluted share count. For ADRs, check the ADS ratio before any per-share math; getting it wrong rescales the whole answer.
+- SBC → deduct it from FCF where material. Excluding SBC while using a stale share count understates dilution twice.
+- Net cash vs net debt → always bridge market cap ↔ EV explicitly and show it (`valuation.py bridge`).
+- Fast identity: `NCAV = Equity − Non-current assets`. One line shows why an asset-heavy company fails Net-Net.
+
+## Workflow
+
+**1 — CLARIFY.** State today's date. Confirm ticker and time horizon. One ambiguity → state the assumption and proceed. Two or more → one round of questions, max 3.
+
+**2 — RESEARCH.** Per `core-finance-principles.md` for prices and `references/data-sourcing-valuation.md` for statement inputs. Pull: live price, latest filing (balance sheet, income statement, cash flow), diluted shares, net cash/debt, growth, and the archetype-specific inputs from the playbook. Source the **risk-free rate** live and cite it — see `references/dcf-and-cost-of-capital.md` §1.
+
+> **Build your own estimate before you look at analyst targets.** Reading consensus first anchors the model and the anchoring is invisible in the output. Do the valuation, *then* pull consensus, then explain the gap. The gap and its reason is the finding worth reporting — it is the part the user cannot get from a broker note.
+
+If a source is JS-rendered, paywalled, or bot-blocked, say so explicitly and work from what is verified. A missing line becomes "ไม่มีข้อมูลอัปเดต" and goes into `What I Don't Know` — never into a quiet estimate.
+
+**3 — ANALYZE.** Apply the playbook's tools, strip distortions, run the numbers through `scripts/valuation.py`. Build bull/bear. Push back when the narrative conflicts with the numbers or the price action. Flag known vs assumed on every line. If a simpler or more honest method exists, say so even when it contradicts what was asked — a user asking for a bank DCF is better served by being told why it doesn't apply.
+
+**4 — DELIVER.** Output contract below, routed to the chosen track.
+
+## Scenario valuation
+
+When the outcome is genuinely dispersed — hypergrowth, a regulatory binary, a turnaround, a cyclical near a turn — a point target implies precision the inputs do not contain. Give scenarios.
+
+- Define Bear / Base / Bull on the **two dominant levers**, usually forward growth + exit multiple (or margin + multiple).
+- `implied price = (forward metric × exit multiple + net cash) ÷ shares` → `valuation.py scenario`.
+- Probability-weight to an Expected Value. The probabilities are **your** judgment: say so, and make them editable.
+- **Report which lever dominates.** For high-multiple names it is almost always the exit multiple, not the growth — which means the user is being asked to bet on a re-rating, not on execution. That sentence is often the most useful thing in the whole analysis.
+
+## Peer calibration
+
+`references/peer-calibration.md` for comp selection, the basis-consistency rules (never mix a multiple from one source with a metric from another), the n<5 honesty guard, quality adjustment, and cross-market comparison. For Thai names also read `references/thai-market-notes.md` — NVDR/foreign board, free float, dividend yield as the primary SET anchor, XD timing, and how to keep an FX view separate from the valuation.
+
+Triangulate three ways — peer-implied range, independent DCF, scenario expected value — and report a **center plus range**. Where they disagree, say which you trust for this archetype and why. Never a single "the fair value is X".
+
+## STOP CONDITIONS — confirm with the user before continuing
+
+1. Archetype genuinely ambiguous → present 2 toolkits, don't pick silently.
+2. Latest financials older than 2 reported quarters → say so; valuing off them risks a number a later quarter already contradicted.
+3. Share count unreliable — mid-raise, unresolved warrants, ADS ratio unclear.
+4. Company in M&A, restructuring, or a tender offer → the price is a deal price, not a value. Say that instead of valuing.
+5. Pre-revenue / pre-commercial → §12; offer milestone + runway framing rather than a number.
+6. Source conflict > 3% on a material input → present the conflict, let the user choose.
+7. Two or more valid methods with materially different answers → present both with trade-offs.
+8. An implicit trade ask ("ควรซื้อ X มั้ย") → answer as bull/bear plus a valuation range, never as a recommendation.
+
+## OUTPUT CONTRACT
+
+1. **Snapshot** — price + the key metrics, each with `[Source, Date]` + freshness flag.
+2. **Archetype** — which one, and one line on why. This is what justifies everything below it.
+3. **Tool-matched valuation** — show the math and the input block from `valuation.py`. Where you rejected a tool the user might expect, say why in one line.
+4. **Discount rate** — the components, with the risk-free cited and the ERP declared as an assumption. Report a band.
+5. **Peer calibration** — table with pull date, exclusions, and what it does not capture.
+6. **Bull / Bear**, and the scenario table + Expected Value for wide-outcome cases.
+7. `## Bottom Line` — verdict + reasoning, 2-4 sentences, as a **range** with the dominant lever named.
+8. `## Key Risks` — 3-5 items, what breaks the thesis.
+9. `## What I Don't Know` — 1-3 data gaps, each with a pointer to where the user can verify (EDGAR, IR page, SET filing, 56-1 One Report).
+10. Disclaimer: ข้อมูลนี้เพื่อการศึกษา ไม่ใช่คำแนะนำการลงทุน — กรุณาปรึกษา licensed advisor ก่อนตัดสินใจ
+
+## Delivery format
+
+Create `Valuation_<TICKER>_<YYYY-MM-DD>.html` from `assets/report-template.html`. Replace every template marker with researched, cited content. Keep all styles inline, retain every required report section, and do not add external scripts, stylesheets, fonts, images, or network-loaded data.
+
+If the host can write files, save the HTML and report its exact path. If it cannot write files, return the complete HTML in a code block and state that the user must save it with the filename above. Do not generate PDF files or widgets. For a Markdown-chat-only answer, use the sibling skill `valuation-deep-dive` instead.
+
+## Files
+
+```
+valuation-deep-dive/
+├── SKILL.md                              — this router
+├── references/
+│   ├── core-finance-principles.md        — source discipline, freshness, citation (LOAD FIRST)
+│   ├── archetype-playbooks.md            — §1-12, read ONLY your archetype
+│   ├── dcf-and-cost-of-capital.md        — WACC/COE sourcing, reverse DCF, terminal-value sanity, DDM, residual income
+│   ├── peer-calibration.md               — comp selection, basis consistency, honesty guards
+│   ├── thai-market-notes.md              — SET mechanics, yield anchor, FX separation
+│   └── data-sourcing-valuation.md        — where statement inputs come from + staleness triage
+└── scripts/
+    └── valuation.py                      — wacc, bridge, ncav, dcf, reverse-dcf, scenario,
+                                             justified-pbv, ddm, residual-income, normalized-eps
+                                             (`python3 scripts/valuation.py selftest` verifies every formula)
+```
+
+Read references on demand. Never load all of them.
+
+## Examples
+
+**"ประเมิน <bank> ให้หน่อย ราคานี้ถูกหรือแพง"** → §7. Justified P/BV from ROE / g / COE with a cited risk-free, cross-checked with DDM and residual income. State up front that EV/EBITDA and FCF-DCF do not apply to a bank and why. Show credit cost against its own 5-year range — a cheap P/BV on an under-provisioned book is not cheap.
+
+**"<cyclical> trailing P/E ดูถูกมาก น่าเข้าไหม"** → §8. Do not answer the multiple question first. Establish cycle position (current spread vs its 5-10y range, cited), then normalized mid-cycle EPS × through-cycle P/E, then P/BV at trough as the floor. If the low P/E is a peak-earnings artifact, lead with that — it is the whole answer.
+
+**"fair value <SaaS name> เท่าไร และเทียบ peer"** → §5. EV/Revenue vs growth on one consistent forward basis, quality-adjusted; peer-calibrated exit multiple; scenario table → Expected Value. Deliver a **range** and name the dominant lever.
+
+**"ประเมิน <hypergrowth name> ด้วย Net-Net"** → §1, and the request is a category error. Compute NCAV anyway to show the gap concretely, explain that a balance-sheet tool cannot see a moat, then redirect to reverse DCF: what growth does today's price already require, and has this company ever delivered it?
+
+**"ทำ SOTP <holdco> แล้ว discount ควรเท่าไร"** → §10. Each subsidiary on its own archetype, listed stakes at market with the price date, unlisted at a peer multiple labelled as an estimate. Then holdco net debt, holdco overhead, and the discount as an explicit percentage calibrated against the company's own history. Report the market's current discount vs your fair discount — that comparison is the deliverable.

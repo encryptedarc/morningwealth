@@ -1,0 +1,31 @@
+{
+  "name": "morningwealth",
+  "version": "1.0.0",
+  "description": "Standalone deep-equity-valuation skills for chat analysis and HTML reports.",
+  "author": {
+    "name": "Morning Wealth"
+  },
+  "repository": "https://github.com/encryptedth/morningwealth",
+  "keywords": [
+    "valuation",
+    "equity",
+    "finance",
+    "thai-market"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Morning Wealth",
+    "shortDescription": "Deep equity valuation skills",
+    "longDescription": "Standalone valuation skills for cited chat analysis and self-contained HTML reports.",
+    "developerName": "Morning Wealth",
+    "category": "Finance",
+    "capabilities": [
+      "Analyze",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "ประเมินมูลค่าหุ้นนี้แบบละเอียด",
+      "Create an HTML valuation report for this ticker"
+    ]
+  }
+}
