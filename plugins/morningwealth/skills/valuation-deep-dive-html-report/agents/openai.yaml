@@ -1,6 +1,6 @@
 interface:
-  display_name: "รายงานวิเคราะห์มูลค่าหุ้นเชิงลึก / Deep Equity Valuation Report"
+  display_name: "Deep Equity Valuation Report"
   short_description: "Create a self-contained HTML valuation report"
-  default_prompt: "สร้าง HTML valuation report สำหรับหุ้นนี้"
+  default_prompt: "Use $valuation-deep-dive-html-report to create an HTML valuation report for this equity."
 policy:
   allow_implicit_invocation: true

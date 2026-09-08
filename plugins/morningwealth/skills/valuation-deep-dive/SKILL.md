@@ -1,13 +1,13 @@
 ---
 name: valuation-deep-dive
-description: "Deep equity valuation for banks, cyclicals, REITs/infra funds, holdcos, SaaS, asset owners, and deep value. Selects business-model-appropriate methods, sources discount-rate inputs, and delivers a multi-method fair-value range in chat. Use for valuation, fair value, intrinsic value, target price, DCF, reverse DCF, WACC, P/E, P/BV, EV/EBITDA, EV/Sales, DDM, residual income, SOTP, Net-Net/NCAV, FFO/AFFO, scenario valuation, peer comp, ประเมินมูลค่า, หุ้นแพงไหม, ถูกหรือแพง, or when the user only names a ticker. Load references/core-finance-principles.md before research."
+description: "Deep equity valuation for banks, cyclicals, REITs/infra funds, holdcos, SaaS, asset owners, and deep value. Selects business-model-appropriate methods, sources discount-rate inputs, and delivers a multi-method fair-value range in chat. Use for valuation, fair value, intrinsic value, target price, DCF, reverse DCF, WACC, P/E, P/BV, EV/EBITDA, EV/Sales, DDM, residual income, SOTP, Net-Net/NCAV, FFO/AFFO, scenario valuation, peer comp, or when the user only names a ticker. Load references/core-finance-principles.md before research."
 ---
 
 # Valuation Deep-Dive
 
-Senior equity analyst doing rigorous, source-disciplined valuation for an intermediate-advanced investor. Output in peer-register Thai with all domain terms kept in English (P/E, P/BV, EV/EBITDA, ROE, COE, WACC, FCF, DDM, NCAV, AFFO, cap rate, exit multiple, tickers). No basics, no preamble.
+Senior equity analyst doing rigorous, source-disciplined valuation for an intermediate-advanced investor. Respond in the user's language and keep standard finance terms in their conventional English form (P/E, P/BV, EV/EBITDA, ROE, COE, WACC, FCF, DDM, NCAV, AFFO, cap rate, exit multiple, tickers). No basics, no preamble.
 
-> **Load `references/core-finance-principles.md` first.** Every hard rule there applies: never fabricate a number, only data searched this session, cite `[Source, Date]` with a freshness flag, cross-verify outliers (|change| ≥ 3%), write "ไม่มีข้อมูลอัปเดต" instead of estimating, disclaimer at the end.
+> **Load `references/core-finance-principles.md` first.** Every hard rule there applies: never fabricate a number, use only data verified in the current session, cite `[Source, Date]` with a freshness flag, cross-verify outliers (|change| ≥ 3%), state clearly in the user's language when current data is unavailable instead of estimating, and include a disclaimer at the end.
 >
 > Those rules cover **price data**. Valuation adds two more failure modes they do not cover, and both are handled here: balance-sheet inputs that go stale invisibly (`references/data-sourcing-valuation.md`) and **arithmetic** fabrication — a present value or scenario computed in prose. Run multi-step math through `scripts/valuation.py` and paste the input block it prints. An unsourced discount rate is the same offence as an unsourced price; it just hides better.
 
@@ -15,7 +15,7 @@ Senior equity analyst doing rigorous, source-disciplined valuation for an interm
 
 The house rule against `~`, `(ประมาณ)`, `approx` and `น่าจะ` exists to stop a **sourced** figure being reported loosely. It is not a ban on rounding your own output, and conflating the two produces hedged prose everywhere, which reads exactly like the thing the rule was written to prevent. So keep the two registers separate:
 
-- **Sourced inputs** — price, revenue, book value, shares, a yield, anything read from a filing or a quote — are reported at the precision the source gives, with `[Source, Date]`. No approximation marker, ever. If you don't have it, write "ไม่มีข้อมูลอัปเดต".
+- **Sourced inputs** — price, revenue, book value, shares, a yield, anything read from a filing or a quote — are reported at the precision the source gives, with `[Source, Date]`. No approximation marker, ever. If you do not have it, state clearly in the user's language that current data is unavailable.
 - **Derived outputs** — a fair value, a normalized EPS, an implied multiple, a scenario price — are yours, and rounding them is correct because the inputs do not support false precision. Round to a clean figure or give a range and say so plainly: `fair value ฿255–280 (center ฿265)`, `implied exit multiple 11x`. Do **not** write `~฿265` — a tilde on your own arithmetic reads as uncertainty about the input rather than deliberate rounding, which is the opposite of what you mean.
 
 Rule of thumb: a number with a citation next to it is exact; a number without one is yours, is rounded, and says so by being round.
@@ -66,7 +66,7 @@ Two more rules from experience:
 
 > **Build your own estimate before you look at analyst targets.** Reading consensus first anchors the model and the anchoring is invisible in the output. Do the valuation, *then* pull consensus, then explain the gap. The gap and its reason is the finding worth reporting — it is the part the user cannot get from a broker note.
 
-If a source is JS-rendered, paywalled, or bot-blocked, say so explicitly and work from what is verified. A missing line becomes "ไม่มีข้อมูลอัปเดต" and goes into `What I Don't Know` — never into a quiet estimate.
+If a source is JS-rendered, paywalled, or bot-blocked, say so explicitly and work from what is verified. A missing line becomes a clear current-data-unavailable statement in the user's language and goes into `What I Don't Know` — never into a quiet estimate.
 
 **3 — ANALYZE.** Apply the playbook's tools, strip distortions, run the numbers through `scripts/valuation.py`. Build bull/bear. Push back when the narrative conflicts with the numbers or the price action. Flag known vs assumed on every line. If a simpler or more honest method exists, say so even when it contradicts what was asked — a user asking for a bank DCF is better served by being told why it doesn't apply.
 
@@ -109,11 +109,11 @@ Triangulate three ways — peer-implied range, independent DCF, scenario expecte
 7. `## Bottom Line` — verdict + reasoning, 2-4 sentences, as a **range** with the dominant lever named.
 8. `## Key Risks` — 3-5 items, what breaks the thesis.
 9. `## What I Don't Know` — 1-3 data gaps, each with a pointer to where the user can verify (EDGAR, IR page, SET filing, 56-1 One Report).
-10. Disclaimer: ข้อมูลนี้เพื่อการศึกษา ไม่ใช่คำแนะนำการลงทุน — กรุณาปรึกษา licensed advisor ก่อนตัดสินใจ
+10. Disclaimer: provide an educational-only, not-investment-advice disclaimer in the user's language; advise consulting a licensed adviser before making investment decisions.
 
 ## Delivery format
 
-Deliver Markdown chat only, following the output contract above. For a standalone HTML report, use the sibling skill `valuation-deep-dive-html-report` instead.
+Deliver Markdown chat only, following the output contract above. If the user needs a standalone HTML report, they should install and invoke the separately packaged `valuation-deep-dive-html-report` skill.
 
 ## Files
 

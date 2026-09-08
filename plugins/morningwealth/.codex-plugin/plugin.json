@@ -24,7 +24,7 @@
       "Write"
     ],
     "defaultPrompt": [
-      "ประเมินมูลค่าหุ้นนี้แบบละเอียด",
+      "Value this equity in depth",
       "Create an HTML valuation report for this ticker"
     ]
   }

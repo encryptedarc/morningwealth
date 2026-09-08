@@ -1,6 +1,6 @@
 interface:
-  display_name: "วิเคราะห์มูลค่าหุ้นเชิงลึก / Deep Equity Valuation"
+  display_name: "Deep Equity Valuation"
   short_description: "Cited, multi-method equity valuation in chat"
-  default_prompt: "ประเมินมูลค่าหุ้นนี้แบบละเอียด"
+  default_prompt: "Use $valuation-deep-dive to value this equity in depth."
 policy:
   allow_implicit_invocation: true
