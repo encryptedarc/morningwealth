@@ -1,5 +1,9 @@
 # Morning Wealth
 
+<p align="center">
+  <img src="./assets/morning-wealth-logo.png" alt="Morning Wealth multi-asset investing mark" width="180">
+</p>
+
 Morning Wealth is a portable collection of rigorous equity-valuation skills. It is packaged as a Codex marketplace plugin and can also be installed as standalone `SKILL.md` directories in AI environments that support Agent Skills.
 
 The skills are provider-neutral: they do not require a particular model, API key, MCP server, search tool, or operating system. They guide an AI agent to use the research and file-writing capabilities available in its host environment.
