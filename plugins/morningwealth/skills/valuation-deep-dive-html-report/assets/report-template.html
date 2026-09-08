@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}}</title>
+  <style>
+    :root { color-scheme: light; --ink: #162033; --muted: #5b677a; --line: #dbe2ea; --paper: #ffffff; --ground: #f4f7fb; --accent: #0f766e; --risk: #b45309; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--ground); color: var(--ink); font-family: Sarabun, "Noto Sans Thai", Inter, Arial, sans-serif; line-height: 1.6; }
+    main { width: min(960px, calc(100% - 32px)); margin: 32px auto; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+    header { padding: 36px 40px 28px; background: #ecfdf5; border-bottom: 4px solid var(--accent); }
+    h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.2; }
+    .subtitle, .meta { color: var(--muted); margin: 8px 0 0; }
+    section { padding: 28px 40px; border-bottom: 1px solid var(--line); }
+    h2 { margin: 0 0 14px; font-size: 1.3rem; }
+    h3 { margin: 20px 0 8px; font-size: 1.05rem; }
+    p { margin: 8px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .94rem; }
+    th, td { padding: 10px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { background: #f8fafc; }
+    .callout { padding: 14px 16px; border-left: 4px solid var(--accent); background: #f0fdfa; }
+    .risk { border-left-color: var(--risk); background: #fffbeb; }
+    .sources { font-size: .9rem; color: var(--muted); }
+    footer { padding: 20px 40px; color: var(--muted); font-size: .88rem; }
+    @media (max-width: 640px) { main { width: 100%; margin: 0; border: 0; border-radius: 0; } header, section, footer { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>{{TITLE}}</h1>
+      <p class="subtitle">{{SUBTITLE}}</p>
+      <p class="meta">As of {{AS_OF_DATE}} · {{FRESHNESS_FLAG}}</p>
+    </header>
+    <section>
+      <h2>Overview</h2>
+      {{OVERVIEW}}
+    </section>
+    <section>
+      <h2>Data</h2>
+      {{DATA}}
+    </section>
+    <section>
+      <h2>Valuation</h2>
+      {{VALUATION}}
+    </section>
+    <section>
+      <h2>Scenarios</h2>
+      {{SCENARIOS}}
+    </section>
+    <section>
+      <h2>Risks</h2>
+      <div class="callout risk">{{RISKS}}</div>
+    </section>
+    <section>
+      <h2>Bottom Line</h2>
+      <div class="callout">{{BOTTOM_LINE}}</div>
+    </section>
+    <section>
+      <h2>Sources</h2>
+      <div class="sources">{{SOURCES}}</div>
+    </section>
+    <footer>ข้อมูลนี้เพื่อการศึกษา ไม่ใช่คำแนะนำการลงทุน — กรุณาปรึกษา licensed advisor ก่อนตัดสินใจ</footer>
+  </main>
+</body>
+</html>
