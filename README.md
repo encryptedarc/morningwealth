@@ -22,7 +22,7 @@ Both skills classify a business before selecting a valuation method. They cover 
 Clone the repository, then add the repository root as a local marketplace. Use the command for your shell; neither example assumes a fixed drive or username.
 
 ```sh
-git clone https://github.com/encryptedth/morningwealth.git
+git clone https://github.com/encryptedarc/morningwealth.git
 cd morningwealth
 ```
 
