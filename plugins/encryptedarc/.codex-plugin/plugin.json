@@ -1,9 +1,9 @@
 {
-  "name": "morningwealth",
+  "name": "encryptedarc",
   "version": "1.0.0",
   "description": "Standalone deep-equity-valuation skills for chat analysis and HTML reports.",
   "author": {
-    "name": "Morning Wealth"
+    "name": "Encrypted Arc"
   },
   "repository": "https://github.com/encryptedth/morningwealth",
   "keywords": [
@@ -14,10 +14,10 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Morning Wealth",
+    "displayName": "Encrypted Arc",
     "shortDescription": "Deep equity valuation skills",
     "longDescription": "Standalone valuation skills for cited chat analysis and self-contained HTML reports.",
-    "developerName": "Morning Wealth",
+    "developerName": "Encrypted Arc",
     "category": "Finance",
     "capabilities": [
       "Analyze",

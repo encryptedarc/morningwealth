@@ -4,8 +4,8 @@ import unittest
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-CHAT_SKILL = ROOT / "plugins/morningwealth/skills/valuation-deep-dive"
-REPORT_SKILL = ROOT / "plugins/morningwealth/skills/valuation-deep-dive-html-report"
+CHAT_SKILL = ROOT / "plugins/encryptedarc/skills/valuation-deep-dive"
+REPORT_SKILL = ROOT / "plugins/encryptedarc/skills/valuation-deep-dive-html-report"
 REFERENCE_FILES = {
     "archetype-playbooks.md",
     "core-finance-principles.md",
