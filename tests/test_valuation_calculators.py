@@ -5,8 +5,8 @@ import unittest
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CALCULATORS = [
-    ROOT / "plugins/morningwealth/skills/valuation-deep-dive/scripts/valuation.py",
-    ROOT / "plugins/morningwealth/skills/valuation-deep-dive-html-report/scripts/valuation.py",
+    ROOT / "plugins/encryptedarc/skills/valuation-deep-dive/scripts/valuation.py",
+    ROOT / "plugins/encryptedarc/skills/valuation-deep-dive-html-report/scripts/valuation.py",
 ]
 
 

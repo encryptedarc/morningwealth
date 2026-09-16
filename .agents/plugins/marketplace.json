@@ -1,14 +1,14 @@
 {
   "name": "personal",
   "interface": {
-    "displayName": "Morning Wealth"
+    "displayName": "Encrypted Arc"
   },
   "plugins": [
     {
-      "name": "morningwealth",
+      "name": "encryptedarc",
       "source": {
         "source": "local",
-        "path": "./plugins/morningwealth"
+        "path": "./plugins/encryptedarc"
       },
       "policy": {
         "installation": "AVAILABLE",

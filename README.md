@@ -1,10 +1,10 @@
-# Morning Wealth
+# Encrypted Arc
 
 <p align="center">
-  <img src="./assets/morning-wealth-logo.png" alt="Morning Wealth multi-asset investing mark" width="180">
+  <img src="./assets/encryptedarc-logo.png" alt="Encrypted Arc multi-asset investing mark" width="180">
 </p>
 
-Morning Wealth is a portable collection of rigorous equity-valuation skills. It is packaged as a Codex marketplace plugin and can also be installed as standalone `SKILL.md` directories in AI environments that support Agent Skills.
+Encrypted Arc is a portable collection of rigorous equity-valuation skills. It is packaged as a Codex marketplace plugin and can also be installed as standalone `SKILL.md` directories in AI environments that support Agent Skills.
 
 The skills are provider-neutral: they do not require a particular model, API key, MCP server, search tool, or operating system. They guide an AI agent to use the research and file-writing capabilities available in its host environment.
 
@@ -22,7 +22,7 @@ Both skills classify a business before selecting a valuation method. They cover 
 Clone the repository, then add the repository root as a local marketplace. Use the command for your shell; neither example assumes a fixed drive or username.
 
 ```sh
-git clone https://github.com/encryptedth/morningwealth.git
+git clone https://github.com/encryptedarc/morningwealth.git
 cd morningwealth
 ```
 
@@ -38,7 +38,7 @@ Windows PowerShell:
 codex plugin marketplace add (Get-Location).Path
 ```
 
-Then install the `morningwealth` plugin from the marketplace. The marketplace manifest is `.agents/plugins/marketplace.json`, and the plugin source is `plugins/morningwealth`.
+Then install the `encryptedarc` plugin from the marketplace. The marketplace manifest is `.agents/plugins/marketplace.json`, and the plugin source is `plugins/encryptedarc`.
 
 ## Install with Claude Code
 
@@ -48,8 +48,8 @@ macOS or Linux:
 
 ```sh
 mkdir -p /path/to/your-project/.claude/skills
-cp -R plugins/morningwealth/skills/valuation-deep-dive /path/to/your-project/.claude/skills/
-cp -R plugins/morningwealth/skills/valuation-deep-dive-html-report /path/to/your-project/.claude/skills/
+cp -R plugins/encryptedarc/skills/valuation-deep-dive /path/to/your-project/.claude/skills/
+cp -R plugins/encryptedarc/skills/valuation-deep-dive-html-report /path/to/your-project/.claude/skills/
 ```
 
 Windows PowerShell:
@@ -57,8 +57,8 @@ Windows PowerShell:
 ```powershell
 $projectPath = (Resolve-Path "..\your-project").Path
 New-Item -ItemType Directory -Force "$projectPath\.claude\skills"
-Copy-Item -Recurse plugins\morningwealth\skills\valuation-deep-dive "$projectPath\.claude\skills\"
-Copy-Item -Recurse plugins\morningwealth\skills\valuation-deep-dive-html-report "$projectPath\.claude\skills\"
+Copy-Item -Recurse plugins\encryptedarc\skills\valuation-deep-dive "$projectPath\.claude\skills\"
+Copy-Item -Recurse plugins\encryptedarc\skills\valuation-deep-dive-html-report "$projectPath\.claude\skills\"
 ```
 
 ## Install in another Agent Skills environment
@@ -66,8 +66,8 @@ Copy-Item -Recurse plugins\morningwealth\skills\valuation-deep-dive-html-report 
 Copy exactly one of these directories into the location required by your AI host:
 
 ```text
-plugins/morningwealth/skills/valuation-deep-dive/
-plugins/morningwealth/skills/valuation-deep-dive-html-report/
+plugins/encryptedarc/skills/valuation-deep-dive/
+plugins/encryptedarc/skills/valuation-deep-dive-html-report/
 ```
 
 Each directory is self-contained: it includes its own `SKILL.md`, valuation references, and standard-library Python calculator. The HTML-report edition also includes an offline template. The two skills do not depend on one another.
