@@ -17,6 +17,24 @@ The skills are provider-neutral: they do not require a particular model, API key
 
 Both skills classify a business before selecting a valuation method. They cover banks, cyclicals, REITs and infrastructure funds, holding companies, SaaS, asset owners, and deep-value situations. They separate sourced facts from derived valuation outputs and require time-sensitive inputs to be verified in the current session.
 
+## Analysis workflow
+
+Both skills use the same gated workflow:
+
+1. **Research** — gather the current market data, latest filing, capital structure, discount-rate inputs, and business-model-specific evidence.
+2. **Validate inputs** — verify timestamps, source quality, share-count type, units, accounting basis, and required cash-flow components before valuation begins.
+3. **Calculate** — run multi-step valuation arithmetic through the bundled calculator and retain its printed input block.
+4. **Semantic audit** — confirm that labels match the economic quantity, comparisons use the same metric and period, and narrative conclusions are supported by one-variable-at-a-time sensitivity checks.
+5. **Render** — produce the Markdown or HTML report only after the input gate and semantic audit pass.
+
+A stale or unresolved material input is a stop condition, not a footnote. When a dependent valuation cannot be supported, the skill reports what is missing and how to verify it instead of publishing a fair-value center with a warning attached.
+
+## Plain-language reports
+
+Reports are written in the user's language and explain specialist terminology where it first appears. An abbreviation is introduced only when it will recur, and a translated term must also explain what the measure means and why it matters to the valuation.
+
+For example, a Thai report should not leave phrases such as `diluted shares`, `discount-rate story`, `LSEG via CNBC`, or `reverse DCF` unexplained. It should instead describe the economic meaning in Thai, identify who compiled and who published a sourced estimate, and then place the English term or abbreviation in parentheses when useful. Table and section headings follow the user's language as well.
+
 ## Install with Codex
 
 Clone the repository, then add the repository root as a local marketplace. Use the command for your shell; neither example assumes a fixed drive or username.
@@ -74,7 +92,7 @@ Each directory is self-contained: it includes its own `SKILL.md`, valuation refe
 
 ## HTML reports
 
-The report skill creates `Valuation_<TICKER>_<YYYY-MM-DD>.html`. The template embeds all styling and loads no fonts, scripts, images, stylesheets, or data from the network. When a host cannot write files, the skill returns complete HTML for the user to save manually.
+The report skill creates `Valuation_<TICKER>_<YYYY-MM-DD>.html`. The template localizes its section headings and as-of label to the user's language, embeds all styling, and loads no fonts, scripts, images, stylesheets, or data from the network. When a host cannot write files, the skill returns complete HTML for the user to save manually.
 
 ## Verify the calculator
 

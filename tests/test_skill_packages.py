@@ -51,14 +51,22 @@ class SkillPackageTests(unittest.TestCase):
         replacements = {
             "TITLE": "Test valuation",
             "SUBTITLE": "Test subtitle",
+            "AS_OF_LABEL": "ข้อมูล ณ วันที่",
             "AS_OF_DATE": "2026-09-07",
             "FRESHNESS_FLAG": "FRESH",
+            "OVERVIEW_HEADING": "ภาพรวม",
             "OVERVIEW": "overview body",
+            "DATA_HEADING": "ข้อมูลที่ใช้",
             "DATA": "data body",
+            "VALUATION_HEADING": "การประเมินมูลค่า",
             "VALUATION": "valuation body",
+            "SCENARIOS_HEADING": "สถานการณ์จำลอง",
             "SCENARIOS": "scenarios body",
+            "RISKS_HEADING": "ความเสี่ยงสำคัญ",
             "RISKS": "risk body",
+            "BOTTOM_LINE_HEADING": "สรุป",
             "BOTTOM_LINE": "bottom line body",
+            "SOURCES_HEADING": "แหล่งข้อมูล",
             "SOURCES": "sources body",
         }
         for name, value in replacements.items():
@@ -72,5 +80,13 @@ class SkillPackageTests(unittest.TestCase):
         parser.feed(template)
         self.assertEqual(
             parser.headings,
-            ["Overview", "Data", "Valuation", "Scenarios", "Risks", "Bottom Line", "Sources"],
+            [
+                "ภาพรวม",
+                "ข้อมูลที่ใช้",
+                "การประเมินมูลค่า",
+                "สถานการณ์จำลอง",
+                "ความเสี่ยงสำคัญ",
+                "สรุป",
+                "แหล่งข้อมูล",
+            ],
         )

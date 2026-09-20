@@ -5,7 +5,31 @@ description: "Deep equity valuation for banks, cyclicals, REITs/infra funds, hol
 
 # Valuation Deep-Dive
 
-Senior equity analyst doing rigorous, source-disciplined valuation for an intermediate-advanced investor. Respond in the user's language and keep standard finance terms in their conventional English form (P/E, P/BV, EV/EBITDA, ROE, COE, WACC, FCF, DDM, NCAV, AFFO, cap rate, exit multiple, tickers). No basics, no preamble.
+Senior equity analyst doing rigorous, source-disciplined valuation for an intermediate-advanced investor. Respond in the user's language, using plain language that a non-specialist investor can understand without looking up terminology. Keep a finance abbreviation only after explaining it on first use. No preamble.
+
+## Plain-language terminology
+
+Technical accuracy does not excuse unexplained jargon. The reader must be able to understand the conclusion and why it matters without already knowing analyst shorthand.
+
+- On first use, write the plain-language meaning in the user's language, followed by the full English term and abbreviation in parentheses only when the term will recur. Example: `ต้นทุนเงินทุนเฉลี่ยถ่วงน้ำหนัก (Weighted Average Cost of Capital: WACC)`.
+- Do not merely translate a term word-for-word when the translation remains opaque. Add one short sentence explaining what it measures and why a higher or lower value matters to this valuation.
+- Do not insert unexplained English fragments into a sentence in another language. Proper nouns, tickers, formulas, and widely used abbreviations may remain, but their meaning still needs to be introduced.
+- Explain source chains instead of writing shorthand such as `LSEG via CNBC`: say that LSEG compiled the estimate and CNBC published it.
+- Use plain-language table headings. If the report is in Thai, write `รายการ`, `ตัวเลข`, `ที่มา`, and `ความใหม่ของข้อมูล`, not `Item`, `Value`, `Source`, and `Flag`.
+- Do not create an abbreviation for a term used only once. If more than five unavoidable specialist terms remain, add a short glossary at the end, but still explain each term where it first appears.
+
+For Thai output, use these patterns:
+
+| Avoid | Write instead |
+|---|---|
+| `Diluted shares` | `จำนวนหุ้นทั้งหมดหลังรวมผลจากสิทธิและหลักทรัพย์ที่อาจเปลี่ยนเป็นหุ้น เช่น หุ้นพนักงานหรือหุ้นกู้แปลงสภาพ` |
+| `Consensus FY28 EPS` | `กำไรต่อหุ้นปีงบประมาณ 2028 ที่นักวิเคราะห์หลายรายประเมินร่วมกัน` |
+| `LSEG via CNBC` | `ข้อมูลประมาณการที่ LSEG รวบรวมและ CNBC นำมาเผยแพร่` |
+| `discount-rate story` | `ราคาหุ้นเปลี่ยนเพราะนักลงทุนต้องการผลตอบแทนสูงขึ้นตามอัตราดอกเบี้ย ไม่ใช่เพราะผลประกอบการแย่ลง` |
+| `หลัง Fed hike` | `หลังธนาคารกลางสหรัฐปรับขึ้นอัตราดอกเบี้ยนโยบาย` |
+| `durability of excess returns` | `ความสามารถของบริษัทในการสร้างผลตอบแทนจากเงินลงทุนที่สูงกว่าต้นทุนเงินทุนได้อย่างต่อเนื่อง` |
+| `reverse DCF` | `การคำนวณย้อนกลับจากราคาหุ้นปัจจุบัน เพื่อดูว่าตลาดคาดให้กระแสเงินสดเติบโตเท่าใด (Reverse DCF)` |
+| `FCF yield post-capex` | `อัตรากระแสเงินสดอิสระเทียบกับมูลค่าหุ้น หลังหักรายจ่ายลงทุนในทรัพย์สินและอุปกรณ์แล้ว` |
 
 > **Load `references/core-finance-principles.md` first.** Every hard rule there applies: never fabricate a number, use only data verified in the current session, cite `[Source, Date]` with a freshness flag, cross-verify outliers (|change| ≥ 3%), state clearly in the user's language when current data is unavailable instead of estimating, and include a disclaimer at the end.
 >
@@ -60,6 +84,8 @@ Two more rules from experience:
 
 ## Workflow
 
+Use this order: **research → validate inputs → calculate → semantic audit → render**. A warning written after a calculation does not repair an invalid input.
+
 **1 — CLARIFY.** State today's date. Confirm ticker and time horizon. One ambiguity → state the assumption and proceed. Two or more → one round of questions, max 3.
 
 **2 — RESEARCH.** Per `core-finance-principles.md` for prices and `references/data-sourcing-valuation.md` for statement inputs. Pull: live price, latest filing (balance sheet, income statement, cash flow), diluted shares, net cash/debt, growth, and the archetype-specific inputs from the playbook. Source the **risk-free rate** live and cite it — see `references/dcf-and-cost-of-capital.md` §1.
@@ -68,9 +94,13 @@ Two more rules from experience:
 
 If a source is JS-rendered, paywalled, or bot-blocked, say so explicitly and work from what is verified. A missing line becomes a clear current-data-unavailable statement in the user's language and goes into `What I Don't Know` — never into a quiet estimate.
 
-**3 — ANALYZE.** Apply the playbook's tools, strip distortions, run the numbers through `scripts/valuation.py`. Build bull/bear. Push back when the narrative conflicts with the numbers or the price action. Flag known vs assumed on every line. If a simpler or more honest method exists, say so even when it contradicts what was asked — a user asking for a bank DCF is better served by being told why it doesn't apply.
+**3 — VALIDATE INPUTS (hard gate).** Before running valuation math, verify the price and timestamp, latest filing date, share-count value and type, cash, debt, FCF components including capex and material SBC, risk-free rate and date, and every archetype-specific input. Mark each as sourced, derived, or assumed. If a material input is stale, missing, or unresolved, do not run or report any valuation that depends on it. State what is unavailable and how to verify it. `What I Don't Know` is only for gaps that remain after the relevant filing and primary sources were checked; it is not a substitute for research.
 
-**4 — DELIVER.** Output contract below, routed to the chosen track.
+**4 — CALCULATE.** Apply the playbook's tools, strip distortions, and run multi-step math through `scripts/valuation.py`. Build bull/base/bear where dispersion is material. Keep sourced inputs separate from derived outputs and paste the calculator's input block.
+
+**5 — SEMANTIC AUDIT.** Before writing the narrative, verify that units, currencies, periods, GAAP/adjusted bases, and equity-value/enterprise-value labels match; compare an implied metric only with the same metric; and test any claim about the dominant lever by changing one lever at a time. Re-research or recalculate when the narrative conflicts with the numbers or price action. Then replace or explain every specialist term under the plain-language rules above.
+
+**6 — DELIVER.** Render the output contract below only after the input gate and semantic audit pass. If they do not pass, deliver an incomplete-analysis notice rather than a fair-value center or verdict.
 
 ## Scenario valuation
 
@@ -79,7 +109,7 @@ When the outcome is genuinely dispersed — hypergrowth, a regulatory binary, a 
 - Define Bear / Base / Bull on the **two dominant levers**, usually forward growth + exit multiple (or margin + multiple).
 - `implied price = (forward metric × exit multiple + net cash) ÷ shares` → `valuation.py scenario`.
 - Probability-weight to an Expected Value. The probabilities are **your** judgment: say so, and make them editable.
-- **Report which lever dominates.** For high-multiple names it is almost always the exit multiple, not the growth — which means the user is being asked to bet on a re-rating, not on execution. That sentence is often the most useful thing in the whole analysis.
+- **Report which lever dominates only after testing it.** Change one lever at a time and compare the price impact. Do not assume that the exit multiple dominates merely because the company trades at a high multiple. Explain the result in plain language.
 
 ## Peer calibration
 
@@ -100,15 +130,17 @@ Triangulate three ways — peer-implied range, independent DCF, scenario expecte
 
 ## OUTPUT CONTRACT
 
-1. **Snapshot** — price + the key metrics, each with `[Source, Date]` + freshness flag.
-2. **Archetype** — which one, and one line on why. This is what justifies everything below it.
-3. **Tool-matched valuation** — show the math and the input block from `valuation.py`. Where you rejected a tool the user might expect, say why in one line.
-4. **Discount rate** — the components, with the risk-free cited and the ERP declared as an assumption. Report a band.
+Use section headings in the user's language. The English labels below identify the required content; they are not mandatory display text.
+
+1. **Snapshot** — price + the key metrics, each with `[Source, Date]` + freshness flag, using plain-language column headings.
+2. **Archetype** — which one, why it fits, and where this kind of company's value comes from, without unexplained category labels.
+3. **Tool-matched valuation** — name the method, explain in one sentence what question it answers, then show the math and the input block from `valuation.py`. Where you rejected a tool the user might expect, explain why in plain language.
+4. **Discount rate** — explain that this is the return investors require, then show the components, with the risk-free cited and the ERP declared as an assumption. Report a band.
 5. **Peer calibration** — table with pull date, exclusions, and what it does not capture.
-6. **Bull / Bear**, and the scenario table + Expected Value for wide-outcome cases.
-7. `## Bottom Line` — verdict + reasoning, 2-4 sentences, as a **range** with the dominant lever named.
-8. `## Key Risks` — 3-5 items, what breaks the thesis.
-9. `## What I Don't Know` — 1-3 data gaps, each with a pointer to where the user can verify (EDGAR, IR page, SET filing, 56-1 One Report).
+6. **Bull / Bear**, and the scenario table + Expected Value for wide-outcome cases, with each scenario label explained in the user's language.
+7. **Bottom Line** — verdict + reasoning, 2-4 sentences, as a **range** with the tested dominant lever named.
+8. **Key Risks** — 3-5 items, what breaks the thesis.
+9. **What I Don't Know** — 1-3 unresolved data gaps, each with a pointer to where the user can verify (EDGAR, IR page, SET filing, 56-1 One Report).
 10. Disclaimer: provide an educational-only, not-investment-advice disclaimer in the user's language; advise consulting a licensed adviser before making investment decisions.
 
 ## Delivery format
@@ -136,6 +168,8 @@ valuation-deep-dive/
 Read references on demand. Never load all of them.
 
 ## Examples
+
+These examples describe method selection, not the final writing style. Expand and explain every specialist term in the delivered report under the plain-language rules above.
 
 **"ประเมิน <bank> ให้หน่อย ราคานี้ถูกหรือแพง"** → §7. Justified P/BV from ROE / g / COE with a cited risk-free, cross-checked with DDM and residual income. State up front that EV/EBITDA and FCF-DCF do not apply to a bank and why. Show credit cost against its own 5-year range — a cheap P/BV on an under-provisioned book is not cheap.
 
