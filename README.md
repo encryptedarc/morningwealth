@@ -12,11 +12,11 @@ The skills are provider-neutral: they do not require a particular model, API key
 
 | Skill | Use it when | Output |
 |---|---|---|
-| `fundamental` | You need a beginner-friendly, filing-first review of business quality and financial health. | Markdown chat |
+| `fundamental` | You need a beginner-friendly, filing-first review of business quality and financial health in clear English. | Markdown chat |
 | `valuation-deep-dive` | You need a cited, multi-method equity valuation in the conversation. | Markdown chat |
 | `valuation-deep-dive-html-report` | You need the same analysis as a shareable report. | Self-contained HTML |
 
-The `fundamental` skill explains how a company makes money, selects financial metrics that fit its business model, checks earnings quality and capital allocation, and separates business quality from share-price attractiveness.
+The `fundamental` skill explains in clear English how a company makes money, selects financial metrics that fit its business model, checks earnings quality and capital allocation, and separates business quality from share-price attractiveness.
 
 The valuation skills classify a business before selecting a valuation method. They cover banks, cyclicals, REITs and infrastructure funds, holding companies, SaaS, asset owners, and deep-value situations. They separate sourced facts from derived valuation outputs and require time-sensitive inputs to be verified in the current session.
 
@@ -34,9 +34,9 @@ A stale or unresolved material input is a stop condition, not a footnote. When a
 
 ## Plain-language reports
 
-Reports are written in the user's language and explain specialist terminology where it first appears. An abbreviation is introduced only when it will recur, and a translated term must also explain what the measure means and why it matters to the valuation.
+The `fundamental` skill defaults to clear English even when the request is written in another language. Valuation reports follow the user's language and explain specialist terminology where it first appears. An abbreviation is introduced only when it will recur, and a translated term must also explain what the measure means and why it matters to the valuation.
 
-For example, a Thai report should not leave phrases such as `diluted shares`, `discount-rate story`, `LSEG via CNBC`, or `reverse DCF` unexplained. It should instead describe the economic meaning in Thai, identify who compiled and who published a sourced estimate, and then place the English term or abbreviation in parentheses when useful. Table and section headings follow the user's language as well.
+For example, a Thai valuation report should not leave phrases such as `diluted shares`, `discount-rate story`, `LSEG via CNBC`, or `reverse DCF` unexplained. It should instead describe the economic meaning in Thai, identify who compiled and who published a sourced estimate, and then place the English term or abbreviation in parentheses when useful. Valuation table and section headings follow the user's language as well.
 
 ## Install with Codex
 
