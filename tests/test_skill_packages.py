@@ -6,6 +6,7 @@ import unittest
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CHAT_SKILL = ROOT / "plugins/encryptedarc/skills/valuation-deep-dive"
 REPORT_SKILL = ROOT / "plugins/encryptedarc/skills/valuation-deep-dive-html-report"
+FUNDAMENTAL_SKILL = ROOT / "plugins/encryptedarc/skills/fundamental"
 REFERENCE_FILES = {
     "archetype-playbooks.md",
     "core-finance-principles.md",
@@ -13,6 +14,10 @@ REFERENCE_FILES = {
     "dcf-and-cost-of-capital.md",
     "peer-calibration.md",
     "thai-market-notes.md",
+}
+FUNDAMENTAL_REFERENCE_FILES = {
+    "fundamental-framework.md",
+    "source-policy.md",
 }
 
 
@@ -35,6 +40,14 @@ class HeadingParser(HTMLParser):
 
 
 class SkillPackageTests(unittest.TestCase):
+    def test_fundamental_skill_is_standalone_and_discoverable(self):
+        self.assertTrue((FUNDAMENTAL_SKILL / "SKILL.md").is_file())
+        self.assertTrue((FUNDAMENTAL_SKILL / "agents/openai.yaml").is_file())
+        self.assertEqual(
+            {path.name for path in (FUNDAMENTAL_SKILL / "references").glob("*.md")},
+            FUNDAMENTAL_REFERENCE_FILES,
+        )
+
     def test_each_skill_contains_its_own_references_and_calculator(self):
         for root in (CHAT_SKILL, REPORT_SKILL):
             with self.subTest(skill=root.name):

@@ -4,7 +4,7 @@
   <img src="./assets/encryptedarc-logo.png" alt="Encrypted Arc multi-asset investing mark" width="180">
 </p>
 
-Encrypted Arc is a portable collection of rigorous equity-valuation skills. It is packaged as a Codex marketplace plugin and can also be installed as standalone `SKILL.md` directories in AI environments that support Agent Skills.
+Encrypted Arc is a portable collection of rigorous fundamental-analysis and equity-valuation skills. It is packaged as a Codex marketplace plugin and can also be installed as standalone `SKILL.md` directories in AI environments that support Agent Skills.
 
 The skills are provider-neutral: they do not require a particular model, API key, MCP server, search tool, or operating system. They guide an AI agent to use the research and file-writing capabilities available in its host environment.
 
@@ -12,14 +12,17 @@ The skills are provider-neutral: they do not require a particular model, API key
 
 | Skill | Use it when | Output |
 |---|---|---|
+| `fundamental` | You need a beginner-friendly, filing-first review of business quality and financial health. | Markdown chat |
 | `valuation-deep-dive` | You need a cited, multi-method equity valuation in the conversation. | Markdown chat |
 | `valuation-deep-dive-html-report` | You need the same analysis as a shareable report. | Self-contained HTML |
 
-Both skills classify a business before selecting a valuation method. They cover banks, cyclicals, REITs and infrastructure funds, holding companies, SaaS, asset owners, and deep-value situations. They separate sourced facts from derived valuation outputs and require time-sensitive inputs to be verified in the current session.
+The `fundamental` skill explains how a company makes money, selects financial metrics that fit its business model, checks earnings quality and capital allocation, and separates business quality from share-price attractiveness.
+
+The valuation skills classify a business before selecting a valuation method. They cover banks, cyclicals, REITs and infrastructure funds, holding companies, SaaS, asset owners, and deep-value situations. They separate sourced facts from derived valuation outputs and require time-sensitive inputs to be verified in the current session.
 
 ## Analysis workflow
 
-Both skills use the same gated workflow:
+The valuation skills use the same gated workflow:
 
 1. **Research** — gather the current market data, latest filing, capital structure, discount-rate inputs, and business-model-specific evidence.
 2. **Validate inputs** — verify timestamps, source quality, share-count type, units, accounting basis, and required cash-flow components before valuation begins.
@@ -60,12 +63,13 @@ Then install the `encryptedarc` plugin from the marketplace. The marketplace man
 
 ## Install with Claude Code
 
-Claude Code discovers project skills in `.claude/skills/`. From the repository root, copy either standalone skill into the target project's `.claude/skills/` directory. See the [Claude Code skills documentation](https://code.claude.com/docs/en/slash-commands) for the current discovery rules.
+Claude Code discovers project skills in `.claude/skills/`. From the repository root, copy any standalone skill into the target project's `.claude/skills/` directory. See the [Claude Code skills documentation](https://code.claude.com/docs/en/slash-commands) for the current discovery rules.
 
 macOS or Linux:
 
 ```sh
 mkdir -p /path/to/your-project/.claude/skills
+cp -R plugins/encryptedarc/skills/fundamental /path/to/your-project/.claude/skills/
 cp -R plugins/encryptedarc/skills/valuation-deep-dive /path/to/your-project/.claude/skills/
 cp -R plugins/encryptedarc/skills/valuation-deep-dive-html-report /path/to/your-project/.claude/skills/
 ```
@@ -75,20 +79,22 @@ Windows PowerShell:
 ```powershell
 $projectPath = (Resolve-Path "..\your-project").Path
 New-Item -ItemType Directory -Force "$projectPath\.claude\skills"
+Copy-Item -Recurse plugins\encryptedarc\skills\fundamental "$projectPath\.claude\skills\"
 Copy-Item -Recurse plugins\encryptedarc\skills\valuation-deep-dive "$projectPath\.claude\skills\"
 Copy-Item -Recurse plugins\encryptedarc\skills\valuation-deep-dive-html-report "$projectPath\.claude\skills\"
 ```
 
 ## Install in another Agent Skills environment
 
-Copy exactly one of these directories into the location required by your AI host:
+Copy any of these directories into the location required by your AI host:
 
 ```text
+plugins/encryptedarc/skills/fundamental/
 plugins/encryptedarc/skills/valuation-deep-dive/
 plugins/encryptedarc/skills/valuation-deep-dive-html-report/
 ```
 
-Each directory is self-contained: it includes its own `SKILL.md`, valuation references, and standard-library Python calculator. The HTML-report edition also includes an offline template. The two skills do not depend on one another.
+Each directory is self-contained. `fundamental` includes its own analysis framework and source policy. Each valuation skill includes its own references and standard-library Python calculator, while the HTML-report edition also includes an offline template.
 
 ## HTML reports
 
@@ -96,7 +102,7 @@ The report skill creates `Valuation_<TICKER>_<YYYY-MM-DD>.html`. The template lo
 
 ## Verify the calculator
 
-From either skill directory, run:
+From either valuation skill directory, run:
 
 ```sh
 python scripts/valuation.py selftest
