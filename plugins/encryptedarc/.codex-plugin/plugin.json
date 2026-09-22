@@ -1,13 +1,14 @@
 {
   "name": "encryptedarc",
-  "version": "1.0.0",
-  "description": "Standalone deep-equity-valuation skills for chat analysis and HTML reports.",
+  "version": "1.1.0",
+  "description": "Standalone fundamental-analysis and deep-equity-valuation skills for chat and HTML reports.",
   "author": {
     "name": "Encrypted Arc"
   },
   "repository": "https://github.com/encryptedarc/morningwealth",
   "keywords": [
     "valuation",
+    "fundamental-analysis",
     "equity",
     "finance",
     "thai-market"
@@ -15,8 +16,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Encrypted Arc",
-    "shortDescription": "Deep equity valuation skills",
-    "longDescription": "Standalone valuation skills for cited chat analysis and self-contained HTML reports.",
+    "shortDescription": "Fundamental and equity valuation skills",
+    "longDescription": "Standalone skills for filing-first fundamental analysis, cited equity valuation, and self-contained HTML reports.",
     "developerName": "Encrypted Arc",
     "category": "Finance",
     "capabilities": [
@@ -24,6 +25,7 @@
       "Write"
     ],
     "defaultPrompt": [
+      "Explain this company's fundamentals for a beginner",
       "Value this equity in depth",
       "Create an HTML valuation report for this ticker"
     ]
