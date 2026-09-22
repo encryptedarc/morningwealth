@@ -1,118 +1,118 @@
 # Fundamental Analysis Framework
 
-ใช้ reference นี้หลัง resolve บริษัทและก่อนเริ่มวิเคราะห์ เลือกเฉพาะ metric ที่เหมาะกับ archetype; ไม่ต้องยัดทุกหัวข้อหากบริษัทไม่เปิดเผยข้อมูลหรือ metric ไม่มีความหมาย
+Use this reference after resolving the company and before beginning the analysis. Select only the metrics that fit the company's archetype; do not force every section into the report when the company does not disclose the data or a metric is not meaningful.
 
 ## 1. Archetype and metric selection
 
-| Archetype | Metric ที่ควรเน้น | Metric ที่ต้องระวังหรือไม่ควรใช้เดี่ยว ๆ |
+| Archetype | Metrics to emphasize | Metrics to treat cautiously or avoid in isolation |
 |---|---|---|
-| General corporate | revenue growth, gross/operating margin, CFO, FCF, ROIC, net debt/EBITDA, interest coverage | net income ที่มี one-off, EBITDA ที่ไม่หัก recurring capex |
-| Bank | loan/deposit growth, NIM, fee income, NPL ratio, coverage ratio, credit cost, CET1/CAR, ROE | FCF, net debt/EBITDA, EV/EBITDA |
-| Insurer | premium growth, underwriting result, combined ratio, solvency ratio, investment income, ROE | revenue growth หรือ P/E โดยไม่แยก underwriting cycle |
-| REIT/property fund | occupancy, rental reversion, WALE, NOI, FFO/AFFO, DPU, gearing, interest coverage | EPS, net income และ P/E ที่ถูก distortion จาก depreciation/fair-value changes |
-| Cyclical/commodity | volume, realized price, unit cost, utilization, balance sheet through cycle, normalized earnings | trailing P/E ที่จุด peak/trough ของ cycle |
-| SaaS/subscription | ARR, recurring mix, NRR/churn, gross margin, sales efficiency, FCF, SBC และ dilution | adjusted EBITDA ที่ตัด SBC แต่ไม่พูดถึง dilution |
-| Pre-profit/high-growth | runway, cash burn, gross margin trajectory, unit economics, dilution, path to breakeven | ROE/ROIC และ point forecast ที่ยังไม่มี operating history |
+| General corporate | revenue growth, gross and operating margin, CFO, FCF, ROIC, net debt/EBITDA, interest coverage | net income distorted by one-offs; EBITDA that ignores recurring capex |
+| Bank | loan and deposit growth, NIM, fee income, NPL ratio, coverage ratio, credit cost, CET1 or CAR, ROE | FCF, net debt/EBITDA, EV/EBITDA |
+| Insurer | premium growth, underwriting result, combined ratio, solvency ratio, investment income, ROE | revenue growth or P/E without separating the underwriting cycle |
+| REIT or property fund | occupancy, rental reversion, WALE, NOI, FFO or AFFO, DPU, gearing, interest coverage | EPS, net income, and P/E distorted by depreciation or fair-value changes |
+| Cyclical or commodity | volume, realized price, unit cost, utilization, through-cycle balance-sheet strength, normalized earnings | trailing P/E at the peak or trough of a cycle |
+| SaaS or subscription | ARR, recurring mix, NRR or churn, gross margin, sales efficiency, FCF, SBC, and dilution | adjusted EBITDA that excludes SBC without discussing dilution |
+| Pre-profit or high-growth | runway, cash burn, gross-margin trajectory, unit economics, dilution, path to breakeven | ROE, ROIC, and point forecasts without an operating history |
 
-Hybrid company ใช้หลาย archetypeได้ แต่ต้องบอกว่าแต่ละส่วนใช้กรอบใด
+A hybrid company may use multiple archetypes, but state which framework applies to each business segment.
 
 ## 2. Required output structure
 
 ### 1) Company Snapshot and Data as of
 
-- ชื่อบริษัท, ticker, exchange และ fiscal year-end
-- วันที่ค้นข้อมูล งวด annual ล่าสุด และงวด interim ล่าสุด
-- อธิบายบริษัทหนึ่งประโยคด้วยภาษาคนทั่วไป
-- ระบุ source ที่หาไม่ได้หรือ stale ตั้งแต่ต้น
+- Company name, ticker, exchange, and fiscal year-end
+- Research date, latest annual period, and latest interim period
+- One plain-English sentence explaining what the company does
+- Missing or stale sources disclosed at the outset
 
-### 2) ธุรกิจ ลูกค้า และโมเดลรายได้
+### 2) Business, Customers, and Revenue Model
 
-- สินค้า/บริการและวิธีหาเงิน
-- revenue segments พร้อมสัดส่วนจากงวดที่อ้างถึง
-- ลูกค้าหลัก, geography, channel และ customer concentration ถ้ามี disclosure
-- recurring vs transactional revenue, pricing model และ switching behavior
-- ระบุว่า growth มาจาก volume, price, mix, acquisition หรือ accounting effect
+- Products or services and how the company earns revenue
+- Revenue segments and their shares for the cited period
+- Key customers, geography, channels, and customer concentration when disclosed
+- Recurring versus transactional revenue, pricing model, and switching behavior
+- Whether growth comes from volume, price, mix, acquisitions, or accounting effects
 
 ### 3) Financial Trend
 
-ทำตาราง annual 3 ปีล่าสุดและ quarter/interim ล่าสุดเทียบ YoY เท่าที่มีข้อมูล โดยเลือก metric ให้ตรง archetype ตารางต้องระบุ currency/unit และ period
+Provide a table covering the latest three annual periods and the latest quarter or interim period compared year over year when data is available. Choose metrics that fit the archetype, and state the currency, unit, and period.
 
-สำหรับบริษัททั่วไปควรพิจารณา:
+For a general corporate, consider:
 
-- revenue, gross profit/margin, operating profit/margin และ net income
-- CFO, capex และ FCF โดยนิยาม default `FCF = CFO - capex`
-- cash, gross debt, net debt และดอกเบี้ย
-- diluted shares; ตรวจ buyback, issuance และ SBC dilution
+- revenue, gross profit or margin, operating profit or margin, and net income
+- CFO, capex, and FCF, using `FCF = CFO - capex` as the default definition
+- cash, gross debt, net debt, and interest expense
+- diluted shares, including buybacks, issuance, and SBC dilution
 
-ห้ามเปรียบเทียบ quarter กับ full year หรือ reported กับ adjusted โดยไม่อธิบาย reconciliation
+Do not compare a quarter with a full year or reported figures with adjusted figures without a reconciliation.
 
-### 4) คุณภาพกำไร งบ และ Cash Conversion
+### 4) Earnings Quality, Balance Sheet, and Cash Conversion
 
-ตรวจอย่างน้อย:
+Assess at least:
 
-- กำไรโตตามรายได้หรือเกิดจาก one-off, tax, FX หรือ fair-value gain
-- CFO และ FCF สอดคล้องกับกำไรหรือไม่
-- receivables, inventory และ contract assets โตเร็วกว่ารายได้หรือไม่
-- capex เป็น maintenance หรือ growth เท่าที่ disclosure แยกได้
-- debt maturity, refinancing need และ interest coverage
-- ROIC/ROE/ROA ใช้ metric ใดจึงเหมาะกับ archetype และเหตุใด
+- whether profit growth follows revenue or comes from one-offs, tax, FX, or fair-value gains
+- whether CFO and FCF are consistent with earnings
+- whether receivables, inventory, or contract assets are growing faster than revenue
+- whether capex is maintenance or growth capex when the disclosure separates them
+- debt maturities, refinancing needs, and interest coverage
+- which of ROIC, ROE, or ROA fits the archetype and why
 
 ### 5) Moat and Growth Optionality
 
-Moat ต้องมี observable evidence เช่น margin durability, pricing power, retention, market share, cost position, network density, regulatory license หรือ ROIC ที่สูงกว่าต้นทุนเงินทุนหลายงวด ห้ามใช้ brand/technology/network effect เป็น moat เพียงเพราะผู้บริหารเรียกเช่นนั้น
+A moat requires observable evidence such as durable margins, pricing power, retention, market share, cost position, network density, regulatory licenses, or ROIC above the cost of capital across multiple periods. Do not accept brand, technology, or network effects as a moat merely because management uses those labels.
 
-แยก growth option เป็นสามระดับ:
+Classify each growth option at one of three evidence levels:
 
-- `ในงบแล้ว` — มีรายได้ ลูกค้า หรือ capacity contribution ที่ตรวจสอบได้
-- `กำลังพิสูจน์` — มี product launch, contract, capex หรือ KPI แต่ยังไม่ material
-- `ยังเป็นความหวัง` — มีเพียงเป้าหมายหรือ narrative
+- `Already in reported results` — verifiable revenue, customers, or capacity contribution
+- `Being proven` — a product launch, contract, capex program, or KPI exists, but the contribution is not yet material
+- `Still aspirational` — supported only by a target or narrative
 
 ### 6) Management and Capital Allocation
 
-- เทียบ guidance/KPI ที่ผู้บริหารเคยให้กับผลจริงย้อนหลังเมื่อมีข้อมูล
-- ตรวจ acquisition, divestment, capex, dividend, buyback, debt paydown และ equity issuance
-- แยก execution evidence ออกจากบุคลิกหรือคำพูดใน earnings call
-- ถ้าไม่มี guidance history เพียงพอ ให้เขียน `ยังประเมินความแม่นของ guidance ไม่ได้`
+- Compare prior management guidance or KPIs with actual outcomes when history is available.
+- Review acquisitions, divestments, capex, dividends, buybacks, debt repayment, and equity issuance.
+- Separate execution evidence from personality or statements made during earnings calls.
+- If guidance history is insufficient, write `Insufficient history to assess guidance accuracy`.
 
 ### 7) Risks, Red Flags, and What I Don't Know
 
-จัดอันดับ 3-5 risks ตาม `Impact` และ `Likelihood` พร้อม leading indicator ที่ควรติดตาม ครอบคลุมเฉพาะที่ material เช่น competition, customer concentration, regulation, cyclicality, margin pressure, leverage, dilution, accounting quality และ valuation risk
+Rank three to five material risks by `Impact` and `Likelihood`, and include a leading indicator to monitor. Cover only material issues such as competition, customer concentration, regulation, cyclicality, margin pressure, leverage, dilution, accounting quality, and valuation risk.
 
-`What I Don't Know` ต้องระบุ data gap และบอกว่าจะตรวจต่อจาก filing, footnote, IR page หรือ transcript ใด
+`What I Don't Know` must identify each data gap and name the filing, footnote, IR page, or transcript that should be checked next.
 
 ### 8) Scorecard and Final Verdict
 
-ให้คะแนนเฉพาะหัวข้อที่มีหลักฐาน:
+Score only categories supported by evidence:
 
-| หัวข้อ | สิ่งที่ประเมิน |
+| Category | What to assess |
 |---|---|
-| ความเข้าใจง่ายของธุรกิจ | revenue driver และ economics อธิบายได้ชัดหรือไม่ |
-| คุณภาพรายได้ | recurring, diversification, pricing power และ visibility |
-| คุณภาพกำไรและ cash conversion | earnings แปลงเป็นเงินสดและไม่มี distortion มากเกินไป |
-| ความแข็งแรงของงบ | liquidity, leverage, maturity และ resilience |
-| ความสามารถในการเติบโต | runway, reinvestment opportunity และ execution evidence |
-| ความได้เปรียบเชิงแข่งขัน | moat ที่มีหลักฐานและความคงทน |
-| คุณภาพการจัดสรรเงินทุน | ผลของ capex, M&A, buyback, dividend และ dilution |
-| ความทนทานต่อความเสี่ยง | 10 หมายถึงรับแรงกระแทกได้ดีและมี downside protection สูง |
-| คุณภาพธุรกิจโดยรวม | สรุป business quality โดยไม่รวมความถูก/แพงของราคาหุ้น |
+| Business clarity | Whether the revenue drivers and economics can be explained clearly |
+| Revenue quality | Recurrence, diversification, pricing power, and visibility |
+| Earnings quality and cash conversion | Whether earnings convert into cash without excessive distortion |
+| Balance-sheet strength | Liquidity, leverage, maturity profile, and resilience |
+| Growth capability | Runway, reinvestment opportunities, and execution evidence |
+| Competitive advantage | Evidence for a moat and its durability |
+| Capital-allocation quality | Outcomes from capex, M&A, buybacks, dividends, and dilution |
+| Risk resilience | A score of 10 means strong shock absorption and downside protection |
+| Overall business quality | Business quality without considering whether the stock is cheap or expensive |
 
 ## 3. Scoring rubric
 
-- `1-3` — อ่อนแอหรือมี red flag ที่พิสูจน์ได้
-- `4-6` — ผสม มีข้อดีแต่ข้อจำกัดยัง material
-- `7-8` — แข็งแรงและมีหลักฐานรองรับหลายงวด
-- `9-10` — โดดเด่น พิสูจน์ได้ข้าม cycle หรือเหนือ peer อย่างสม่ำเสมอ
-- `N/A` — ข้อมูลไม่พอหรือ metric ไม่เหมาะกับ archetype
+- `1-3` — weak or supported by a demonstrated red flag
+- `4-6` — mixed, with strengths but material limitations
+- `7-8` — strong and supported by evidence across multiple periods
+- `9-10` — exceptional, demonstrated across cycles or consistently superior to peers
+- `N/A` — insufficient data or the metric does not fit the archetype
 
-ทุกคะแนนต้องมีเหตุผลหนึ่งบรรทัดและ citation ที่รองรับ ห้ามคำนวณคะแนนรวมด้วยค่าเฉลี่ยหากมีหัวข้อเป็น `N/A` หรือ archetype ทำให้น้ำหนักแต่ละ metric ไม่เท่ากัน
+Every score requires a one-line rationale and a supporting citation. Do not calculate an overall score as a simple average when any category is `N/A` or when the archetype makes the categories materially unequal in importance.
 
 ## 4. Final Verdict format
 
-ปิดท้ายสั้นและตรง:
+End with a concise summary:
 
-1. ธุรกิจนี้คืออะไรในภาษาคนทั่วไป
-2. จุดแข็ง 3 ข้อ
-3. จุดเสี่ยง 3 ข้อ
-4. เหมาะกับการศึกษาของนักลงทุนลักษณะใด โดยไม่แนะนำให้ซื้อหรือขาย
-5. Verdict: `พื้นฐานแข็งแรง`, `พื้นฐานดีแต่มีจุดต้องระวัง`, `พื้นฐานยังไม่แข็งแรง` หรือ `ข้อมูลไม่พอประเมิน`
-6. ก่อนพิจารณาลงทุนควรตรวจเอกสารหรือ KPI ใดต่อ
+1. What the business does in plain English
+2. Three strengths
+3. Three risks
+4. What type of investor may find the company worth further study, without recommending a purchase or sale
+5. Verdict: `Strong fundamentals`, `Good fundamentals with material watchpoints`, `Weak fundamentals`, or `Insufficient data to assess`
+6. Which document or KPI should be checked before considering an investment

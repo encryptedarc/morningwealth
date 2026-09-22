@@ -1,79 +1,80 @@
 ---
 name: fundamental
-description: "Analyze a listed company's business quality and financial fundamentals in beginner-friendly Thai using primary filings and current company disclosures. Use for Fundamental analysis, พื้นฐานหุ้น, บริษัททำธุรกิจอะไร, งบแข็งแรงไหม, moat, revenue quality, or a beginner company primer. Do not use for price-only/news-only requests, short-term trading, portfolio allocation, or fair value/target-price work; use valuation-deep-dive for valuation."
+description: "Use when a user asks, in English or another language, for a beginner-friendly fundamental analysis of a listed company, including its business model, revenue quality, financial health, moat, management execution, capital allocation, or fundamental risks. Do not use for price-only requests, news-only requests, short-term trading, portfolio allocation, or fair value or target-price work."
 ---
 
 # Fundamental
 
-วิเคราะห์คุณภาพธุรกิจและฐานะการเงินของบริษัทจดทะเบียนสำหรับผู้เริ่มต้น โดยอธิบายเป็นภาษาไทยที่อ่านง่ายและมีหลักฐานตรวจสอบย้อนกลับได้ เป้าหมายคือช่วยให้ผู้ใช้เข้าใจว่า “บริษัทหาเงินอย่างไร พื้นฐานแข็งแรงแค่ไหน และต้องตรวจสอบอะไรต่อ” ไม่ใช่ออกคำแนะนำซื้อขาย
+Analyze the business quality and financial condition of a listed company for a beginner. Explain the evidence in clear English so the user understands how the company makes money, how strong its fundamentals are, and what to investigate next. Do not issue buy or sell recommendations.
 
 ## Load before research
 
-1. อ่าน `references/source-policy.md` เพื่อใช้ source hierarchy, freshness rules, citation และ cross-verification ที่แยก filing data ออกจาก live market data
-2. อ่าน `references/fundamental-framework.md` เพื่อเลือก metric ตามประเภทธุรกิจ ใช้ output structure และ scorecard rubric
+1. Read `references/source-policy.md` for the source hierarchy, freshness rules, citation requirements, and cross-verification rules that distinguish filing data from live market data.
+2. Read `references/fundamental-framework.md` to select metrics by business archetype and apply the output structure and scoring rubric.
 
 ## Scope boundaries
 
-- ใช้ skill นี้กับ business model, customers, revenue quality, financial health, moat, growth options, management execution, capital allocation และ fundamental risks
-- อย่าใช้กับคำขอที่เน้นข่าว, catalysts, price action, macro หรือ short-term trading thesis
-- ถ้าคำขอถาม fair value, target price, ถูกหรือแพง, DCF หรือ valuation method ให้ใช้ `valuation-deep-dive`
-- พูดถึง valuation context ได้เฉพาะเมื่อจำเป็นต่อการอธิบาย risk และมีข้อมูลสดที่อ้างอิงได้ ห้ามสรุป fair value หรือจังหวะซื้อจาก skill นี้
+- Use this skill for business models, customers, revenue quality, financial health, moats, growth options, management execution, capital allocation, and fundamental risks.
+- Do not use it for requests focused on news, catalysts, price action, macroeconomics, or short-term trading theses.
+- If the request asks for fair value, a target price, whether the stock is cheap or expensive, a DCF, or another valuation method, use `valuation-deep-dive`.
+- Mention valuation context only when it is necessary to explain a risk and current, citable data is available. Do not derive fair value or a purchase entry point with this skill.
 
 ## Workflow
 
 ### 1. Resolve the company
 
-ระบุวันที่ปัจจุบันก่อนเริ่ม และยืนยันชื่อบริษัท, ticker และ exchange ให้ตรงกัน ถ้าชื่อกำกวมหรือ ticker ซ้ำหลายตลาด ให้ถามหนึ่งคำถามก่อนค้นข้อมูล
+State the current date first. Confirm the company name, ticker, and exchange. If the name is ambiguous or the ticker exists on multiple exchanges, ask one clarifying question before researching.
 
-Default เมื่อผู้ใช้ไม่ระบุ:
+Use these defaults when the user does not specify them:
 
-- horizon ของข้อมูล: annual 3 ปีล่าสุด + quarter/interim ล่าสุดเทียบ YoY
-- output: chat markdown
-- audience: ผู้เริ่มต้นที่ต้องการเข้าใจพื้นฐาน ไม่ใช่ trade setup
+- Data horizon: the latest three annual periods plus the latest quarter or interim period compared year over year
+- Output: Markdown in chat
+- Language: clear English
+- Audience: a beginner seeking to understand the fundamentals, not a trade setup
 
 ### 2. Classify before choosing metrics
 
-จัดบริษัทเป็นอย่างน้อยหนึ่ง archetype ก่อนวิเคราะห์: general corporate, bank, insurer, REIT/property fund, cyclical/commodity, SaaS/subscription หรือ pre-profit/high-growth แล้วใช้เฉพาะ metric ที่เหมาะจาก `references/fundamental-framework.md`
+Classify the company under at least one archetype before analyzing it: general corporate, bank, insurer, REIT or property fund, cyclical or commodity, SaaS or subscription, or pre-profit or high-growth. Use only the suitable metrics from `references/fundamental-framework.md`.
 
-ห้ามฝืนใช้ FCF, ROIC, debt หรือ P/E แบบเดียวกับทุกธุรกิจ ถ้า metric ไม่เหมาะ ให้ข้ามและบอกเหตุผลสั้น ๆ
+Do not force FCF, ROIC, debt, or P/E into every business model. Omit an unsuitable metric and briefly explain why it does not apply.
 
 ### 3. Research primary sources first
 
-ใช้ลำดับหลักฐานดังนี้:
+Use this evidence order:
 
-1. Latest annual filing: 10-K, 20-F, annual report หรือ 56-1 One Report
-2. Latest quarterly/interim filing: 10-Q, 6-K, financial statements และ MD&A
-3. Earnings presentation และ earnings call สำหรับ guidance, strategy และ management claims
-4. Company IR disclosures และข่าวที่ตรวจสอบได้สำหรับเหตุการณ์หลังงบ
+1. Latest annual filing: 10-K, 20-F, annual report, or 56-1 One Report
+2. Latest quarterly or interim filing: 10-Q, 6-K, financial statements, and MD&A
+3. Earnings presentations and earnings calls for guidance, strategy, and management claims
+4. Company IR disclosures and verifiable news for events after the reporting period
 
-Investor presentation และ earnings call เป็นคำกล่าวของผู้บริหาร ไม่ใช่หลักฐานอิสระ ตรวจสอบ headline numbers กับงบหรือ filing ก่อนใช้ ถ้า transcript, segment data หรือ customer concentration ไม่มี ให้ระบุว่าไม่มีข้อมูลที่ตรวจสอบได้
+Investor presentations and earnings calls are management statements, not independent evidence. Reconcile headline numbers with filed financial statements before using them. If a transcript, segment disclosure, or customer-concentration figure is unavailable, say that no verifiable data is available.
 
 ### 4. Keep the evidence register explicit
 
-- ทุกตัวเลขและ material factual claim ต้องมี source + publication date; เพิ่ม fiscal period เมื่อ claim ผูกกับงบหรือผลประกอบการ
-- ระบุสกุลเงิน หน่วย และ basis ให้ชัด เช่น reported/adjusted, consolidated/segment, annual/quarterly
-- ถ้าคำนวณเอง ให้แสดงสูตรและแยก derived figure ออกจาก sourced figure
-- แยก `Fact`, `Management claim` และ `Analysis/Inference` ออกจากกัน
-- ห้ามเขียนว่าตลาด “ยังไม่ price in” optionality หากไม่มี valuation evidence รองรับ ให้ใช้ว่า “ยังไม่ material ในงบ” หรือ “ยังเป็น management target” ตามหลักฐาน
-- ถ้าข้อมูลไม่พอ ห้ามให้คะแนนด้วยการเดา ให้ใช้ `N/A — ข้อมูลไม่เพียงพอ`
+- Cite every number and material factual claim with its source and publication date. Add the fiscal period when the claim relates to financial statements or operating results.
+- State the currency, unit, and basis, such as reported or adjusted, consolidated or segment, and annual or quarterly.
+- Show the formula for every calculated figure and distinguish derived figures from sourced figures.
+- Separate `Fact`, `Management claim`, and `Analysis/Inference`.
+- Do not say that the market has not "priced in" an option without valuation evidence. Use "not yet material in reported results" or "still a management target" when that is what the evidence supports.
+- If the evidence is insufficient, do not guess a score. Use `N/A — insufficient data`.
 
 ### 5. Analyze, then deliver
 
-ใช้โครงสร้าง 8 ส่วนใน `references/fundamental-framework.md` ตัดหัวข้อที่ไม่มีสาระสำคัญออกได้ แต่ต้องมี Data as of, Financial Trend, Risks, Scorecard, What I Don't Know และ Final Verdict
+Use the eight-part structure in `references/fundamental-framework.md`. Omit immaterial sections when appropriate, but always include Data as of, Financial Trend, Risks, Scorecard, What I Don't Know, and Final Verdict.
 
-อธิบายศัพท์เฉพาะเมื่อปรากฏครั้งแรกด้วยภาษาง่ายในวงเล็บ ใช้ technical terms สากล เช่น revenue, margin, FCF, ROIC, NIM และ AFFO ตามปกติ
+Define specialized terms in plain English the first time they appear. Use standard technical terms such as revenue, margin, FCF, ROIC, NIM, and AFFO normally.
 
 ## Verdict rules
 
-เลือก verdict ตามหลักฐานหนึ่งรายการ:
+Choose one evidence-based verdict:
 
-- `พื้นฐานแข็งแรง`
-- `พื้นฐานดีแต่มีจุดต้องระวัง`
-- `พื้นฐานยังไม่แข็งแรง`
-- `ข้อมูลไม่พอประเมิน`
+- `Strong fundamentals`
+- `Good fundamentals with material watchpoints`
+- `Weak fundamentals`
+- `Insufficient data to assess`
 
-Verdict ต้องแยก “คุณภาพบริษัท” ออกจาก “ความน่าสนใจของราคาหุ้น” บริษัทดีอาจเป็นหุ้นที่แพง และหุ้นราคาถูกอาจเป็นธุรกิจที่อ่อนแอ
+Keep company quality separate from stock-price attractiveness. A good company can be an expensive stock, and a cheap stock can represent a weak business.
 
-ปิดท้ายทุกครั้งด้วย:
+End every analysis with:
 
-> ข้อมูลนี้เพื่อการศึกษา ไม่ใช่คำแนะนำการลงทุน — กรุณาปรึกษา licensed advisor ก่อนตัดสินใจ
+> This material is for educational purposes only and is not investment advice. Consult a licensed adviser before making investment decisions.

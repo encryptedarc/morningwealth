@@ -48,6 +48,19 @@ class SkillPackageTests(unittest.TestCase):
             FUNDAMENTAL_REFERENCE_FILES,
         )
 
+    def test_fundamental_skill_package_contains_no_thai_instructions(self):
+        text_files = [
+            FUNDAMENTAL_SKILL / "SKILL.md",
+            FUNDAMENTAL_SKILL / "agents/openai.yaml",
+            *(FUNDAMENTAL_SKILL / "references").glob("*.md"),
+        ]
+
+        for path in text_files:
+            with self.subTest(path=path.relative_to(ROOT)):
+                content = path.read_text(encoding="utf-8")
+                contains_thai = any("\u0e00" <= char <= "\u0e7f" for char in content)
+                self.assertFalse(contains_thai, f"Thai instructions found in {path.relative_to(ROOT)}")
+
     def test_each_skill_contains_its_own_references_and_calculator(self):
         for root in (CHAT_SKILL, REPORT_SKILL):
             with self.subTest(skill=root.name):
