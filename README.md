@@ -39,6 +39,12 @@ The valuation skills use the same gated workflow:
 
 A stale or unresolved material input is a stop condition, not a footnote. When a dependent valuation cannot be supported, the skill reports what is missing and how to verify it instead of publishing a fair-value center with a warning attached.
 
+## Source reliability
+
+Use original company filings for financial statements, originating agencies for macro data, and attributable exchange or professional data records for quotes. Official issuer releases support attributed results and guidance; independent editorial reporting supplies external confirmation or a disclosed fallback. Aggregators are last-resort sources, and search snippets or AI summaries only locate evidence.
+
+The skills inspect a page's actual origin, date, period, and content type instead of trusting the host name. Syndicated copies count as one origin; paid promotions do not count as independent factual proof. Citations link the exact supporting document, and unauthenticated supplied files remain labelled conditional inputs. Freshness does not establish reliability, and an official filing is not a regulator guarantee of accuracy.
+
 ## Plain-language reports
 
 The `fundamental` skill defaults to clear English even when the request is written in another language. Valuation reports follow the user's language and explain specialist terminology where it first appears. An abbreviation is introduced only when it will recur, and a translated term must also explain what the measure means and why it matters to the valuation.

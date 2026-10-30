@@ -2,6 +2,8 @@
 
 Apply this policy to financial-statement analysis, including requested historical periods and their comparatives. Web search is a way to locate documents, not a measure of a source's authority. A document supplied by the user is current-session evidence: identify it as supplied, preserve its publication date and period, and disclose if its authenticity or amendment status cannot be independently checked.
 
+Supplied documents are not independently verified merely because a filename says 10-Q or annual report. Check provenance against the regulator or issuer IR source when available. If provenance cannot be checked, label the input `User-supplied, unverified`; conditional calculations may proceed with explicit assumptions, but withhold affected factual conclusions or verdicts that require authentication.
+
 ## Source hierarchy
 
 Use sources in this order of authority:
@@ -12,9 +14,13 @@ Use sources in this order of authority:
 4. **Independent secondary sources** — Reuters, Bloomberg, FT, WSJ, CNBC, Bangkok Post, and other reputable financial media for external-event confirmation or context
 5. **Aggregators and quote pages** — Yahoo Finance, Google Finance, Settrade, TradingView, and summary databases only as a last resort, with timestamp and basis checks
 
-Use web search and search snippets to find sources. Do not cite a snippet instead of the underlying filing when the primary document is accessible.
+Search results, snippets, knowledge panels, and AI summaries are discovery aids only. Inspect the underlying document or attributable data record before using a material number or claim. If it is inaccessible, find an accessible authoritative source or reputable independent report; a snippet alone is never sufficient, even under time pressure.
 
-Do not use model memory, AI prediction sites, sponsored content without disclosure, forums, or unverified social posts as factual sources.
+For macro data, use the originating central bank, government statistics agency, or regulator. For market quotes, prefer the exchange or an attributable professional data feed, with the instrument, timestamp, and session identified. Financial media and aggregators do not become primary sources for company accounts or official statistics.
+
+Before relying on a page, check its actual origin, byline/provider, publication/update date, relevant period, units, and whether it is editorial reporting, opinion, a company release, or paid content. Yahoo, Nasdaq, or another well-known host can republish third-party promotions; the host name alone does not establish reliability. A regulatory filing remains an issuer disclosure: preserve its audited, reviewed, or unaudited status and do not imply that the regulator guarantees its accuracy.
+
+Do not use model memory, AI prediction sites, forums, or unverified social posts as factual sources. Sponsored or promotional articles are not independent factual evidence even when sponsorship is disclosed. An official issuer earnings release can support attributed results or guidance before the filing arrives, with its audit/review status disclosed; it does not independently establish market leadership, customer adoption, or external contract awards. Corroborate those claims with the relevant counterparty, authority, or independent reporting, or keep them labelled as management claims.
 
 ## Freshness by data type
 
@@ -48,7 +54,7 @@ Check 8-K or 6-K filings, SET disclosures, company announcements, and reputable 
 - Reconcile totals, subtotals, and derived metrics with the financial statements and footnotes.
 - If an aggregator or presentation conflicts with a filing, use the filing and explain the difference.
 - If primary filings conflict, use the latest amended or restated filing and disclose the change.
-- A price move of `|change| ≥ 3%`, a gap, or unusual volume requires confirmation from a second market-data source.
+- A price move of `|change| ≥ 3%`, a gap, or unusual volume requires confirmation from a second independent market-data origin. Multiple copies of the same Reuters story, press release, or data feed count as one origin. If no independent corroboration is available, label the move uncorroborated and withhold conclusions that depend on it.
 - If a material data conflict cannot be resolved, show both values and withhold the verdict for the affected area.
 
 ## Citation and precision
@@ -59,6 +65,8 @@ Check 8-K or 6-K filings, SET disclosures, company announcements, and reputable 
 - Derived figure: show the formula and cited inputs
 - Management guidance: label it clearly as guidance or a target, not an actual result
 - No verifiable data: write `No verifiable data available`
+
+Make citations traceable: link the exact supporting filing, release, data record, or article, not a homepage or search result. Preserve the originating provider when citing a republisher. If the original is inaccessible but an inspected reputable secondary article supports the claim, cite that article and disclose the source chain; do not imply the original was read. For supplied files, cite the filename plus page/table/cell instead of inventing a URL.
 
 Example:
 
@@ -79,5 +87,6 @@ Do not use `~`, `approximately`, `around`, or figures recalled from model memory
 5. Are reported or adjusted, consolidated or segment, and currency or unit bases consistent?
 6. Do derived figures show their formulas and reconcile to cited inputs?
 7. Are management claims and analytical inferences separated from facts?
+8. Was the supporting content inspected, its origin and independence checked, and its exact URL or supplied-file location included?
 
 If any answer is no, research further or disclose the data gap. Do not fill it with an estimate.
