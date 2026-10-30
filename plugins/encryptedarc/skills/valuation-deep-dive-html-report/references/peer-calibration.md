@@ -32,7 +32,7 @@ State these out loud when they apply, because they change how much weight the ta
 
 - **n < 5 is not a regression.** Do not report an R², a fitted line, or a "peer-implied fair value" from a handful of points as if it were statistics. Describe the relationship qualitatively and show the points.
 - **A sales multiple vs growth chart penalizes profitability.** A company generating cash gets marked down against loss-making peers growing faster, because the axis ignores the thing that makes it better. Add a quality adjustment: profitability (FCF margin, or Rule of 40 for software), balance sheet (net cash vs leveraged), capital intensity, and revenue quality (recurring vs one-off).
-- **Peer multiples are not a fair value, they are a market opinion.** If the whole group is expensive, calibrating to the group reproduces the bubble. Cross-check the peer-implied value against an independent DCF and the scenario expected value — three methods disagreeing is information, not a problem to hide.
+- **Peer multiples are not a fair value, they are a market opinion.** If the whole group is expensive, calibrating to the group reproduces the bubble. Cross-check against an independent model suitable for the archetype and scenario values where applicable: DCF for forecastable corporate cash flow, DDM/residual income for banks, or liquidation/burn checks for deep value. Disagreement is information, not a problem to hide.
 - **Survivorship.** Comps are the companies still listed. In a sector that has consolidated, the surviving multiple is upward-biased.
 
 ## 4. Cross-market comparisons
@@ -52,7 +52,7 @@ Same logic for a Thai company with foreign peers in the same industry: the indus
 1. Tabulate the chosen multiple against its driver (growth for revenue multiples, ROE for P/BV, AFFO yield for REITs) on a consistent basis, plus a growth-adjusted column (multiple ÷ growth %).
 2. Locate the subject in the table and form a **fair multiple range**, not a point — typically the interquartile band of quality-adjusted peers, widened or narrowed with a stated reason.
 3. Apply the range to the subject's own forward metric → a fair value range.
-4. **Triangulate:** peer-implied range vs independent DCF vs scenario expected value. Report the center and the range. Where the three methods disagree, say which one you trust most for this archetype and why.
+4. **Triangulate:** peer-implied range versus the archetype-appropriate independent checks above. Report the center and the range. Explain unsupported or inapplicable checks and which supported method you trust most when they disagree.
 5. Never report a single number as "the fair value". A point target implies a precision the inputs do not contain, and it invites the user to trade on it. A range with the dominant lever named is the deliverable.
 
 ## 6. Reporting template

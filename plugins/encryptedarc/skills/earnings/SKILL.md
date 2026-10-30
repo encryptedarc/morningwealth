@@ -1,7 +1,6 @@
 ---
 name: earnings
 description: "Use when a user asks to read, explain, or break down a listed company's quarterly or interim results (earnings release, 10-Q, 6-K, SET interim financial statements and MD&A) for US, Thai, or other markets, or invokes the command with a ticker such as `earnings GOOG` or `earnings PTT.BK Q2 2026`. Explains what changed in the quarter in plain language for a beginner. Do not use for full business-quality reviews, fair value or target-price work, price-only requests, or trade recommendations."
-argument-hint: "<TICKER> [period, e.g. Q3 2026]"
 ---
 
 # Earnings
@@ -35,6 +34,7 @@ If `local/extension.md` exists in this skill directory, read it after the refere
 - Use this skill for one reporting period: results versus the prior year and prior quarter, versus guidance and consensus when sourced, plus cash flow, balance-sheet changes, and management commentary.
 - For a multi-year review of business quality, moat, and capital allocation, use `fundamental`.
 - For fair value, target price, cheap versus expensive, or DCF work, use `valuation-deep-dive`.
+- If a sibling skill is not installed, explain the scope boundary and ask for it or offer the supported earnings analysis; do not assume it can be loaded.
 - Report the market reaction only with timestamped price data under the live-data rules. Do not explain a price move with a cause the evidence does not support.
 
 ## Workflow
@@ -59,7 +59,7 @@ Classify the archetype, select the quarter metrics that fit it, and work through
 
 ### 4. Deliver
 
-Use the output structure in `references/earnings-framework.md`, in Markdown in chat. Keep it as short as the quarter allows: a clean quarter needs fewer sections than a quarter with large one-offs.
+Deliver Markdown in chat. Default to the compact structure in section 6 of `references/earnings-framework.md`: results, drivers, earnings and cash quality, guidance, and what to watch. Include the as-of period, sources, verdict, and material gaps within those sections. Use the detailed structure only when the user asks for a deep dive or material complexity needs it. The full framework is the research checklist, not a requirement to print every section.
 
 ## Evidence rules
 

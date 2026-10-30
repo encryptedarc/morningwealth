@@ -37,7 +37,9 @@ Use the market's regulatory filing system first (for example, the stock exchange
 - Compare the quarter with the same quarter a year earlier (YoY) as the primary comparison, because it removes seasonality.
 - Add the prior quarter (QoQ) when the business has little seasonality or when momentum matters, and say which comparison is seasonal.
 - Use year-to-date figures when the company reports only cumulative cash flow, which is common: derive the single quarter as `current YTD - prior YTD` and show the formula.
-- For a fourth quarter not reported separately: `Q4 = full year - nine months`, and state that the figure is derived.
+- For a fourth quarter not reported separately, derive additive income-statement and cash-flow amounts as `Q4 = full year - nine months`, and label them derived. Both inputs must use the same accounting basis, scope, currency, and restatement version.
+- EPS, margins, ratios, and weighted-average shares are not additive. Use the issuer's disclosed quarter EPS, or compute it from the quarter's common-share earnings numerator and quarter-specific weighted-average shares. Never subtract annual EPS minus nine-month EPS or divide by annual/YTD average shares. Recalculate margins from quarter amounts. If the quarter denominator or dilution treatment is unavailable, leave EPS unavailable; loss quarters can exclude securities that dilute full-year earnings.
+- Balance-sheet figures are stocks at a date. Use the quarter-end balance and compare it with another stated date; their difference is a change in balance, not the quarter's revenue, profit, or cash flow.
 - Use the restated comparative period when the company has restated or reclassified prior figures, and say so.
 
 ## 3. Quarter metrics by archetype
@@ -60,7 +62,7 @@ Use the metrics the company actually discloses. If a key metric is not disclosed
 1. **Reported versus adjusted.** Lead with reported figures. Use an adjusted figure only next to its reconciliation, and say what it excludes.
 2. **Non-operating items.** Gains or losses on equity investments, fair-value changes, FX, impairments, restructuring, litigation, and disposals can dominate a quarter. Quantify them and show profit with and without them.
 3. **Tax.** A one-time tax benefit or charge changes net income without changing the business. Compare the effective tax rate with the prior year.
-4. **Share count.** EPS can move because of buybacks or dilution. Use diluted shares and say how much of the EPS change came from the share count.
+4. **Share count.** EPS can move because of buybacks or dilution. Use the quarter-specific diluted weighted-average shares from the EPS note, not the period-end or annual share count. Quantify the share-count effect only when the earnings numerators and denominators reconcile; otherwise disclose the limitation.
 5. **Owners of the parent.** Use profit attributable to owners of the parent, not total profit including minority interests.
 6. **Cash versus profit.** Compare CFO with net income. Explain large working-capital swings in receivables, inventory, payables, and deferred revenue.
 7. **Capex and FCF.** State whether capex was guided, and whether the rise is maintenance or growth when disclosed. `FCF = CFO - capex` unless the company defines it differently, in which case show both.
@@ -85,7 +87,21 @@ Attribute each item to a named speaker and role, such as `CFO, Q3 2026 call, Oct
 
 ## 6. Output structure
 
-Use section headings in the user's language. Omit a section only when it is immaterial for the quarter, and say so in one line.
+### Compact answer (default)
+
+Open with the research date, company/ticker/exchange, fiscal period and quarter-end date when known. Then use these five sections in the user's language, with a small scoreboard only when it helps:
+
+1. **Results and verdict** — the headline numbers and quarter verdict, with YoY or QoQ only when comparable evidence exists.
+2. **Drivers** — the material business or segment changes; separate disclosed causes from inference.
+3. **Earnings and cash quality** — one-offs, tax, dilution, cash conversion, and material balance-sheet changes. For banks and insurers, replace corporate FCF/net-debt analysis with the applicable credit, liquidity, underwriting, or capital measures from section 3.
+4. **Guidance and management** — new versus prior guidance and the main call/Q&A point when accessible; otherwise state the missing evidence once.
+5. **What to watch and data gaps** — the leading indicators, material risks, and unresolved evidence gaps. End with the educational disclaimer.
+
+Cite figures and claims inline and identify documents by publication date and fiscal period. Combine related gaps in one sentence when appropriate. Missing optional consensus or price data does not prevent analysis of verified statements; omit the unavailable comparison or market reaction. Expand the affected section for material complexity instead of printing empty headings.
+
+### Detailed answer (on request or when material complexity needs it)
+
+Use the following as the full research checklist and the detailed output structure. Adapt metrics to the archetype; omit inapplicable metrics rather than inventing corporate FCF or net debt for a bank. Combine immaterial sections and disclose material data gaps.
 
 1. **Data as of** — research date, company, ticker, exchange, period, and a table of documents used with publication dates. Flag any pending filing.
 2. **The quarter in 30 seconds** — three to five bullets covering the headline result, the biggest surprise, and the quarter verdict.

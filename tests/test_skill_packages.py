@@ -1,5 +1,7 @@
 from html.parser import HTMLParser
+import json
 import pathlib
+import re
 import unittest
 
 
@@ -8,6 +10,7 @@ CHAT_SKILL = ROOT / "plugins/encryptedarc/skills/valuation-deep-dive"
 REPORT_SKILL = ROOT / "plugins/encryptedarc/skills/valuation-deep-dive-html-report"
 FUNDAMENTAL_SKILL = ROOT / "plugins/encryptedarc/skills/fundamental"
 EARNINGS_SKILL = ROOT / "plugins/encryptedarc/skills/earnings"
+SKILLS = (CHAT_SKILL, REPORT_SKILL, FUNDAMENTAL_SKILL, EARNINGS_SKILL)
 REFERENCE_FILES = {
     "archetype-playbooks.md",
     "core-finance-principles.md",
@@ -45,6 +48,52 @@ class HeadingParser(HTMLParser):
 
 
 class SkillPackageTests(unittest.TestCase):
+    def test_marketplace_resolves_to_plugin_and_bundled_skills(self):
+        marketplace = json.loads((ROOT / ".agents/plugins/marketplace.json").read_text(encoding="utf-8"))
+        for entry in marketplace["plugins"]:
+            with self.subTest(plugin=entry["name"]):
+                plugin_dir = (ROOT / entry["source"]["path"]).resolve()
+                self.assertIn(ROOT, plugin_dir.parents)
+                manifest = json.loads(
+                    (plugin_dir / ".codex-plugin/plugin.json").read_text(encoding="utf-8")
+                )
+                self.assertEqual(manifest["name"], entry["name"])
+                skill_dir = (plugin_dir / manifest["skills"]).resolve()
+                self.assertIn(plugin_dir, skill_dir.parents)
+                self.assertEqual({p for p in skill_dir.iterdir() if p.is_dir()}, set(SKILLS))
+
+    def test_skill_frontmatter_has_required_portable_fields(self):
+        allowed = {"name", "description", "license", "metadata", "allowed-tools"}
+        for skill in SKILLS:
+            with self.subTest(skill=skill.name):
+                content = (skill / "SKILL.md").read_text(encoding="utf-8")
+                header = re.match(r"\A---\n(.*?)\n---\n", content, re.DOTALL)
+                self.assertIsNotNone(header, "Missing frontmatter block")
+                fields = set(re.findall(r"^([a-z][a-z-]*):", header[1], re.MULTILINE))
+                self.assertTrue({"name", "description"}.issubset(fields))
+                self.assertFalse(fields - allowed, f"Nonportable fields: {fields - allowed}")
+                name = re.search(r"^name: ([a-z0-9-]+)$", header[1], re.MULTILINE)
+                self.assertIsNotNone(name)
+                self.assertEqual(name[1], skill.name)
+
+    def test_referenced_resources_are_bundled_inside_each_skill(self):
+        for skill in SKILLS:
+            for document in skill.rglob("*.md"):
+                if "local" in document.relative_to(skill).parts:
+                    continue
+                content = document.read_text(encoding="utf-8")
+                for resource in re.findall(r"(?:references|scripts|assets)/[\w./-]+\.(?:md|py|html)", content):
+                    with self.subTest(skill=skill.name, document=document.name, resource=resource):
+                        target = (skill / resource).resolve()
+                        self.assertIn(skill, target.parents)
+                        self.assertTrue(target.is_file(), f"Missing bundled resource: {resource}")
+
+    def test_standalone_valuation_copies_remain_in_sync(self):
+        for resource in ["scripts/valuation.py", *[f"references/{name}" for name in sorted(REFERENCE_FILES)]]:
+            with self.subTest(resource=resource):
+                self.assertEqual((CHAT_SKILL / resource).read_bytes(),
+                                 (REPORT_SKILL / resource).read_bytes())
+
     def test_fundamental_skill_is_standalone_and_discoverable(self):
         self.assertTrue((FUNDAMENTAL_SKILL / "SKILL.md").is_file())
         self.assertTrue((FUNDAMENTAL_SKILL / "agents/openai.yaml").is_file())

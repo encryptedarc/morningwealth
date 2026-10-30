@@ -35,6 +35,7 @@ FCFE = Net income + D&A − Capex − ΔNWC + Net borrowing
 ```
 
 - Discounting FCFF at WACC gives EV. **Then** bridge: `equity value = EV − total debt + cash (− minority interest − preferred)`. Show that bridge.
+- In `python scripts/valuation.py dcf`, pass cash minus debt as `--net-cash`, and pass minority and preferred claims separately with `--minority` and `--preferred`. Do not deduct those claims again inside net cash. Use claim values consistent with the scope of the forecast enterprise cash flow.
 - Discounting FCFE at COE already gives equity value — do **not** add cash back or subtract debt again. Doing both double-counts the balance sheet, and the error is large.
 - Deduct SBC from FCF for names where it is material. Treating SBC as non-cash while using diluted shares from two years ago understates dilution twice.
 - Forecast horizon: 5 years is the default; 10 only when the business has contracted or regulated visibility that far out (see §2 of the playbooks). A 10-year explicit forecast on a business you cannot forecast for 2 years is false precision — the extra years add noise, not information.
@@ -93,6 +94,8 @@ Value = BV₀ + Σ [ (ROEt − COE) × BVt₋₁ ] ÷ (1 + COE)^t
 ```
 
 The most transparent bank model, because the value above book is *explicitly* the excess-return stream. It also degrades gracefully: get the forecast wrong and you still anchor on book value, whereas a wrong DCF can produce any number at all.
+
+In `python scripts/valuation.py residual-income`, omitting `--terminal-g` assumes residual income ends after the explicit forecast. Supplying `--terminal-g 0` continues the last forecast residual income as a flat perpetuity; a nonzero value grows that residual income at the stated rate, which must be below COE. This terminal assumption is independent of retention and is not an automatic fade or a payout-consistent steady state. State and justify the terminal assumption in the answer.
 
 ## 6. Failure modes to check before you report
 

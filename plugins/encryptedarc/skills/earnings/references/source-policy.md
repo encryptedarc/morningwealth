@@ -1,6 +1,6 @@
-# Fundamental Source Policy
+# Financial-Statement Source Policy
 
-Apply this policy to business-quality and financial-statement analysis. Web search is a way to locate documents, not a measure of a source's authority.
+Apply this policy to financial-statement analysis, including requested historical periods and their comparatives. Web search is a way to locate documents, not a measure of a source's authority. A document supplied by the user is current-session evidence: identify it as supplied, preserve its publication date and period, and disclose if its authenticity or amendment status cannot be independently checked.
 
 ## Source hierarchy
 
@@ -31,16 +31,16 @@ Prices, market capitalization, FX rates, yields, and current valuation multiples
 
 Do not apply the 24-hour rule to financial statements. Treat filing data as usable when:
 
-- it is the latest annual or interim filing published by the company as of the research date
+- it covers the requested or comparative period; for a latest-results request, first identify the latest reported period
 - the fiscal period and filing or publication date are stated
-- no newer amended or restated filing exists
+- the figures are the latest available amended, restated, or recast version for that same period as of the research date
 - the basis matches the comparison, such as reported versus reported and quarter versus the same period a year earlier
 
-A newer filing or restatement supersedes the older document. If a new reporting period should be available but cannot be found, disclose the data gap rather than estimating it.
+A later reporting period does not invalidate an earlier filing needed for a historical quarter, YoY/QoQ comparison, or YTD subtraction. A newer amendment or restatement supersedes affected figures for the same period; use it consistently across the calculation and disclose the change. If a new reporting period should be available but cannot be found, disclose the data gap rather than estimating it. For an as-known-at-the-time analysis, use only documents published by the user's cutoff date and identify later restatements separately.
 
 ### Events after the reporting period
 
-Check 8-K or 6-K filings, SET disclosures, company announcements, and reputable news published after the balance-sheet date. Clearly separate these events from the results of the historical reporting period.
+Check 8-K or 6-K filings, SET disclosures, company announcements, and reputable news published after the balance-sheet date. Clearly separate these events from the results of the historical reporting period. In a historical review, distinguish what was known at the release from later events; do not use later events to explain what management or the market knew then.
 
 ## Cross-verification
 
@@ -73,7 +73,7 @@ Do not use `~`, `approximately`, `around`, or figures recalled from model memory
 ## Pre-output check
 
 1. Are the company, ticker, and exchange correct?
-2. Are the annual and interim filings the latest available?
+2. Do the documents cover the requested and comparison periods, using the latest applicable amendments or restatements within any user-specified cutoff?
 3. Does every sourced number or claim include the appropriate source plus publication date or timestamp, and a fiscal period when applicable?
 4. Is live market data within the freshness window and timestamped?
 5. Are reported or adjusted, consolidated or segment, and currency or unit bases consistent?
