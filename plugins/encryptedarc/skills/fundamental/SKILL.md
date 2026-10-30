@@ -40,12 +40,14 @@ Do not force FCF, ROIC, debt, or P/E into every business model. Omit an unsuitab
 
 ### 3. Research primary sources first
 
-Use this evidence order:
+Start on the verified company IR site and obtain these company documents:
 
 1. Latest annual filing: 10-K, 20-F, annual report, or 56-1 One Report
 2. Latest quarterly or interim filing: 10-Q, 6-K, financial statements, and MD&A
 3. Earnings presentations and earnings calls for guidance, strategy, and management claims
 4. Company IR disclosures and verifiable news for events after the reporting period
+
+Next compare document identity, period/version and material figures with regulator/exchange records, and inspect reputable independent reporting where available. Cite the company original when the same document/version is accessible there; regulator-hosted copies remain the same issuer origin. Prefer the latest applicable full/amended statements over a conflicting preliminary release, even if the amendment is hosted only by the regulator. Record the primary source, checks made, matches/conflicts and unavailable checks concisely.
 
 Investor presentations and earnings calls are management statements, not independent evidence. Reconcile headline numbers with filed financial statements before using them. If a transcript, segment disclosure, or customer-concentration figure is unavailable, say that no verifiable data is available.
 

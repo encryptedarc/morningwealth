@@ -5,7 +5,7 @@ description: "Use when a user asks to read, explain, or break down a listed comp
 
 # Earnings
 
-Read the latest (or requested) quarterly results of a listed company and explain, in plain language for a beginner, what happened in the quarter, why it happened, and what to watch next. Do not issue buy or sell recommendations.
+Read the latest (or requested) quarterly results of a listed company and explain what happened, why, and what to watch next. Produce a clearly headed review with reusable evidence blocks and a quarter record for future comparisons. Explain specialist terms for a beginner without discarding material detail. Do not issue buy or sell recommendations.
 
 ## Arguments
 
@@ -20,10 +20,13 @@ A `.BK` suffix means the Stock Exchange of Thailand (SET or mai). A bare ticker 
 
 Respond in the language of the user's request. When the request contains only a ticker and period, use the language of the surrounding conversation, or English when there is none. Explain each specialist term in plain language the first time it appears, such as EPS, operating margin, FCF, guidance, or backlog, then use the term normally.
 
+Use a title for company/period, `##` headings for sections and `###` headings for individual business or management topics. Leave a blank line after headings and before lists. Use one substantive claim per bullet and tables for comparable metrics or guidance versions. Fill the reusable topic template in `references/quarter-record.md`, including its local context and Source bullet with inline exact links. This keeps the period, units, basis, uncertainty and source intact when a topic is extracted for a future infographic. Generate visual assets only when requested.
+
 ## Load before research
 
 1. Read `references/source-policy.md` for the source hierarchy, freshness rules, citation format, and cross-verification rules.
 2. Read `references/earnings-framework.md` for the market-specific documents, archetype metrics, quarter pitfalls, and output structure.
+3. Read `references/quarter-record.md` for previous-record inputs, guidance revisions, management/Q&A records, reusable topics, and authorized persistence.
 
 ## Optional local extension
 
@@ -47,25 +50,35 @@ State the current date first. Confirm the company name, ticker, exchange, fiscal
 - If results were released within the last few days, the full quarterly filing may not be filed yet. Use the earnings release and say which filing is still pending.
 - Fiscal quarters that do not match calendar quarters must be labelled with both, such as `FY2027 Q1 (quarter ended Sep 30 2026)`.
 
+Read a previous-quarter record when supplied or available in a location configured by applicable instructions/local extension. Use it to identify earlier guidance, open questions, and monitoring items before analyzing the new results. Treat it as a historical baseline, not a replacement for current primary evidence. If unavailable, disclose the missing baseline and continue with what can be verified; do not reconstruct prior statements from memory.
+
 ### 2. Gather the documents
 
-Collect the documents listed for the company's market in `references/earnings-framework.md`. Prefer the filed statements, then the earnings release and presentation, then the earnings call. Record the publication date and fiscal period of each document.
+Start at the verified company IR site and collect the documents listed for its market in `references/earnings-framework.md`: full statements and footnotes, the earnings release, presentations, and the call. Then compare the document/version and material headline figures with regulator/exchange records and inspect reputable independent coverage where available. Prefer the company-hosted original citation when the document/version matches; an Exhibit 99.1 copy on SEC is still the issuer's release, not a second independent origin. Use the latest applicable full/amended statements over a conflicting preliminary release regardless of host. Record publication dates, fiscal periods, and a concise source-check result; disclose blocked or unavailable verification.
 
 Always look for the earnings call transcript or replay, or the analyst meeting for companies without a call. Read it using the earnings-call section of the framework, so the output reports what management said and what analysts pressed on, not only the numbers. If it is not accessible, say so.
+
+Follow the discovery and coverage checks in framework section 5 before concluding the call is unavailable. If IR offers only an unreadable player, seek an inspected full transcript with identified provenance. Read the release's guidance separately even when the call is blocked; a missing call does not make disclosed guidance unavailable. Report the source/provider and whether prepared remarks and Q&A were fully or partially inspected.
 
 ### 3. Analyze
 
 Classify the archetype, select the quarter metrics that fit it, and work through the sections of the output structure. For every material change, separate operating causes from accounting, one-off, FX, or share-count effects. Check every pitfall in the framework before writing.
 
+Compare like-for-like actuals with both original as-issued guidance and later revisions. Keep formal guidance, management outlook, aspiration/milestone, derived figures, and analysis distinct. Capture material prepared remarks and Q&A with named speakers, conditions and source locations, using `references/quarter-record.md`.
+
 ### 4. Deliver
 
-Deliver Markdown in chat. Default to the compact structure in section 6 of `references/earnings-framework.md`: results, drivers, earnings and cash quality, guidance, and what to watch. Include the as-of period, sources, verdict, and material gaps within those sections. Use the detailed structure only when the user asks for a deep dive or material complexity needs it. The full framework is the research checklist, not a requirement to print every section.
+Deliver Markdown using the structured report in section 6 of `references/earnings-framework.md`. Start with a short summary, then retain material financial details, management explanations, guidance versions, Q&A and next-quarter checks under clear headings and bullets. Condense chat only when the user asks for a brief answer; a separately authorized saved quarter record retains the material evidence and comparison fields. Combine or omit immaterial/inapplicable sections without dropping material uncertainty.
+
+### 5. Preserve the quarter record
+
+Prepare the archive-ready record described in `references/quarter-record.md`. Save only when an authorized destination and permission are established by the user's request, applicable instructions or local extension. A configured path alone does not cancel an ask-before-save rule; existing session authorization need not be requested again. Preserve previous records and guidance versions. If persistence is unavailable or not authorized, return the structured Markdown in chat and state that no persistent record was saved.
 
 ## Evidence rules
 
 - Cite every number with `[Source, publication date, fiscal period]` and state the currency, unit, and basis (reported or adjusted, consolidated or segment).
 - Show the formula for every derived figure, including a Q4 derived from full-year minus nine months.
-- Label management statements as `Management claim` or `Guidance`, and analysis as `Analysis/Inference`.
+- Use the statement types in `references/quarter-record.md`: distinguish formal guidance, management outlook, aspirations/milestones and management claims from `Derived` calculations and `Analysis/Inference`.
 - Cite consensus only with its compiler and publisher, such as `LSEG consensus via Reuters`. If no consensus is verifiable, omit the beat or miss column rather than estimating it.
 - If a figure cannot be verified in the current session, write `No verifiable data available` and list it under What I Don't Know.
 

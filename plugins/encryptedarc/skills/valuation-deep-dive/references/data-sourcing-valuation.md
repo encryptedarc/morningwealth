@@ -20,7 +20,7 @@
 | Risk-free rate, ERP, beta | See `dcf-and-cost-of-capital.md` §1 | Cited or declared as an assumption. No third option. |
 | Segment detail, concession terms, lease schedule | 10-K / 56-1 One Report, footnotes | The footnotes are where the archetype is actually confirmed. |
 
-**Filing access:** SEC EDGAR (`sec.gov`) for US and for foreign private issuers (20-F); SET company pages and SETSMART, plus ก.ล.ต. and the company IR page, for Thai names. Investor presentations are fast and useful but are marketing documents — cross-check any headline number against the statements.
+**Filing access:** start with the verified company IR financial-results/report library for US, Thai, and other listed issuers. Then inspect SEC EDGAR (`sec.gov`), SET/SETSMART, ก.ล.ต., or the relevant regulator/exchange to compare document versions and material inputs or obtain missing details. Cite IR for the same accessible document/version; disclose a regulator fallback when IR cannot be inspected. Prefer the latest applicable full/amended statements over an older or conflicting release regardless of host. Record actual cross-check results, and remember that company/regulator mirrors are one issuer origin. Presentations and calls remain attributed management materials; compare headline numbers with full statements and independent reporting where available.
 
 ## 2. Hard rules
 

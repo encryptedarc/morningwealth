@@ -8,29 +8,29 @@ Use this reference after resolving the company and period. It lists which docume
 
 | Document | Where | Notes |
 |---|---|---|
-| Earnings release | 8-K, usually Exhibit 99.1, on SEC EDGAR; company IR page | Published on results day. Often unaudited and may include adjusted (non-GAAP) figures with a reconciliation table. |
-| 10-Q | SEC EDGAR | Filed after the release, often days or weeks later. Holds full statements, segment notes, debt, share count, and risk updates. There is usually no 10-Q for the fourth fiscal quarter. |
-| 10-K | SEC EDGAR | Source for the fourth quarter when it is not reported separately, and for full-year comparisons. |
+| Earnings release | Company IR first; compare the corresponding 8-K Exhibit 99.1 on SEC EDGAR | Published on results day. Often unaudited and may include adjusted figures with a reconciliation. Identical IR/SEC copies are one issuer release, not independent confirmations. |
+| 10-Q | Company IR financial-report library first; SEC EDGAR to verify or obtain missing filings/amendments | Filed after the release, often days or weeks later. Holds full statements, segment notes, debt, share count, and risk updates. There is usually no 10-Q for the fourth fiscal quarter. |
+| 10-K | Company IR first; SEC EDGAR to verify or obtain the applicable version | Source for the fourth quarter when it is not reported separately, and for full-year comparisons. |
 | Presentation and earnings call | IR page; transcript from a reputable publisher | Guidance, segment KPIs, and management explanations. Management claims, not independent evidence. |
 
 ### United States (foreign private issuers)
 
-20-F for annual results and 6-K for interim results. Some issuers report only half-yearly; say so instead of inventing a quarter.
+Find 20-F annual and 6-K interim reports on company IR first, then compare with SEC EDGAR or use its inspected copy as a fallback. Some issuers report only half-yearly; say so instead of inventing a quarter.
 
 ### Thailand (SET and mai)
 
 | Document | Where | Notes |
 |---|---|---|
-| Interim financial statements | SET company news and company page; company IR page | Reviewed, not audited, for the first three quarters. Each filing contains consolidated statements and separate (company-only) statements. Use consolidated figures. |
-| Management discussion and analysis (MD&A) | Filed with the statements on SET | Management's explanation of the drivers. Often includes a core or normalized profit figure. |
-| Annual audited statements and 56-1 One Report | SET; Thai SEC | Source for the fourth quarter, which many companies do not report separately. |
+| Interim financial statements | Company IR first; SET company news/page to compare the filed version | Reviewed, not audited, for the first three quarters. Each filing contains consolidated statements and separate (company-only) statements. Use consolidated figures. |
+| Management discussion and analysis (MD&A) | Company IR first; compare the version filed with statements on SET | Management's explanation of the drivers. Often includes a core or normalized profit figure. |
+| Annual audited statements and 56-1 One Report | Company IR first; SET/Thai SEC for verification or missing/amended records | Source for the fourth quarter, which many companies do not report separately. |
 | Analyst meeting or Opportunity Day presentation | SET Opportunity Day archive; IR page | Guidance and KPIs. Many Thai companies hold no earnings call. |
 
 Thai statements are frequently presented in thousands or millions of baht, sometimes with different units in different tables. Confirm the unit on each table before comparing.
 
 ### Other markets
 
-Use the market's regulatory filing system first (for example, the stock exchange disclosure portal), then the company IR page. State whether the company reports quarterly or half-yearly.
+Use the verified company IR site first, then compare with the market's regulatory filing system or exchange disclosure portal and reputable independent coverage where available. If IR is inaccessible, use an inspected official record and disclose the fallback. State whether the company reports quarterly or half-yearly.
 
 ## 2. Comparison periods
 
@@ -68,18 +68,29 @@ Use the metrics the company actually discloses. If a key metric is not disclosed
 7. **Capex and FCF.** State whether capex was guided, and whether the rise is maintenance or growth when disclosed. `FCF = CFO - capex` unless the company defines it differently, in which case show both.
 8. **Financing.** New debt, equity issuance, or large buybacks during the quarter change the balance sheet. Report them with the source.
 9. **Segment changes.** A resegmentation breaks comparisons. Use the company's recast prior-period figures.
-10. **Guidance.** Compare actual results with the most recent prior guidance when available, and compare new guidance with old guidance. Label guidance as management's forecast.
+10. **Guidance.** Compare actual results separately with original as-issued guidance and the latest pre-results revision when available. Preserve dated revisions and compare new versus old guidance only for the same target period and basis. Label formal guidance, management outlook and derived calculations distinctly; see `references/quarter-record.md`.
 11. **Accounting standard.** Note the basis, such as US GAAP, IFRS, or TFRS. Lease accounting under IFRS 16 or TFRS 16 shifts costs between operating expense and depreciation and interest.
 
 ## 5. Reading the earnings call
 
 Treat the call as evidence of what management chose to emphasize, not as evidence of results. Use, in order: the official transcript or replay on the IR page, a transcript from a reputable publisher, then reputable news coverage of the call. For Thai companies without a call, use the analyst meeting or Opportunity Day presentation and replay. If no transcript or replay is accessible, say so and do not reconstruct the call from headlines.
 
+### Find the call and establish coverage
+
+1. Open the requested period's IR results/event page and follow its transcript/replay link, including a service provider linked by the company. A webcast announcement or player URL proves availability, not that its speech was read/heard. Use browser rendering when available if the page is only a JavaScript shell; do not bypass login, paywalls or access controls.
+2. If official text is absent or replay content cannot be consumed, search company/ticker + fiscal quarter/year + `earnings call transcript`, matching the actual call date. Open a credible full-text result, such as a publisher's transcript or a licensed provider's transcript carried on another site. Inspect issuer, period, date, participants and provider attribution; do not use search snippets, a different year's call or an AI summary as the transcript.
+3. Read both prepared remarks and the analyst exchanges through the final Q&A/closing section. Fetch later sections/pages when the tool returns only an excerpt. A page title saying Full Transcript does not establish complete reading. For detailed output retain all material distinct topics, including relevant subquestions, rather than stopping after the first exchange or imposing a fixed question count. A secondary recap may split or combine actual caller exchanges; preserve real analyst/executive attribution.
+4. Cross-check disclosed financial guidance against the release's guidance/outlook section. Collect call-only outlooks, business targets, capex intentions and explicit refusals to give targets separately. Retain qualifications and do not turn a statement that a plan can be funded into proof that it uses only operating cash flow or requires no debt.
+5. Check consequential transcription discrepancies against official disclosures and, if consumable, the original audio. A second reputable transcript may expose differences, but two carriers of the same provider are not separate origins. Use written formal guidance for its stated metric/period/basis, disclose a discrepancy rather than silently correcting what a transcript says, and leave unresolved call-only wording/numbers uncertain.
+6. If no usable full transcript is found, try another credible publisher/provider before closing the search. Stop when relevant accessible sources are exhausted or remaining routes require unavailable tools/access. Use inspected partial text or attributed news coverage within its limits; keep verified release guidance and disclose what could not be obtained.
+
+Include a concise coverage note: call date; exact inspected source and originating provider; prepared remarks and Q&A status (`Full text read`, `Partial text read`, `Replay reviewed`, or `Unavailable`); sections/exchanges covered and any missing remainder. State separately if the official replay was linked but not listened to. No fixed minimum Q&A count substitutes for coverage evidence.
+
 Extract:
 
 1. **Prepared remarks: key themes** — the three to five topics management led with, and any metric newly disclosed or no longer disclosed.
 2. **Analyst Q&A** — the questions analysts pressed on, and whether management answered directly, deflected, or declined. Repeated questions on one topic signal the market's main concern.
-3. **Commitments and numbers** — guidance, targets, timelines, capex plans, launch dates, and capital-return plans, each with the speaker and the period it refers to.
+3. **Commitments and numbers** — guidance, outlooks, targets, timelines, capex plans, launch dates, and capital-return plans, each with speaker/role, target period, statement type and material conditions. A long-term aspiration is not a near-term commitment.
 4. **Change in tone or message** — compare with the prior call when available: what was dropped, added, softened, or strengthened. Report it as `Analysis/Inference` with the two statements side by side.
 5. **Statements versus results** — check each claim against the filed figures in the same quarter, and flag a claim that the numbers do not support.
 
@@ -87,7 +98,9 @@ Attribute each item to a named speaker and role, such as `CFO, Q3 2026 call, Oct
 
 ## 6. Output structure
 
-### Compact answer (default)
+Default to the structured report below. Use a company/period title, `##` section headings, `###` business or management-topic headings and clear bullets, in the user's language. Each topic should be reusable with its own period, units/basis, statement type, exact source link and material caveat. Avoid repeating the same narrative in business highlights and Q&A; keep Q&A's question, answer and follow-up context distinct.
+
+### Compact answer (only when explicitly requested)
 
 Open with the research date, company/ticker/exchange, fiscal period and quarter-end date when known. Then use these five sections in the user's language, with a small scoreboard only when it helps:
 
@@ -97,25 +110,26 @@ Open with the research date, company/ticker/exchange, fiscal period and quarter-
 4. **Guidance and management** — new versus prior guidance and the main call/Q&A point when accessible; otherwise state the missing evidence once.
 5. **What to watch and data gaps** — the leading indicators, material risks, and unresolved evidence gaps. End with the educational disclaimer.
 
-Cite figures and claims inline and identify documents by publication date and fiscal period. Combine related gaps in one sentence when appropriate. Missing optional consensus or price data does not prevent analysis of verified statements; omit the unavailable comparison or market reaction. Expand the affected section for material complexity instead of printing empty headings.
+Cite figures and claims inline and identify documents by publication date and fiscal period. A separately authorized saved quarter record still retains material guidance versions, management/Q&A evidence and comparison fields under `references/quarter-record.md`. Missing optional consensus or price data does not prevent analysis of verified statements; omit the unavailable comparison or market reaction.
 
-### Detailed answer (on request or when material complexity needs it)
+### Structured report (default)
 
-Use the following as the full research checklist and the detailed output structure. Adapt metrics to the archetype; omit inapplicable metrics rather than inventing corporate FCF or net debt for a bank. Combine immaterial sections and disclose material data gaps.
+Start with a brief summary, then preserve material detail under the following headings. Adapt metrics to the archetype and omit inapplicable metrics rather than inventing corporate FCF or net debt for a bank. Combine immaterial sections; a missing material call, prior baseline or financial disclosure needs an explicit gap, not an invented section body.
 
-1. **Data as of** — research date, company, ticker, exchange, period, and a table of documents used with publication dates. Flag any pending filing.
+1. **Data as of and source checks** — research date, company, ticker, exchange, period, quarter-end date, documents/publication dates, primary company source and cross-check results/limits. Include the call coverage note from section 5. State the prior record used or that a prior-quarter baseline is unavailable. Flag pending filings.
 2. **The quarter in 30 seconds** — three to five bullets covering the headline result, the biggest surprise, and the quarter verdict.
 3. **Scoreboard** — a table with plain-language column headings: metric, this quarter, same quarter last year, YoY change, prior quarter, QoQ change, and consensus with beat or miss only when sourced. Lead with the archetype metrics.
-4. **Revenue: what drove it** — segment contributions; split growth into volume, price, mix, FX, and acquisitions when disclosed.
+4. **Revenue and business drivers** — separate `###` topics for material segments/products; contributions and growth split into volume, price, mix, FX or acquisitions when disclosed. Distinguish backlog, run rate, signed commitments and recognized revenue.
 5. **Profit: from revenue to EPS** — margins, operating costs, then each layer between operating profit and EPS (non-operating items, tax, minority interests, share count). When EPS and operating profit move in different directions, show the layers that explain the gap.
-6. **Cash flow** — CFO, the main reconciling items from net income to CFO, capex, FCF, and SBC when material.
+6. **Cash flow, investment and funding** — CFO, reconciling items from net income, capex, FCF and material SBC; separate quarterly, YTD and TTM periods. Test funding claims against disclosed cash generation, liquidity and financing rather than presenting management confidence as proof.
 7. **Balance sheet** — cash and investments, debt, net debt or net cash, working-capital items, and financing during the quarter.
-8. **What management said** — follow section 5: key themes, analyst Q&A pressure points, commitments with speaker attribution, change in tone versus the prior call, and any claim the numbers do not support. Include a table of guidance with new versus prior values. Label every item `Management claim` or `Guidance`.
-9. **Market reaction** — optional; only with timestamped price data and a session label.
-10. **What changed and what to watch** — what the quarter changes about the business, and two to five leading indicators for the next report, with the next report date when announced.
-11. **What I Don't Know** — each data gap and the filing, footnote, or transcript that would resolve it.
-12. **Quarter verdict** — the verdict, with the evidence that drove it.
-13. **Disclaimer** — educational only, not investment advice, in the user's language.
+8. **Guidance and outlook register** — original as-issued guidance, dated revisions, comparable actuals, new guidance, horizons and conditions under `references/quarter-record.md`. Separate formal guidance, management outlook/aspirations and derived midpoint figures; assess original and revised ranges separately.
+9. **Management prepared remarks** — topic bullets with named speaker/role, statement type, evidence and conditions; new/dropped disclosures and supported changes in message versus the prior call.
+10. **Analyst Q&A** — `###` topic blocks with question/analyst when known, answer/executive, conditions, source location, unanswered point and next observable check. Preserve explicit refusal to give a target. Mark unavailable if the call cannot be inspected.
+11. **Market reaction** — optional; only with timestamped price data, session labels and required independent cross-checks.
+12. **Changes since the prior record and next checks** — outcomes of previous guidance, milestones and open questions; distinguish what changed from what is not yet due. State two to five indicators and the evidence needed at the next report, with its date only when announced.
+13. **Risks and What I Don't Know** — what would weaken the explanation/thesis, material missing data and the statement, footnote, transcript or later result that would resolve each gap. Preserve any configured personal-thesis section without disclosing personal position size in reusable/public content.
+14. **Disclaimer** — educational only, not investment advice, in the user's language.
 
 ## 7. Pre-output check
 
@@ -126,5 +140,9 @@ Use the following as the full research checklist and the detailed output structu
 5. Is every non-operating or one-time item quantified and separated?
 6. Are management claims and guidance labelled and attributed to a speaker, and was the call transcript or replay actually read?
 7. Is any live price data timestamped and within the freshness window?
+8. Are original guidance and later revisions retained, with like-for-like actuals and appropriate due-date/status labels?
+9. Can each material topic be reused with its heading/bullets without losing source, period, units/basis, statement type or conditions?
+10. Does the quarter record identify its prior baseline and persistence status without overwriting history or bypassing configured save permission?
+11. Does stated call coverage match the text/audio actually inspected, including later Q&A, with release guidance retained even if call access is limited?
 
 If any answer is no, research further or disclose the gap. Do not fill it with an estimate.

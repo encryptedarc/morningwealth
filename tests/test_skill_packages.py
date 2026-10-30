@@ -25,6 +25,7 @@ FUNDAMENTAL_REFERENCE_FILES = {
 }
 EARNINGS_REFERENCE_FILES = {
     "earnings-framework.md",
+    "quarter-record.md",
     "source-policy.md",
 }
 

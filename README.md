@@ -13,7 +13,7 @@ The skills are provider-neutral: they do not require a particular model, API key
 | Skill | Use it when | Output |
 |---|---|---|
 | `fundamental` | You need a beginner-friendly, filing-first review of business quality and financial health in clear English. | Markdown chat |
-| `earnings` | You need the latest (or a specific) quarterly result explained in plain language, for US, Thai, or other markets. | Markdown chat |
+| `earnings` | You need a clearly structured quarterly review, management Q&A and guidance tracking for US, Thai, or other markets. | Markdown chat; quarter record when saving is authorized |
 | `valuation-deep-dive` | You need a cited, multi-method equity valuation in the conversation. | Markdown chat |
 | `valuation-deep-dive-html-report` | You need the same analysis as a shareable report. | Self-contained HTML |
 
@@ -21,7 +21,13 @@ The `fundamental` skill explains in clear English how a company makes money, sel
 
 The `earnings` skill reads one reporting period. It compares the quarter with the prior year and prior quarter, separates operating results from one-off, tax, FX, and share-count effects, and ends with what to watch at the next report. In hosts that support skill commands, call it with a ticker and an optional period, such as `/earnings GOOG` or `/earnings PTT.BK Q2 2026`.
 
-Its default answer covers results, drivers, earnings and cash quality, guidance, and what to watch. Ask for a deep dive to expand the full research checklist. Historical requests use the filings for the requested period and their applicable restatements; unrelated newer periods do not invalidate them. Derived quarters subtract additive amounts only, while EPS uses quarter-specific earnings and shares.
+Its default answer starts with a short summary and continues with clear section/topic headings, atomic bullets and tables covering material results, business drivers, earnings/cash quality, guidance, prepared remarks, analyst Q&A and next-quarter checks. Ask explicitly for a brief answer to condense chat. Historical requests use the filings for the requested period and their applicable restatements; unrelated newer periods do not invalidate them. Derived quarters subtract additive amounts only, while EPS uses quarter-specific earnings and shares.
+
+If official IR offers only an unreadable webcast player, the skill seeks an inspected full transcript with identified publisher/provider provenance. It reads prepared remarks and Q&A through closing, reports full or partial coverage and whether original audio was reviewed, and retains written release guidance when call access is limited. Consequential transcript discrepancies are disclosed and checked against official disclosures; two transcripts of the same call do not independently validate management's claims.
+
+Quarter records preserve original guidance, dated revisions, target periods/conditions and later like-for-like actuals, with speaker/source attribution. Long-term outlooks, formal guidance and derived midpoint ratios remain separate. Topic blocks retain period, units/basis, statement type and exact sources so they can later be selected for an infographic without losing context; the earnings skill does not generate images unless requested.
+
+The skill loads a previous record supplied by the user or available in its configured report location. It saves a new record only when destination and permission are established, preserving ask-before-save rules and existing session authorization. Existing records receive a new dated/numbered revision rather than being overwritten. Without persistence permission/capability, it returns archive-ready Markdown in chat and discloses that it has not saved a persistent record. No personal vault or OS path is embedded in the portable skill.
 
 The valuation skills classify a business before selecting a valuation method. They cover banks, cyclicals, REITs and infrastructure funds, holding companies, SaaS, asset owners, and deep-value situations. They separate sourced facts from derived valuation outputs and require time-sensitive inputs to be verified in the current session.
 
@@ -41,7 +47,7 @@ A stale or unresolved material input is a stop condition, not a footnote. When a
 
 ## Source reliability
 
-Use original company filings for financial statements, originating agencies for macro data, and attributable exchange or professional data records for quotes. Official issuer releases support attributed results and guidance; independent editorial reporting supplies external confirmation or a disclosed fallback. Aggregators are last-resort sources, and search snippets or AI summaries only locate evidence.
+For company disclosures, start at the verified company Investor Relations site and cite its inspected original first when the document/version matches. Compare material figures and document versions with regulator/exchange records and reputable independent reporting where available, and record matches, conflicts, or verification limits. An IR release and its SEC Exhibit 99.1 copy remain one issuer origin. Latest applicable full/amended statements take precedence over a conflicting preliminary release regardless of host; disclose a regulator fallback when IR is inaccessible. Macro data and market quotes still start with their originating agencies or attributable exchange/professional records. Aggregators are last-resort sources, and search snippets or AI summaries only locate evidence.
 
 The skills inspect a page's actual origin, date, period, and content type instead of trusting the host name. Syndicated copies count as one origin; paid promotions do not count as independent factual proof. Citations link the exact supporting document, and unauthenticated supplied files remain labelled conditional inputs. Freshness does not establish reliability, and an official filing is not a regulator guarantee of accuracy.
 
@@ -110,7 +116,7 @@ plugins/encryptedarc/skills/valuation-deep-dive/
 plugins/encryptedarc/skills/valuation-deep-dive-html-report/
 ```
 
-Each directory is self-contained. `fundamental` and `earnings` each include their own analysis framework and source policy. `earnings` also reads an optional, untracked `local/extension.md` for personal defaults such as language or a notes location. Each valuation skill includes its own references and standard-library Python calculator, while the HTML-report edition also includes an offline template.
+Each directory is self-contained. `fundamental` and `earnings` each include their own analysis framework and source policy. `earnings` also includes a quarter-record reference and reads an optional, untracked `local/extension.md` for personal defaults such as language, report location or save-consent rules. Each valuation skill includes its own references and standard-library Python calculator, while the HTML-report edition also includes an offline template.
 
 ## HTML reports
 
