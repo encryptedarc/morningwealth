@@ -106,3 +106,61 @@ User requested verification that researched information comes from trustworthy s
 - Rerun checks, commit source-policy changes and the version bump, push the existing feature branch, merge through a PR, and publish `v1.2.2` at the verified main revision.
 - Install all four standalone skills from the published tag into both global `.codex/skills` and `.claude/skills` roots using the skill-installer helper. Back up current copies, preserve local extensions, and verify release/installation byte parity plus package validation.
 - The prior v1.2.1 tag remains unchanged; v1.2.2 replaces the temporary local source-policy patch with an identifiable published release.
+
+## Company-first discovery and citation follow-up
+
+The user requested company originals as the first source, citing the same Amazon earnings release on its IR site and as SEC Exhibit 99.1. Apply the same behavior to all four skills and both installed global copies.
+
+- Discover company financial reports, releases, presentations, and calls on the verified company IR site first. Use regulator/exchange records to check provenance, period/version, and material figures, and inspect reputable independent reporting where available.
+- When the same document/version is accessible at IR and a regulator, cite IR as the main source and label the regulator copy as document/provenance verification. The copies remain one issuer origin.
+- Host preference does not outrank document authority: use the latest applicable amended/restated statements and full filed financial statements for accounting details over a conflicting preliminary release, regardless of host. Preserve audit/review status and independent verification requirements for external claims and quote outliers.
+- If IR is blocked or incomplete, use the inspected regulator copy and disclose the fallback. If other verification is unavailable, record attempts and limits; do not invent confirmation or block otherwise usable attributed issuer results solely for lack of news coverage.
+- Update the earnings/fundamental entrypoints, earnings document-discovery framework, both statement source policies, both valuation entrypoints and their core/input references, plus README and consumer scenarios. Keep each standalone package self-contained.
+- Verify through baseline/revised fresh consumer cases (identical mirrors, later amendment, blocked IR, release-only availability), existing tests, skill validators, and global file parity; preserve personal local extensions.
+- This follow-up does not authorize a new publication by itself; leave published v1.2.2 untouched unless a new release is requested.
+- Consumer results: the released-policy baseline cited SEC first for an identical release; fresh revised statement and valuation consumers selected IR first while preserving amendment authority, blocked-IR fallback, release-only usability, independent-origin counting, and originating market/macro sources. Existing 20 tests and all four repository validators passed.
+- Final review: fresh read-only reviewer found no material issues across all four entrypoints and their references. Eleven changed skill files were backed up and synced to both global roots under `skill-backups/morningwealth-company-first-20261030T045233Z`, with local extensions preserved. This remains an uncommitted local update after published v1.2.2.
+
+## Structured earnings records and reusable content
+
+The user approved adapting the detailed earnings-post critique, explicitly requesting clear headings/bullets and individually reusable information for future infographics.
+
+**Files:** modify `C:/git/morningwealth/plugins/encryptedarc/skills/earnings/SKILL.md`, its `references/earnings-framework.md`, `C:/git/morningwealth/tests/test_skill_packages.py`, `C:/git/morningwealth/tests/skill_evaluation.md`, and `C:/git/morningwealth/README.md`; create `C:/git/morningwealth/plugins/encryptedarc/skills/earnings/references/quarter-record.md` after confirming no existing record reference.
+
+**Behavior:**
+- Default to a complete structured review with a short lead summary, clear localized Markdown headings and atomic bullets; explicit brief requests may condense chat.
+- Preserve material guidance and management Q&A in self-contained topic blocks carrying period, unit/basis, statement type, source and qualifiers for later visual reuse. Do not generate an infographic unless requested.
+- Load an available previous-quarter record, verify new financial facts against primary sources, and compare original as-issued guidance and revisions with like-for-like actuals. Retain original versions and distinguish targets not yet due or lacking comparable actuals.
+- Build an archive-ready quarter record. Save it when the user, applicable instructions, or local extension configure an authorized destination; otherwise return the structured Markdown and disclose that persistence/baseline is unavailable. Do not invent a path or write inside the installed skill.
+- Preserve raw prior records; create a new dated revision rather than overwrite an existing record. Existing personal extensions and company-first source rules remain intact.
+
+**Verification:** baseline and revised offline consumer scenarios for prior guidance versions, long-term targets, derived midpoint ratios, attributed conditional Q&A and reusable topics; missing-baseline/call cases; actual saved-artifact inspection where configured; existing unittest suite/package validation and global-install parity. No new runtime/dependencies, commit, release, or image generation.
+
+**Result:** the baseline already handled guidance arithmetic correctly but retained the compact/prose structure and detached source definitions. The revised full-report consumer produced a new `_v2` artifact with separate guidance versions, qualified Q&A and appropriate horizon/status labels; both the prior input and pre-existing output retained their hashes. A missing-input consumer exposed detached reference links, so a concrete topic/Source-bullet template was added; the fresh brief rerun preserved exact links and local context while disclosing unavailable baseline/call and unsaved status. Fresh read-only review found no material issues, including the template follow-up.
+
+All 20 existing tests and four repository skill validators passed. Both installed earnings packages validated, and their five shipped files match repository hashes. Other installed skills retain equivalent content (unchanged release files may differ only in line endings). Existing earnings copies were fully backed up under each host's `skill-backups/morningwealth-quarter-record-20261030T053836Z`; installation receipts identify an unpublished local update after v1.2.2. Claude's personal extension retained its SHA-256. No commit, push, new release or financial-report vault save was performed.
+
+## Earnings-call discovery and coverage follow-up
+
+The user reports missing management speech/guidance after invoking earnings in Codex and supplies a public Facebook post. Read the actual post and locate its management topics in current full transcripts rather than assume the post's publisher/source. Diagnose source discovery separately from extraction on a supplied transcript; the earlier offline tests covered the latter only. A cached published plugin and the locally updated standalone skill coexist; bare invocation alone does not establish which was loaded.
+
+**Modify:** `C:/git/morningwealth/plugins/encryptedarc/skills/earnings/SKILL.md`, `C:/git/morningwealth/plugins/encryptedarc/skills/earnings/references/earnings-framework.md`, `C:/git/morningwealth/plugins/encryptedarc/skills/earnings/references/source-policy.md`, `C:/git/morningwealth/tests/skill_evaluation.md` and this plan. Reuse existing references; no new runtime or source-provider dependency.
+
+**Behavior:** discover the official event/replay first, then an inspected full transcript from a reputable publisher/identified provider if company text is absent or the player cannot be consumed. Distinguish transcript content from a generic quote aggregator; preserve its provider/source chain. Check issuer/period/date/participants, read through Q&A's end, record full/partial/unavailable coverage and actual limits, and retain all material distinct topics in detailed output. Retrieve formal guidance from the earnings release even when the call is blocked; label management outlook and derived ratios separately. A transcript is not an independent origin for the issuer's claims, and transcription discrepancies need reconciliation against official disclosures/audio rather than silent selection.
+
+**Verify:** fresh consumer web discovery without a supplied transcript URL; controlled blocked-player/partial-transcript/identified-provider cases; actual management-topic/source coverage inspection; existing tests, package validators and global earnings file hashes with local-extension preservation. Sync only authorized standalone global copies, with backups/receipts; do not rewrite immutable published plugin caches or publish a new release without a request. Report unresolved runtime selection honestly.
+
+**Result:** Facebook post was read through the browser and its topics located in full current call transcripts; the author's exact transcript supplier is not disclosed. Baseline and revised fresh consumers both discovered the live full transcript without a supplied transcript URL, so the user's original omission was not reproduced. Revised output disclosed full text coverage through closing, official audio not reviewed, publisher numeric discrepancies and unresolved speaker attribution. Synthetic full/partial variants passed without leaking inaccessible questions or dropping written guidance. Fresh read-only review found no material findings; 20 tests and repository earnings validation passed.
+
+Backed up and synced five shipped earnings files to both standalone global roots under each host's `skill-backups/morningwealth-call-coverage-20261030T062610Z`, with matching hashes and Claude's extension preserved. Receipts identify an unpublished local update after v1.2.2. Published plugin caches remain intact; the user's bare Codex invocation alone does not establish which package was loaded. No commit/push/release or financial-report vault write.
+
+## Release and machine installation — v1.3.0
+
+The user explicitly authorized releasing the accumulated changes and installing the published version on this machine. Publish a minor feature release for company-first discovery, complete earnings/management coverage, versioned guidance/quarter records and reusable sourced topic blocks. Calculator/CLI semantics are unchanged.
+
+- Bump `C:/git/morningwealth/plugins/encryptedarc/.codex-plugin/plugin.json` to 1.3.0 and document call discovery/coverage in `C:/git/morningwealth/README.md`; retain the accepted source, earnings and consumer-test changes above.
+- Reuse the existing approved `feature/earnings-skill` branch, fast-forwarding it to current main; do not create an unapproved new branch. Commit logical source-policy, earnings-record and release-version units, push, merge through a PR, and publish tag v1.3.0 at the verified main commit. Check remote state before publishing; do not alter prior tags.
+- Verify all 20 tests, four skill packages, both calculator selftests, diff hygiene and existing fresh consumer/reviewer results. The repository has no configured CI workflow; do not claim a nonexistent CI run.
+- Use skill-installer to fetch all four skills from the published tag into a temporary staging directory. Back up both global installations, preserve local extensions, replace shipped files with release artifacts and verify exact hashes/package validation; write release/commit receipts outside skill directories.
+- Update the configured Codex plugin through its supported marketplace/plugin command so it matches the released package, verify installed version/content, and preserve old backups for rollback. Do not manually relabel or overwrite an immutable older-version cache. Claude continues using the already authorized standalone global skills.
+- Capture actual release/installation results in the existing Obsidian review note and final response. No financial report or infographic is generated by this release task.
