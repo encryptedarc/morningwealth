@@ -7,6 +7,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 CHAT_SKILL = ROOT / "plugins/encryptedarc/skills/valuation-deep-dive"
 REPORT_SKILL = ROOT / "plugins/encryptedarc/skills/valuation-deep-dive-html-report"
 FUNDAMENTAL_SKILL = ROOT / "plugins/encryptedarc/skills/fundamental"
+EARNINGS_SKILL = ROOT / "plugins/encryptedarc/skills/earnings"
 REFERENCE_FILES = {
     "archetype-playbooks.md",
     "core-finance-principles.md",
@@ -17,6 +18,10 @@ REFERENCE_FILES = {
 }
 FUNDAMENTAL_REFERENCE_FILES = {
     "fundamental-framework.md",
+    "source-policy.md",
+}
+EARNINGS_REFERENCE_FILES = {
+    "earnings-framework.md",
     "source-policy.md",
 }
 
@@ -59,6 +64,27 @@ class SkillPackageTests(unittest.TestCase):
             with self.subTest(path=path.relative_to(ROOT)):
                 content = path.read_text(encoding="utf-8")
                 contains_thai = any("\u0e00" <= char <= "\u0e7f" for char in content)
+                self.assertFalse(contains_thai, f"Thai instructions found in {path.relative_to(ROOT)}")
+
+    def test_earnings_skill_is_standalone_and_discoverable(self):
+        self.assertTrue((EARNINGS_SKILL / "SKILL.md").is_file())
+        self.assertTrue((EARNINGS_SKILL / "agents/openai.yaml").is_file())
+        self.assertEqual(
+            {path.name for path in (EARNINGS_SKILL / "references").glob("*.md")},
+            EARNINGS_REFERENCE_FILES,
+        )
+
+    def test_earnings_skill_package_contains_no_thai_instructions(self):
+        text_files = [
+            EARNINGS_SKILL / "SKILL.md",
+            EARNINGS_SKILL / "agents/openai.yaml",
+            *(EARNINGS_SKILL / "references").glob("*.md"),
+        ]
+
+        for path in text_files:
+            with self.subTest(path=path.relative_to(ROOT)):
+                content = path.read_text(encoding="utf-8")
+                contains_thai = any("฀" <= char <= "๿" for char in content)
                 self.assertFalse(contains_thai, f"Thai instructions found in {path.relative_to(ROOT)}")
 
     def test_each_skill_contains_its_own_references_and_calculator(self):

@@ -13,10 +13,13 @@ The skills are provider-neutral: they do not require a particular model, API key
 | Skill | Use it when | Output |
 |---|---|---|
 | `fundamental` | You need a beginner-friendly, filing-first review of business quality and financial health in clear English. | Markdown chat |
+| `earnings` | You need the latest (or a specific) quarterly result explained in plain language, for US, Thai, or other markets. | Markdown chat |
 | `valuation-deep-dive` | You need a cited, multi-method equity valuation in the conversation. | Markdown chat |
 | `valuation-deep-dive-html-report` | You need the same analysis as a shareable report. | Self-contained HTML |
 
 The `fundamental` skill explains in clear English how a company makes money, selects financial metrics that fit its business model, checks earnings quality and capital allocation, and separates business quality from share-price attractiveness.
+
+The `earnings` skill reads one reporting period. It compares the quarter with the prior year and prior quarter, separates operating results from one-off, tax, FX, and share-count effects, and ends with what to watch at the next report. In hosts that support skill commands, call it with a ticker and an optional period, such as `/earnings GOOG` or `/earnings PTT.BK Q2 2026`.
 
 The valuation skills classify a business before selecting a valuation method. They cover banks, cyclicals, REITs and infrastructure funds, holding companies, SaaS, asset owners, and deep-value situations. They separate sourced facts from derived valuation outputs and require time-sensitive inputs to be verified in the current session.
 
@@ -70,6 +73,7 @@ macOS or Linux:
 ```sh
 mkdir -p /path/to/your-project/.claude/skills
 cp -R plugins/encryptedarc/skills/fundamental /path/to/your-project/.claude/skills/
+cp -R plugins/encryptedarc/skills/earnings /path/to/your-project/.claude/skills/
 cp -R plugins/encryptedarc/skills/valuation-deep-dive /path/to/your-project/.claude/skills/
 cp -R plugins/encryptedarc/skills/valuation-deep-dive-html-report /path/to/your-project/.claude/skills/
 ```
@@ -80,6 +84,7 @@ Windows PowerShell:
 $projectPath = (Resolve-Path "..\your-project").Path
 New-Item -ItemType Directory -Force "$projectPath\.claude\skills"
 Copy-Item -Recurse plugins\encryptedarc\skills\fundamental "$projectPath\.claude\skills\"
+Copy-Item -Recurse plugins\encryptedarc\skills\earnings "$projectPath\.claude\skills\"
 Copy-Item -Recurse plugins\encryptedarc\skills\valuation-deep-dive "$projectPath\.claude\skills\"
 Copy-Item -Recurse plugins\encryptedarc\skills\valuation-deep-dive-html-report "$projectPath\.claude\skills\"
 ```
@@ -90,11 +95,12 @@ Copy any of these directories into the location required by your AI host:
 
 ```text
 plugins/encryptedarc/skills/fundamental/
+plugins/encryptedarc/skills/earnings/
 plugins/encryptedarc/skills/valuation-deep-dive/
 plugins/encryptedarc/skills/valuation-deep-dive-html-report/
 ```
 
-Each directory is self-contained. `fundamental` includes its own analysis framework and source policy. Each valuation skill includes its own references and standard-library Python calculator, while the HTML-report edition also includes an offline template.
+Each directory is self-contained. `fundamental` and `earnings` each include their own analysis framework and source policy. `earnings` also reads an optional, untracked `local/extension.md` for personal defaults such as language or a notes location. Each valuation skill includes its own references and standard-library Python calculator, while the HTML-report edition also includes an offline template.
 
 ## HTML reports
 

@@ -1,7 +1,7 @@
 {
   "name": "encryptedarc",
-  "version": "1.1.1",
-  "description": "Standalone fundamental-analysis and deep-equity-valuation skills for chat and HTML reports.",
+  "version": "1.2.0",
+  "description": "Standalone fundamental-analysis, quarterly-earnings, and deep-equity-valuation skills for chat and HTML reports.",
   "author": {
     "name": "Encrypted Arc"
   },
@@ -9,6 +9,7 @@
   "keywords": [
     "valuation",
     "fundamental-analysis",
+    "earnings",
     "equity",
     "finance",
     "thai-market"
@@ -16,8 +17,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Encrypted Arc",
-    "shortDescription": "Fundamental and equity valuation skills",
-    "longDescription": "Standalone skills for filing-first fundamental analysis, cited equity valuation, and self-contained HTML reports.",
+    "shortDescription": "Fundamental, earnings, and equity valuation skills",
+    "longDescription": "Standalone skills for filing-first fundamental analysis, plain-language quarterly earnings reviews, cited equity valuation, and self-contained HTML reports.",
     "developerName": "Encrypted Arc",
     "category": "Finance",
     "capabilities": [
@@ -26,6 +27,7 @@
     ],
     "defaultPrompt": [
       "Explain this company's fundamentals for a beginner",
+      "Explain this company's latest quarterly results",
       "Value this equity in depth",
       "Create an HTML valuation report for this ticker"
     ]
