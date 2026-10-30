@@ -88,7 +88,7 @@ Use this order: **research → validate inputs → calculate → semantic audit 
 
 **1 — CLARIFY.** State today's date. Confirm ticker and time horizon. One ambiguity → state the assumption and proceed. Two or more → one round of questions, max 3.
 
-**2 — RESEARCH.** Per `core-finance-principles.md` for prices and `references/data-sourcing-valuation.md` for statement inputs. Pull: live price, latest filing (balance sheet, income statement, cash flow), diluted shares, net cash/debt, growth, and the archetype-specific inputs from the playbook. Source the **risk-free rate** live and cite it — see `references/dcf-and-cost-of-capital.md` §1.
+**2 — RESEARCH.** Start company-disclosure research at verified company IR, then compare document versions and material inputs with regulator/exchange records and reputable independent coverage where available. Cite the company original first when the same document/version is accessible there; disclose fallback and verification limits, and prefer applicable full/amended statements over a conflicting preliminary release regardless of host. Follow `core-finance-principles.md` for prices and `references/data-sourcing-valuation.md` for statement inputs. Pull live price, latest applicable statements, diluted shares, net cash/debt, growth, and archetype inputs. Source the **risk-free rate** from its originating data owner and cite it — see `references/dcf-and-cost-of-capital.md` §1.
 
 > **Build your own estimate before you look at analyst targets.** Reading consensus first anchors the model and the anchoring is invisible in the output. Do the valuation, *then* pull consensus, then explain the gap. The gap and its reason is the finding worth reporting — it is the part the user cannot get from a broker note.
 

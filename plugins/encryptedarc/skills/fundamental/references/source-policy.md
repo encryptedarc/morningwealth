@@ -6,13 +6,16 @@ Supplied documents are not independently verified merely because a filename says
 
 ## Source hierarchy
 
-Use sources in this order of authority:
+For company disclosures, use this discovery and citation order:
 
-1. **Regulatory filings and filed statements** — SEC EDGAR, SET, the Thai SEC, exchange filings, 10-K, 10-Q, 20-F, 6-K, 8-K, 56-1 One Report, and financial statements filed with a regulator
-2. **Audited company reports** — annual reports, audited financial statements, and company footnotes
-3. **Official earnings and management materials** — earnings releases, earnings presentations, earnings calls, investor days, and IR releases for results, strategy, guidance, and management claims. An earnings release may be unaudited, so reconcile it with filed statements when a filing is available.
-4. **Independent secondary sources** — Reuters, Bloomberg, FT, WSJ, CNBC, Bangkok Post, and other reputable financial media for external-event confirmation or context
-5. **Aggregators and quote pages** — Yahoo Finance, Google Finance, Settrade, TradingView, and summary databases only as a last resort, with timestamp and basis checks
+1. **Verified company Investor Relations (IR) site** — company-published annual/interim reports, full filed statements and footnotes, earnings releases, presentations, and calls. Establish the IR site's identity through the official company site or regulatory records, including an IR service provider linked by the company; do not guess an IR domain. Begin here and use the inspected company original as the main citation when available.
+2. **Regulator or exchange records** — SEC EDGAR, SET, the Thai SEC, or the relevant market's disclosure system, including 10-K, 10-Q, 20-F, 6-K, 8-K exhibits, and 56-1 One Report. Use these to verify the company document, obtain missing details or amendments, or as a disclosed fallback when IR is inaccessible or incomplete.
+3. **Independent secondary sources** — inspected Reuters, Bloomberg, FT, WSJ, CNBC, Bangkok Post, and other reputable editorial reporting to cross-check material headlines, external events, and context.
+4. **Aggregators and quote pages** — Yahoo Finance, Google Finance, Settrade, TradingView, and summary databases only as a last resort, with timestamp and basis checks.
+
+This is a host preference, not a rule that a release outranks full financial statements. For the same period, metric, and accounting basis, use the latest applicable amended/restated statements and their footnotes for accounting figures and details, even when available only from the regulator. A stale IR release does not override a newer amendment. Reconcile adjusted or preliminary release figures with filed results rather than treating unlike bases as a conflict. Preserve audit/review status and label guidance and management claims.
+
+When IR and SEC/SET host the same release or filing version, prefer IR for the main citation and use the regulator copy as a document/provenance check. An earnings release filed as Exhibit 99.1 remains that issuer release, not a separate full quarterly report or a second independent origin. If the company original cannot be inspected, cite the inspected regulator document and disclose the fallback instead of citing an unread IR page.
 
 Search results, snippets, knowledge panels, and AI summaries are discovery aids only. Inspect the underlying document or attributable data record before using a material number or claim. If it is inaccessible, find an accessible authoritative source or reputable independent report; a snippet alone is never sufficient, even under time pressure.
 
@@ -50,9 +53,11 @@ Check 8-K or 6-K filings, SET disclosures, company announcements, and reputable 
 
 ## Cross-verification
 
-- A figure taken directly from a filing does not require a duplicate secondary source when its period, unit, and basis are consistent.
+- After reading the company source, actively seek a regulator/exchange record to compare document identity, period/version, units and material headline figures. Also inspect reputable independent reporting where available for material headlines, external claims, or context. Record which checks were actually made and whether they matched; do not merely list more links.
+- A matching IR/regulator copy verifies document consistency and provenance, not independent confirmation of the issuer's underlying results. Summarize the primary company source and cross-check status in a concise source note; record unavailable or conflicting checks explicitly.
+- A sound inspected company statement or attributed preliminary earnings release remains usable when secondary verification is unavailable. Disclose attempted checks and limits rather than inventing corroboration or blocking the entire analysis solely for lack of news coverage. Independent evidence requirements for external claims and market-data outliers still apply.
 - Reconcile totals, subtotals, and derived metrics with the financial statements and footnotes.
-- If an aggregator or presentation conflicts with a filing, use the filing and explain the difference.
+- If an aggregator, summary, or preliminary release conflicts with the applicable full statements on a matched period and basis, use the applicable statements and explain the difference, regardless of host preference.
 - If primary filings conflict, use the latest amended or restated filing and disclose the change.
 - A price move of `|change| ≥ 3%`, a gap, or unusual volume requires confirmation from a second independent market-data origin. Multiple copies of the same Reuters story, press release, or data feed count as one origin. If no independent corroboration is available, label the move uncorroborated and withhold conclusions that depend on it.
 - If a material data conflict cannot be resolved, show both values and withhold the verdict for the affected area.
@@ -87,6 +92,7 @@ Do not use `~`, `approximately`, `around`, or figures recalled from model memory
 5. Are reported or adjusted, consolidated or segment, and currency or unit bases consistent?
 6. Do derived figures show their formulas and reconcile to cited inputs?
 7. Are management claims and analytical inferences separated from facts?
-8. Was the supporting content inspected, its origin and independence checked, and its exact URL or supplied-file location included?
+8. Was company IR inspected first or its access limitation disclosed, with the best applicable document/version cited?
+9. Were other reliable sources sought for comparison, their actual results and independence recorded, and exact URLs or supplied-file locations included?
 
 If any answer is no, research further or disclose the data gap. Do not fill it with an estimate.
