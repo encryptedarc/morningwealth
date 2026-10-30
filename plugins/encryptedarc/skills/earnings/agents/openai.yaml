@@ -1,0 +1,6 @@
+interface:
+  display_name: "Quarterly Earnings"
+  short_description: "Explain a company's latest quarterly results"
+  default_prompt: "Use $earnings to explain this company's latest quarterly results for a beginner."
+policy:
+  allow_implicit_invocation: true
