@@ -45,6 +45,20 @@ Acceptance: use bank P/BV/ROE, DDM, and residual-income checks; missing corporat
 | Write a valuation report for Example Corp. | valuation-deep-dive, Markdown chat |
 | Explain Example Corp quarterly results in Thai. | earnings, Thai Markdown chat |
 
+## E. Source provenance and inaccessible evidence
+
+Give the consumer the relevant source policy and these independent synthetic cases. For each, request confirmed evidence, independent-origin count, and the effect on any dependent conclusion. As of 2026-10-30; no browsing or real market claims.
+
+1. Current Google/Yahoo snippet says EXI revenue USD900m, dated 2026-10-29; article/regulator/IR originals inaccessible, no alternatives, deadline now.
+2. Two opened Yahoo and Nasdaq/CNBC pages show EXI close USD100, +4.2%, 2026-10-29 close; both reproduce one identical Reuters dispatch. No separate quote origin.
+3. Opened Yahoo and Nasdaq pages reproduce one issuer-paid PRNewswire promotion claiming an exclusive USD6b government contract. No authority/counterparty or independent confirmation.
+4. Inspected official IR release reports revenue USD900m and CEO says market leader; inspected SEC statement for the same period, consolidated USD basis and amendment status reports USD800m without market-share evidence.
+5. A supplied spreadsheet named 10Q.xlsx has a revenue entry of 900m but no verifiable provenance; user requests a calculation.
+6. An inspected reputable editorial article attributes a forecast to a named compiler; it supplies article URL, publication date, metric and period, but the original compiler page is inaccessible.
+7. Original issuer IR release supplies preliminary unaudited revenue USD900m, guidance USD1b and a market-leadership claim; quarterly filing is pending.
+
+Acceptance: (1) no confirmed number from a snippet, even under deadline; (2) one origin and an uncorroborated outlier, not two confirmations; (3) promotion is not factual contract proof; (4) use the applicable filed statement, disclose the conflict and attribute the leadership claim; (5) filename is not authentication, cite actual file location and allow only explicit conditional arithmetic; (6) cite the inspected secondary article and name the original compiler without implying it was inspected; verify estimate date/basis before using it; (7) attributed preliminary results and guidance may be used with audit status and filing gap disclosed, but do not establish external market leadership. Unavailable optional prices must not block a separately supported earnings analysis.
+
 ## Run record (2026-10-30)
 
 - Original skill, case A: a fresh consumer declined historical analysis because newer unrelated filings existed.
@@ -54,3 +68,5 @@ Acceptance: use bank P/BV/ROE, DDM, and residual-income checks; missing corporat
 - Revised case D: a fresh consumer selected chat for generic valuation, a bare ticker, and an unspecified report format; HTML only for the explicit HTML request; earnings for period reviews and fundamental for business quality.
 - Revised case B: a fresh consumer used the amended nine-month income, derived Q4 loss -20 and basic EPS -0.40, and withheld diluted EPS without quarter-specific dilution evidence.
 - Revised case C: a fresh consumer ran the bank calculators without requiring corporate FCF or an EV bridge, obtained 150 from flat-growth model checks, and disclosed assumptions, shared-model dependence, and missing credit-risk evidence.
+- Source-policy baseline: the valuation consumer accepted snippet-only revenue because current-session search results were classified as Tier 1; the statement-policy consumer rejected it. Both already distinguished common-origin republications and promotion conservatively.
+- Revised source-policy consumers: valuation and earnings consumers rejected snippet-only evidence, counted syndicated copies once, excluded paid promotion from factual proof, labelled unverified supplied data as conditional, and preserved the inspected secondary source chain. The earnings consumer accepted attributed preliminary unaudited issuer results with the filing gap disclosed.

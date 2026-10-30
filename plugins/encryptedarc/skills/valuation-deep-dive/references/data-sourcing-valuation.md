@@ -11,12 +11,12 @@
 | Cash & equivalents, short-term investments | Balance sheet | Distinguish liquid ST investments from illiquid strategic stakes — see `archetype-playbooks.md` §4. |
 | Total debt | Balance sheet, current + non-current | Include lease liabilities where lease-adjusting (`archetype-playbooks.md` §3), and be consistent across the subject and every peer. |
 | Minority interest, preferred | Balance sheet / equity note | Needed for a correct EV bridge; omitting them understates EV. |
-| TTM revenue, EBITDA, EBIT, net income | Sum the last 4 quarters from filings, or stockanalysis / macrotrends for the assembled series | If you use an aggregator, cite the aggregator — do not present it as if read from the filing. |
+| TTM revenue, EBITDA, EBIT, net income | Sum consistent periods from filed statements, following applicable restatements | Stock Analysis / Macrotrends assembled series are last-resort secondary inputs, not primary filings. Check period, units, adjustments and reconcile material inputs to filings; if unresolved, withhold dependent valuation. Cite the actual provider inspected. |
 | Capex, D&A, ΔNWC, FCF | Cash flow statement | Separate maintenance from growth capex where the company discloses it; where it does not, say so rather than estimating silently. |
 | SBC | Cash flow statement (add-back line) | Material for software and asset-light names. |
 | Book value / tangible book | Balance sheet | Tangible = equity − goodwill − intangibles. Needed for §7 banks. |
 | Bank-specific (NIM, credit cost, NPL, CET1) | MD&A, investor presentation, regulator filings | BOT publishes Thai banking-system aggregates for context. |
-| Forward consensus | Search current coverage; note provider and analyst count | Thin coverage on SET small caps — see `thai-market-notes.md` §5. |
+| Forward consensus | The estimate compiler or an inspected reputable article naming the compiler | Record compiler, publisher, estimate date, fiscal period, metric basis and analyst count when disclosed. Search snippets alone are insufficient. Thin coverage on SET small caps — see `thai-market-notes.md` §5. |
 | Risk-free rate, ERP, beta | See `dcf-and-cost-of-capital.md` §1 | Cited or declared as an assumption. No third option. |
 | Segment detail, concession terms, lease schedule | 10-K / 56-1 One Report, footnotes | The footnotes are where the archetype is actually confirmed. |
 

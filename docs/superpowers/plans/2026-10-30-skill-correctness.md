@@ -79,3 +79,30 @@
 - Version: `1.2.1`, a patch after the `1.2.0` earnings addition already merged through PR #9.
 - Release sequence: rerun checks, commit fixes and version bump separately, push the existing feature branch, merge through a PR into main, then publish tag/release `v1.2.1` at the verified main revision.
 - Compatibility note: omitting RI terminal growth preserves the finite forecast; explicitly passing zero now selects a flat perpetuity.
+
+## Source reliability follow-up
+
+User requested verification that researched information comes from trustworthy sources. Review found search results classified as primary evidence in valuation and inconsistent source tiers for filings. A baseline valuation consumer accepted snippet-only revenue under those instructions; the statement-policy consumer rejected it.
+
+**Modify in place:**
+- `C:/git/morningwealth/plugins/encryptedarc/skills/earnings/references/source-policy.md`
+- `C:/git/morningwealth/plugins/encryptedarc/skills/fundamental/references/source-policy.md`
+- `C:/git/morningwealth/plugins/encryptedarc/skills/valuation-deep-dive/references/core-finance-principles.md`
+- `C:/git/morningwealth/plugins/encryptedarc/skills/valuation-deep-dive-html-report/references/core-finance-principles.md`
+- `C:/git/morningwealth/plugins/encryptedarc/skills/valuation-deep-dive/references/data-sourcing-valuation.md`
+- `C:/git/morningwealth/plugins/encryptedarc/skills/valuation-deep-dive-html-report/references/data-sourcing-valuation.md`
+- `C:/git/morningwealth/tests/skill_evaluation.md`
+- `C:/git/morningwealth/README.md`
+
+**Acceptance:** search locates evidence but is not evidence; use original filings/data owners for relevant facts, attribute company claims, inspect article provenance rather than trust a host name, count common-origin republications once, reject uncorroborated promotion, link the exact supporting document, and label unverified supplied inputs as conditional.
+
+**Verification:** fresh consumer exercises before/after policy changes, full existing suite, skill validation, and hash parity after syncing the changed references to both global skill roots. Preserve local extensions and back up overwritten references. These are local source-policy updates after v1.2.1; do not silently alter the published tag or claim the changed copies remain byte-identical to that release.
+
+**Result:** revised valuation and earnings consumers passed the source-provenance scenarios; a fresh read-only reviewer found no material inconsistencies across the four skills. The full 20-test suite and repository skill validators passed. Six changed references were backed up and synced to each global skills root with matching hashes; Claude's local earnings extension was preserved. Global backups are under each host's `skill-backups/morningwealth-source-policy-20261030T035004Z`. No commit, push, tag change, or new release was performed for this follow-up.
+
+## Source reliability release — v1.2.2
+
+- The user subsequently authorized publishing a new version and installing it locally.
+- Rerun checks, commit source-policy changes and the version bump, push the existing feature branch, merge through a PR, and publish `v1.2.2` at the verified main revision.
+- Install all four standalone skills from the published tag into both global `.codex/skills` and `.claude/skills` roots using the skill-installer helper. Back up current copies, preserve local extensions, and verify release/installation byte parity plus package validation.
+- The prior v1.2.1 tag remains unchanged; v1.2.2 replaces the temporary local source-policy patch with an identifiable published release.
