@@ -165,15 +165,14 @@ def sustainable_growth(roe, payout):
     return roe * (1 - payout)
 
 
-def residual_income(bv0, roes, coe, terminal_g=0.0, retention=0.0):
+def residual_income(bv0, roes, coe, terminal_g=None, retention=0.0):
     """
     Value = BV0 + sum[(ROEt - COE) x BV(t-1)] / (1+COE)^t, plus terminal RI.
 
     Book value rolls forward at ROE x retention. retention=0 (full payout) keeps
     BV flat, which is the conservative reading and the default — rolling it up
     requires a payout assumption, so the caller must supply one deliberately.
-    terminal_g is an explicit terminal residual-income growth assumption; it is
-    not inferred from the retention or payout inputs.
+    terminal_g=None omits terminal RI; an explicit zero assumes flat terminal RI.
     """
     bv = bv0
     pv_ri = 0.0
@@ -186,7 +185,7 @@ def residual_income(bv0, roes, coe, terminal_g=0.0, retention=0.0):
         bv = bv * (1 + roe * retention)
     last_ri = schedule[-1][3]
     pv_terminal = 0.0
-    if terminal_g:
+    if terminal_g is not None:
         if coe <= terminal_g:
             raise ValueError("COE must exceed terminal g")
         pv_terminal = (last_ri * (1 + terminal_g) / (coe - terminal_g)) / (1 + coe) ** len(roes)
@@ -282,11 +281,12 @@ def cmd_ncav(a):
 def cmd_dcf(a):
     flows = [float(x) for x in a.flows.split(",")]
     ev, pv_fc, pv_tv, tv_share = dcf_value(flows, a.wacc, a.terminal_g)
-    equity = ev + a.net_cash
+    equity = ev + a.net_cash - a.minority - a.preferred
     _block("INPUTS", [
         ("FCF forecast", ", ".join(_fmt(f) for f in flows)),
         ("WACC", _pct(a.wacc)), ("terminal growth", _pct(a.terminal_g)),
         ("net cash / (net debt)", _fmt(a.net_cash)), ("shares", _fmt(a.shares)),
+        ("minority interest", _fmt(a.minority)), ("preferred", _fmt(a.preferred)),
         ("current price", _fmt(a.price) if a.price else "n/a"),
         ("discounting", "year-end"),
     ])
@@ -426,6 +426,8 @@ def cmd_residual_income(a):
     _block("INPUTS", [("book value per share", _fmt(a.bvps)),
                       ("ROE forecast", ", ".join(_pct(r) for r in roes)),
                       ("COE", _pct(a.coe)), ("terminal RI growth (assumption)", _pct(a.terminal_g)),
+                      ("terminal RI model", "none (RI ends after forecast)" if a.terminal_g is None
+                       else "perpetuity at stated growth"),
                       ("price", _fmt(a.price) if a.price else "n/a"),
                       ("retention (1 - payout)", _pct(a.retention))])
     print("\nRESIDUAL INCOME SCHEDULE")
@@ -539,6 +541,8 @@ def cmd_selftest(_a):
     check("ri pv at no spread", pv_ri, 0.0)
     val2, _, _, _ = residual_income(100.0, [0.15, 0.15], 0.10)
     check("ri with spread", val2, 100.0 + (0.05 * 100) / 1.10 + (0.05 * 100) / 1.21)
+    flat, _, _, _ = residual_income(100.0, [0.15, 0.15], 0.10, terminal_g=0.0)
+    check("ri flat terminal", flat, 150.0)
     # with retention, year-2 book value must have grown by ROE x retention
     val3, sched3, _, _ = residual_income(100.0, [0.15, 0.15], 0.10, retention=0.40)
     check("ri bv roll-forward", sched3[1][1], 100.0 * (1 + 0.15 * 0.40))
@@ -617,6 +621,10 @@ def main(argv=None):
     s.add_argument("--terminal-g", type=float, required=True, dest="terminal_g")
     s.add_argument("--net-cash", type=float, default=0.0, dest="net_cash",
                    help="net cash (positive) or net debt (negative)")
+    s.add_argument("--minority", type=float, default=0.0,
+                   help="value of minority claims included in enterprise value")
+    s.add_argument("--preferred", type=float, default=0.0,
+                   help="value of preferred claims included in enterprise value")
     s.add_argument("--shares", type=float, required=True)
     s.add_argument("--price", type=float, default=None)
     s.add_argument("--rf", type=float, default=None, help="risk-free, to check terminal g")
@@ -664,7 +672,8 @@ def main(argv=None):
     s.add_argument("--bvps", type=float, required=True)
     s.add_argument("--roes", required=True, help="comma-separated ROE forecast, e.g. 0.12,0.13,0.13")
     s.add_argument("--coe", type=float, required=True)
-    s.add_argument("--terminal-g", type=float, default=0.0, dest="terminal_g")
+    s.add_argument("--terminal-g", type=float, default=None, dest="terminal_g",
+                   help="terminal RI growth; omit for no terminal RI, 0 for flat perpetuity")
     s.add_argument("--retention", type=float, default=0.0,
                    help="1 - payout ratio; rolls book value forward. 0 = BV flat")
     s.add_argument("--price", type=float, default=None)

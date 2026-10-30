@@ -1,6 +1,6 @@
 ---
 name: valuation-deep-dive-html-report
-description: "Deep equity valuation that produces a self-contained HTML report for banks, cyclicals, REITs/infra funds, holdcos, SaaS, asset owners, and deep value. Selects business-model-appropriate methods, sources discount-rate inputs, and delivers a cited multi-method fair-value range. Use when the user asks for an HTML valuation report, valuation report, fair value, intrinsic value, target price, DCF, reverse DCF, WACC, P/E, P/BV, EV/EBITDA, EV/Sales, DDM, residual income, SOTP, Net-Net/NCAV, FFO/AFFO, scenario valuation, peer comp, or when the user only names a ticker. Load references/core-finance-principles.md before research."
+description: "Use when the user explicitly requests a standalone HTML equity-valuation report, a self-contained HTML valuation file, or exporting a valuation to HTML. Do not select for a bare ticker, a general fair-value or DCF request, or a report with no specified file format; use valuation-deep-dive for those Markdown chat requests."
 ---
 
 # Valuation Deep-Dive HTML Report
@@ -94,7 +94,7 @@ Use this order: **research → validate inputs → calculate → semantic audit 
 
 If a source is JS-rendered, paywalled, or bot-blocked, say so explicitly and work from what is verified. A missing line becomes a clear current-data-unavailable statement in the user's language and goes into `What I Don't Know` — never into a quiet estimate.
 
-**3 — VALIDATE INPUTS (hard gate).** Before running valuation math, verify the price and timestamp, latest filing date, share-count value and type, cash, debt, FCF components including capex and material SBC, risk-free rate and date, and every archetype-specific input. Mark each as sourced, derived, or assumed. If a material input is stale, missing, or unresolved, do not run or report any valuation that depends on it. State what is unavailable and how to verify it. `What I Don't Know` is only for gaps that remain after the relevant filing and primary sources were checked; it is not a substitute for research.
+**3 — VALIDATE INPUTS (hard gate).** Validate the inputs each selected method actually depends on: price and timestamp for current-price comparisons, applicable filing dates, share-count value and type, and the model-specific balance-sheet, earnings, cash-flow, and discount-rate inputs. FCF models require capex and material SBC; bank models require book value, ROE, dividends or residual-income forecasts, and COE instead of corporate FCF or an EV bridge. Mark inputs as sourced, derived, or assumed. A stale, missing, or unresolved material input blocks only the methods and conclusions that depend on it; missing inapplicable metrics do not block suitable models. State what is unavailable and how to verify it. `What I Don't Know` is only for gaps remaining after the relevant filing and primary sources were checked.
 
 **4 — CALCULATE.** Apply the playbook's tools, strip distortions, and run multi-step math through `scripts/valuation.py`. Build bull/base/bear where dispersion is material. Keep sourced inputs separate from derived outputs and paste the calculator's input block.
 
@@ -115,7 +115,7 @@ When the outcome is genuinely dispersed — hypergrowth, a regulatory binary, a 
 
 `references/peer-calibration.md` for comp selection, the basis-consistency rules (never mix a multiple from one source with a metric from another), the n<5 honesty guard, quality adjustment, and cross-market comparison. For Thai names also read `references/thai-market-notes.md` — NVDR/foreign board, free float, dividend yield as the primary SET anchor, XD timing, and how to keep an FX view separate from the valuation.
 
-Triangulate three ways — peer-implied range, independent DCF, scenario expected value — and report a **center plus range**. Where they disagree, say which you trust for this archetype and why. Never a single "the fair value is X".
+Triangulate using independent checks appropriate to the archetype and report a **center plus range**. Use peer-implied value, a cash-flow model, and scenario expected value where all apply. For banks, use P/BV versus ROE with DDM and residual income; for deep value, use NCAV/NNWC with burn, liquidation, and governance checks. Do not force FCF-based DCF onto an archetype that rejects it. Explain which checks are supported, which are unavailable or inapplicable, and which you trust when they disagree. Never a single "the fair value is X".
 
 ## STOP CONDITIONS — confirm with the user before continuing
 

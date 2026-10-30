@@ -21,7 +21,11 @@ The `fundamental` skill explains in clear English how a company makes money, sel
 
 The `earnings` skill reads one reporting period. It compares the quarter with the prior year and prior quarter, separates operating results from one-off, tax, FX, and share-count effects, and ends with what to watch at the next report. In hosts that support skill commands, call it with a ticker and an optional period, such as `/earnings GOOG` or `/earnings PTT.BK Q2 2026`.
 
+Its default answer covers results, drivers, earnings and cash quality, guidance, and what to watch. Ask for a deep dive to expand the full research checklist. Historical requests use the filings for the requested period and their applicable restatements; unrelated newer periods do not invalidate them. Derived quarters subtract additive amounts only, while EPS uses quarter-specific earnings and shares.
+
 The valuation skills classify a business before selecting a valuation method. They cover banks, cyclicals, REITs and infrastructure funds, holding companies, SaaS, asset owners, and deep-value situations. They separate sourced facts from derived valuation outputs and require time-sensitive inputs to be verified in the current session.
+
+Valuation requests default to Markdown chat, including a report request without a file format. The HTML skill is selected when a standalone HTML valuation deliverable is explicitly requested. Model inputs and cross-checks follow the business archetype; a bank valuation does not require corporate FCF.
 
 ## Analysis workflow
 
@@ -115,6 +119,18 @@ python scripts/valuation.py selftest
 ```
 
 The calculator checks WACC, DCF, reverse DCF, enterprise-value bridges, scenario valuation, justified P/BV, DDM, residual income, NCAV, and normalized-EPS identities.
+
+For `residual-income`, omit `--terminal-g` to end residual income after the explicit forecast, or pass `--terminal-g 0` for a flat terminal perpetuity. Nonzero terminal growth must be below the cost of equity. This is an explicit terminal assumption, independent of the retention input.
+
+For `dcf`, `--net-cash` means cash minus debt. Supply minority and preferred claims separately through `--minority` and `--preferred`; do not include those deductions twice. Both claim inputs default to zero for existing calls.
+
+Run the complete standard-library test suite from the repository root:
+
+```sh
+python -B -m unittest discover -s tests -v
+```
+
+It covers calculator regressions, CLI results, manifest paths, bundled resources, and parity between the two standalone valuation copies. [Offline consumer exercises](tests/skill_evaluation.md) additionally test historical earnings, loss-period EPS, bank model selection, and chat/HTML discovery with fresh agents; those behavioral checks are separate from the automated suite.
 
 ## License
 
