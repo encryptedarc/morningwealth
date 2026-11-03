@@ -51,6 +51,8 @@ Next compare document identity, period/version and material figures with regulat
 
 Investor presentations and earnings calls are management statements, not independent evidence. Reconcile headline numbers with filed financial statements before using them. If a transcript, segment disclosure, or customer-concentration figure is unavailable, say that no verifiable data is available.
 
+Before declaring a material item unknown, inspect the relevant filing footnotes and MD&A (for example, impairment, segment reporting, or cash-flow financing). Distinguish not disclosed from not accessible and not yet researched; name the document and section checked. Aggregated reportable segments do not imply that brand-level financials are disclosed.
+
 ### 4. Keep the evidence register explicit
 
 - Cite every number and material factual claim with its source and publication date. Add the fiscal period when the claim relates to financial statements or operating results.
@@ -63,6 +65,8 @@ Investor presentations and earnings calls are management statements, not indepen
 ### 5. Analyze, then deliver
 
 Use the eight-part structure in `references/fundamental-framework.md`. Omit immaterial sections when appropriate, but always include Data as of, Financial Trend, Risks, Scorecard, What I Don't Know, and Final Verdict.
+
+Financial tables must include signed YoY changes for annual periods and both signed YoY and QoQ changes for standalone quarters. Apply the comparison formulas, percentage-point rules, and table layouts in `references/fundamental-framework.md`. A short chat summary must retain material evidence, comparison bases, and score rationales, or explicitly link to their location in an inspected full report.
 
 Define specialized terms in plain English the first time they appear. Use standard technical terms such as revenue, margin, FCF, ROIC, NIM, and AFFO normally.
 

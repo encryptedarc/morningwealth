@@ -78,7 +78,7 @@ Two more rules from experience:
 - One-time investment disposals / fair-value gains → use adjusted earnings, list what you excluded, and check whether the "one-off" recurs every quarter (then it isn't one).
 - TFRS16 / IFRS16 lease inflation of EBITDA → EV/EBIT or lease-adjusted EBITDA, and make sure lease liabilities are inside net debt too.
 - Warrants, convertibles, recent raises → fully diluted share count. For ADRs, check the ADS ratio before any per-share math; getting it wrong rescales the whole answer.
-- SBC → deduct it from FCF where material. Excluding SBC while using a stale share count understates dilution twice.
+- SBC → retain its economic cost once. Deduct material SBC from cash flow when it was added back in CFO; do not deduct it again from EBIT/NOPAT-based FCFF or earnings that already expense it. Reconcile the forecast share count with the chosen SBC treatment.
 - Net cash vs net debt → always bridge market cap ↔ EV explicitly and show it (`valuation.py bridge`).
 - Fast identity: `NCAV = Equity − Non-current assets`. One line shows why an asset-heavy company fails Net-Net.
 
@@ -98,9 +98,13 @@ If a source is JS-rendered, paywalled, or bot-blocked, say so explicitly and wor
 
 **4 — CALCULATE.** Apply the playbook's tools, strip distortions, and run multi-step math through `scripts/valuation.py`. Build bull/base/bear where dispersion is material. Keep sourced inputs separate from derived outputs and paste the calculator's input block.
 
+For DCF and reverse DCF, explicitly identify the cash-flow basis and its reconciliation before running the model: CFO minus capex minus SBC is not automatically FCFF. Show treatment of financing interest, interest income, taxes, and excess cash where material. Match FCFF with WACC and an EV-to-equity bridge, or FCFE with COE without a second debt/cash deduction. Follow `references/dcf-and-cost-of-capital.md`; withhold dependent values if a material reconciliation remains unresolved.
+
 **5 — SEMANTIC AUDIT.** Before writing the narrative, verify that units, currencies, periods, GAAP/adjusted bases, and equity-value/enterprise-value labels match; compare an implied metric only with the same metric; and test any claim about the dominant lever by changing one lever at a time. Re-research or recalculate when the narrative conflicts with the numbers or price action. Then replace or explain every specialist term under the plain-language rules above.
 
 **6 — DELIVER.** Render the output contract below only after the input gate and semantic audit pass. If they do not pass, deliver an incomplete-analysis notice rather than a fair-value center or verdict.
+
+Keep the result reproducible even in a short summary: include or link to an inspected report's actual calculator inputs/output, forecast and terminal assumptions, discount-rate components, and equity bridge. For historical financial tables, apply the annual YoY and quarterly YoY/QoQ rules in `references/data-sourcing-valuation.md`.
 
 ## Scenario valuation
 
@@ -116,6 +120,8 @@ When the outcome is genuinely dispersed — hypergrowth, a regulatory binary, a 
 `references/peer-calibration.md` for comp selection, the basis-consistency rules (never mix a multiple from one source with a metric from another), the n<5 honesty guard, quality adjustment, and cross-market comparison. For Thai names also read `references/thai-market-notes.md` — NVDR/foreign board, free float, dividend yield as the primary SET anchor, XD timing, and how to keep an FX view separate from the valuation.
 
 Triangulate using independent checks appropriate to the archetype and report a **center plus range**. Use peer-implied value, a cash-flow model, and scenario expected value where all apply. For banks, use P/BV versus ROE with DDM and residual income; for deep value, use NCAV/NNWC with burn, liquidation, and governance checks. Do not force FCF-based DCF onto an archetype that rejects it. Explain which checks are supported, which are unavailable or inapplicable, and which you trust when they disagree. Never a single "the fair value is X".
+
+Show how the final center and endpoints follow from the selected method(s): disclose any weights, exclusions, or judgmental adjustment and explain material disagreements. A narrative range must not silently replace the calculated results. Attribute a gap to consensus to specific assumptions only when those assumptions have been inspected; otherwise label the explanation a hypothesis, not an established cause.
 
 ## STOP CONDITIONS — confirm with the user before continuing
 

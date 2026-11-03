@@ -37,7 +37,7 @@ FCFE = Net income + D&A − Capex − ΔNWC + Net borrowing
 - Discounting FCFF at WACC gives EV. **Then** bridge: `equity value = EV − total debt + cash (− minority interest − preferred)`. Show that bridge.
 - In `python scripts/valuation.py dcf`, pass cash minus debt as `--net-cash`, and pass minority and preferred claims separately with `--minority` and `--preferred`. Do not deduct those claims again inside net cash. Use claim values consistent with the scope of the forecast enterprise cash flow.
 - Discounting FCFE at COE already gives equity value — do **not** add cash back or subtract debt again. Doing both double-counts the balance sheet, and the error is large.
-- Deduct SBC from FCF for names where it is material. Treating SBC as non-cash while using diluted shares from two years ago understates dilution twice.
+- Retain the economic cost of material SBC once. Deduct it from CFO-based FCF if CFO added it back; do not deduct it again from EBIT/NOPAT-based FCFF when EBIT already expenses it. Reconcile forecast dilution and buybacks with this treatment rather than silently combining inconsistent share and cash-flow bases.
 - Forecast horizon: 5 years is the default; 10 only when the business has contracted or regulated visibility that far out (see §2 of the playbooks). A 10-year explicit forecast on a business you cannot forecast for 2 years is false precision — the extra years add noise, not information.
 - Mid-year discounting vs year-end changes the answer by a couple of percent. Pick one, say which, and don't pretend that choice is precision.
 

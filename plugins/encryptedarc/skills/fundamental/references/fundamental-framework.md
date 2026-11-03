@@ -46,6 +46,27 @@ For a general corporate, consider:
 
 Do not compare a quarter with a full year or reported figures with adjusted figures without a reconciliation.
 
+#### Changes alongside financial figures
+
+- Annual tables: show each year's value and signed YoY change versus the preceding fiscal year. Retrieve the preceding year's comparator for the first displayed year when available; otherwise use `N/A — comparator unavailable`, never zero.
+- Standalone quarterly tables: show each quarter's value, signed YoY versus the same fiscal quarter last year, and signed QoQ versus the immediately preceding fiscal quarter (Q1 compares with Q4 of the preceding year). Keep annual and quarterly tables separate. Explain seasonality before interpreting QoQ as acceleration or deterioration.
+- Calculate growth as `(current / comparator - 1) × 100` only for a positive comparator. Show `+12.3%`, `-4.5%`, or `0.0%`, calculated from unrounded inputs and normally rounded to one decimal. For a zero or negative comparator, show `N/M` with the absolute change and explain loss narrowing/widening or a profit/loss reversal; do not present misleading growth percentages.
+- For margins, yields, payout ratios, and other percentage metrics, report changes in percentage points (`pp`), using `current percentage - comparator percentage`, rather than relative percent growth. For valuation/leverage multiples, use an absolute `x` change. Do not add incompatible units.
+- Clearly label YTD and TTM series; compare equal-duration periods. Do not label YTD growth as standalone-quarter growth or compare a cumulative half-year with a single quarter. If deriving a standalone quarter from YTD figures, show the subtraction and cite both inputs; handle weighted-average shares and EPS separately rather than subtracting them mechanically.
+- Cite the source, publication date, period, and basis for the underlying current and comparator values in table footnotes or source columns. Label calculated changes as derived. Missing comparators remain N/A; do not invent them.
+
+Preferred layouts (placeholders, not company data; split wide tables if needed):
+
+| Metric | FY2023 | YoY | FY2024 | YoY | FY2025 | YoY |
+|---|---:|---:|---:|---:|---:|---:|
+| Revenue | value | signed % | value | signed % | value | signed % |
+| Operating margin | value % | signed pp | value % | signed pp | value % | signed pp |
+
+| Metric | Q1 2026 | YoY | QoQ | Q2 2026 | YoY | QoQ |
+|---|---:|---:|---:|---:|---:|---:|
+| Revenue | value | signed % | signed % | value | signed % | signed % |
+| Operating margin | value % | signed pp | signed pp | value % | signed pp | signed pp |
+
 ### 4) Earnings Quality, Balance Sheet, and Cash Conversion
 
 Assess at least:
@@ -61,6 +82,8 @@ Assess at least:
 
 A moat requires observable evidence such as durable margins, pricing power, retention, market share, cost position, network density, regulatory licenses, or ROIC above the cost of capital across multiple periods. Do not accept brand, technology, or network effects as a moat merely because management uses those labels.
 
+Negative working capital can support favorable funding economics, but is not sufficient evidence of a moat. Assess the underlying customer/supplier obligations, seasonality, and the cash-flow effect if growth slows or bookings reverse.
+
 Classify each growth option at one of three evidence levels:
 
 - `Already in reported results` — verifiable revenue, customers, or capacity contribution
@@ -71,6 +94,7 @@ Classify each growth option at one of three evidence levels:
 
 - Compare prior management guidance or KPIs with actual outcomes when history is available.
 - Review acquisitions, divestments, capex, dividends, buybacks, debt repayment, and equity issuance.
+- If buybacks plus dividends exceed FCF, reconcile cash balances, net borrowing, asset sales, and other material financing flows over the same period before attributing the shortfall to debt. Keep weighted-average diluted shares used for EPS separate from period-end shares used to assess capital structure.
 - Separate execution evidence from personality or statements made during earnings calls.
 - If guidance history is insufficient, write `Insufficient history to assess guidance accuracy`.
 

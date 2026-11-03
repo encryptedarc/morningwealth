@@ -35,6 +35,14 @@
 
 ## 3. Quick freshness triage for valuation inputs
 
+Before rendering historical financial tables, apply these presentation rules:
+
+- Annual: `Metric | FY2023 | YoY | FY2024 | YoY | FY2025 | YoY`. Show each value with its signed change versus the preceding fiscal year; retrieve the earlier comparator where available.
+- Standalone quarters, in a separate table: `Metric | Q1 2026 | YoY | QoQ | Q2 2026 | YoY | QoQ`. YoY compares the same fiscal quarter last year; QoQ compares the preceding quarter, including Q1 versus the preceding year's Q4. Explain seasonality when drawing conclusions from QoQ.
+- Growth = `(current / comparator - 1) × 100` for a positive comparator. Calculate from unrounded values and normally display one decimal with explicit signs: `+12.3%`, `-4.5%`, `0.0%`. If the comparator is zero or negative, use `N/M`, an absolute change, and a loss/profit explanation instead of a misleading growth rate. Missing comparators are `N/A`, never zero or invented.
+- Percentage metrics such as margins and yields use signed percentage-point changes (`pp`), not relative growth. Multiples use absolute `x` changes. Label YTD and TTM separately and compare equal-duration periods; never label cumulative results as standalone quarters. Cite both YTD inputs when deriving a standalone quarter; do not mechanically subtract EPS or weighted-average shares.
+- Cite current and comparator inputs with source, publication date, fiscal period, units, and reported/adjusted basis; label changes as derived. Split wide tables for readability without dropping YoY/QoQ columns.
+
 | Input class | Acceptable age | If older |
 |---|---|---|
 | Price, market cap | Per `core-finance-principles.md` freshness flags | "ไม่มีข้อมูลอัปเดต" |
