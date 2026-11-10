@@ -16,6 +16,7 @@ The skills are provider-neutral: they do not require a particular model, API key
 | `earnings` | You need a clearly structured quarterly review, management Q&A and guidance tracking for US, Thai, or other markets. | Markdown chat; quarter record when saving is authorized |
 | `valuation-deep-dive` | You need a cited, multi-method equity valuation in the conversation. | Markdown chat |
 | `valuation-deep-dive-html-report` | You need the same analysis as a shareable report. | Self-contained HTML |
+| `valuation-deep-dive-xlsx` | You need an editable forward corporate DCF with Bear, Base, and Bull cases and a sensitivity table. | Excel workbook |
 
 The `fundamental` skill explains in clear English how a company makes money, selects financial metrics that fit its business model, checks earnings quality and capital allocation, and separates business quality from share-price attractiveness.
 
@@ -31,7 +32,7 @@ The skill loads a previous record supplied by the user or available in its confi
 
 The valuation skills classify a business before selecting a valuation method. They cover banks, cyclicals, REITs and infrastructure funds, holding companies, SaaS, asset owners, and deep-value situations. They separate sourced facts from derived valuation outputs and require time-sensitive inputs to be verified in the current session.
 
-Valuation requests default to Markdown chat, including a report request without a file format. The HTML skill is selected when a standalone HTML valuation deliverable is explicitly requested. Model inputs and cross-checks follow the business archetype; a bank valuation does not require corporate FCF.
+Valuation requests default to Markdown chat, including a report request without a file format. Explicit HTML requests use the HTML skill. Explicit forward corporate DCF Excel requests use the Excel skill, which can reuse reviewed valuation inputs. Model inputs and cross-checks follow the business archetype.
 
 ## Analysis workflow
 
@@ -41,7 +42,7 @@ The valuation skills use the same gated workflow:
 2. **Validate inputs** — verify timestamps, source quality, share-count type, units, accounting basis, and required cash-flow components before valuation begins.
 3. **Calculate** — run multi-step valuation arithmetic through the bundled calculator and retain its printed input block.
 4. **Semantic audit** — confirm that labels match the economic quantity, comparisons use the same metric and period, and narrative conclusions are supported by one-variable-at-a-time sensitivity checks.
-5. **Render** — produce the Markdown or HTML report only after the input gate and semantic audit pass.
+5. **Render** — produce the requested chat, HTML, or Excel output after the input gate and semantic audit pass.
 
 A stale or unresolved material input is a stop condition, not a footnote. When a dependent valuation cannot be supported, the skill reports what is missing and how to verify it instead of publishing a fair-value center with a warning attached.
 
@@ -92,6 +93,7 @@ cp -R plugins/encryptedarc/skills/fundamental /path/to/your-project/.claude/skil
 cp -R plugins/encryptedarc/skills/earnings /path/to/your-project/.claude/skills/
 cp -R plugins/encryptedarc/skills/valuation-deep-dive /path/to/your-project/.claude/skills/
 cp -R plugins/encryptedarc/skills/valuation-deep-dive-html-report /path/to/your-project/.claude/skills/
+cp -R plugins/encryptedarc/skills/valuation-deep-dive-xlsx /path/to/your-project/.claude/skills/
 ```
 
 Windows PowerShell:
@@ -103,6 +105,7 @@ Copy-Item -Recurse plugins\encryptedarc\skills\fundamental "$projectPath\.claude
 Copy-Item -Recurse plugins\encryptedarc\skills\earnings "$projectPath\.claude\skills\"
 Copy-Item -Recurse plugins\encryptedarc\skills\valuation-deep-dive "$projectPath\.claude\skills\"
 Copy-Item -Recurse plugins\encryptedarc\skills\valuation-deep-dive-html-report "$projectPath\.claude\skills\"
+Copy-Item -Recurse plugins\encryptedarc\skills\valuation-deep-dive-xlsx "$projectPath\.claude\skills\"
 ```
 
 ## Install in another Agent Skills environment
@@ -114,6 +117,7 @@ plugins/encryptedarc/skills/fundamental/
 plugins/encryptedarc/skills/earnings/
 plugins/encryptedarc/skills/valuation-deep-dive/
 plugins/encryptedarc/skills/valuation-deep-dive-html-report/
+plugins/encryptedarc/skills/valuation-deep-dive-xlsx/
 ```
 
 Each directory is self-contained. `fundamental` and `earnings` each include their own analysis framework and source policy. `earnings` also includes a quarter-record reference and reads an optional, untracked `local/extension.md` for personal defaults such as language, report location or save-consent rules. Each valuation skill includes its own references and standard-library Python calculator, while the HTML-report edition also includes an offline template.
@@ -142,7 +146,7 @@ Run the complete standard-library test suite from the repository root:
 python -B -m unittest discover -s tests -v
 ```
 
-It covers calculator regressions, CLI results, manifest paths, bundled resources, and parity between the two standalone valuation copies. [Offline consumer exercises](tests/skill_evaluation.md) additionally test historical earnings, loss-period EPS, bank model selection, and chat/HTML discovery with fresh agents; those behavioral checks are separate from the automated suite.
+It covers calculator regressions, CLI results, manifest paths, bundled resources, and parity across the standalone valuation copies. [Offline consumer exercises](tests/skill_evaluation.md) additionally test historical earnings, loss-period EPS, bank model selection, and chat/HTML discovery with fresh agents; those behavioral checks are separate from the automated suite.
 
 ## License
 

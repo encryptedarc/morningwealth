@@ -1,7 +1,7 @@
 {
   "name": "encryptedarc",
-  "version": "1.3.1",
-  "description": "Standalone fundamental-analysis, quarterly-earnings, and deep-equity-valuation skills for chat and HTML reports.",
+  "version": "1.4.0",
+  "description": "Standalone fundamental-analysis, quarterly-earnings, and equity-valuation skills for chat, HTML, and Excel.",
   "author": {
     "name": "Encrypted Arc"
   },
@@ -18,7 +18,7 @@
   "interface": {
     "displayName": "Encrypted Arc",
     "shortDescription": "Fundamental, earnings, and equity valuation skills",
-    "longDescription": "Standalone skills for filing-first fundamental analysis, plain-language quarterly earnings reviews, cited equity valuation, and self-contained HTML reports.",
+    "longDescription": "Standalone skills for filing-first fundamental analysis, plain-language quarterly earnings reviews, cited equity valuation, self-contained HTML reports, and editable Excel DCF workbooks.",
     "developerName": "Encrypted Arc",
     "category": "Finance",
     "capabilities": [

@@ -1,0 +1,6 @@
+interface:
+  display_name: "DCF Valuation Workbook"
+  short_description: "Editable Excel DCF with scenarios and sensitivity"
+  default_prompt: "Use $valuation-deep-dive-xlsx to build an editable Excel DCF workbook for this ticker."
+policy:
+  allow_implicit_invocation: true

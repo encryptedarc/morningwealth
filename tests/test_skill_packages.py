@@ -8,9 +8,10 @@ import unittest
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CHAT_SKILL = ROOT / "plugins/encryptedarc/skills/valuation-deep-dive"
 REPORT_SKILL = ROOT / "plugins/encryptedarc/skills/valuation-deep-dive-html-report"
+XLSX_SKILL = ROOT / "plugins/encryptedarc/skills/valuation-deep-dive-xlsx"
 FUNDAMENTAL_SKILL = ROOT / "plugins/encryptedarc/skills/fundamental"
 EARNINGS_SKILL = ROOT / "plugins/encryptedarc/skills/earnings"
-SKILLS = (CHAT_SKILL, REPORT_SKILL, FUNDAMENTAL_SKILL, EARNINGS_SKILL)
+SKILLS = (CHAT_SKILL, REPORT_SKILL, XLSX_SKILL, FUNDAMENTAL_SKILL, EARNINGS_SKILL)
 REFERENCE_FILES = {
     "archetype-playbooks.md",
     "core-finance-principles.md",
@@ -83,7 +84,7 @@ class SkillPackageTests(unittest.TestCase):
                 if "local" in document.relative_to(skill).parts:
                     continue
                 content = document.read_text(encoding="utf-8")
-                for resource in re.findall(r"(?:references|scripts|assets)/[\w./-]+\.(?:md|py|html)", content):
+                for resource in re.findall(r"(?:references|scripts|assets)/[\w./-]+\.(?:md|mjs|py|html)", content):
                     with self.subTest(skill=skill.name, document=document.name, resource=resource):
                         target = (skill / resource).resolve()
                         self.assertIn(skill, target.parents)
@@ -94,6 +95,23 @@ class SkillPackageTests(unittest.TestCase):
             with self.subTest(resource=resource):
                 self.assertEqual((CHAT_SKILL / resource).read_bytes(),
                                  (REPORT_SKILL / resource).read_bytes())
+                workbook_copy = XLSX_SKILL / resource
+                if workbook_copy.is_file():
+                    self.assertEqual((CHAT_SKILL / resource).read_bytes(), workbook_copy.read_bytes())
+
+    def test_xlsx_skill_bundles_portable_model_and_authoring_script(self):
+        for resource in (
+            "agents/openai.yaml",
+            "references/archetype-playbooks.md",
+            "references/core-finance-principles.md",
+            "references/data-sourcing-valuation.md",
+            "references/dcf-and-cost-of-capital.md",
+            "references/workbook-model.md",
+            "scripts/valuation.py",
+            "scripts/build-dcf.mjs",
+        ):
+            with self.subTest(resource=resource):
+                self.assertTrue((XLSX_SKILL / resource).is_file())
 
     def test_fundamental_skill_is_standalone_and_discoverable(self):
         self.assertTrue((FUNDAMENTAL_SKILL / "SKILL.md").is_file())

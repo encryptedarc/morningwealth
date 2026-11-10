@@ -1,6 +1,6 @@
 ---
 name: valuation-deep-dive
-description: "Use for equity valuation, fair value, intrinsic value, target price, DCF, reverse DCF, WACC, P/E, P/BV, EV/EBITDA, EV/Sales, DDM, residual income, SOTP, NCAV, FFO/AFFO, scenarios, peer comparisons, or a bare ticker. Default to Markdown in chat, including when a report is requested without a file format. For an explicitly requested standalone HTML valuation file, use valuation-deep-dive-html-report instead. Use earnings for a single reporting period and fundamental for business-quality analysis without valuation."
+description: "Use for equity valuation, fair value, intrinsic value, target price, DCF, reverse DCF, WACC, P/E, P/BV, EV/EBITDA, EV/Sales, DDM, residual income, SOTP, NCAV, FFO/AFFO, scenarios, peer comparisons, or a bare ticker. Default to Markdown in chat, including when a report is requested without a file format. Route explicit HTML valuation files to valuation-deep-dive-html-report and explicit forward DCF Excel workbooks to valuation-deep-dive-xlsx. Use earnings for a single reporting period and fundamental for business-quality analysis without valuation."
 ---
 
 # Valuation Deep-Dive
@@ -151,7 +151,7 @@ Use section headings in the user's language. The English labels below identify t
 
 ## Delivery format
 
-Deliver Markdown chat only, following the output contract above. If the user needs a standalone HTML report, they should install and invoke the separately packaged `valuation-deep-dive-html-report` skill.
+Deliver Markdown in chat, following the output contract above. Use `valuation-deep-dive-html-report` for an explicit standalone HTML report and `valuation-deep-dive-xlsx` for an explicit forward DCF Excel workbook.
 
 ## Files
 

@@ -1,0 +1,15 @@
+---
+name: valuation-deep-dive-xlsx
+description: "Use when the user explicitly requests an editable Excel or .xlsx workbook for a forward corporate DCF valuation, including when exporting an existing reviewed DCF model. General valuation, bare tickers, and unspecified reports belong to valuation-deep-dive. Standalone HTML requests belong to valuation-deep-dive-html-report."
+---
+
+# DCF Valuation Workbook
+
+Create an editable corporate FCFF valuation with Bear, Base, and Bull cases and a Base WACC × terminal-growth sensitivity table. Read [finance rules](references/core-finance-principles.md) before using financial data.
+
+1. **Qualify the model.** Use the relevant [business-model playbook](references/archetype-playbooks.md) before building. This workbook discounts cash flow to the firm at WACC. If the business calls for a different method, explain which method fits and why. For example, route bank equity valuation to justified P/BV, DDM, or residual income via the main valuation skill.
+2. **Reuse reviewed inputs.** Use the current-session valuation or the reviewed assumptions the user supplied. When inputs need research, follow [source and validation rules](references/data-sourcing-valuation.md) and [DCF conventions](references/dcf-and-cost-of-capital.md). Preserve the as-of date, currency, period, scale, source and basis. Label each input as sourced, derived, or assumed and record its evidence or rationale. Resolve material gaps before building. A bridge item may be zero only when supported or explicitly agreed as an assumption.
+3. **Check export compatibility.** For an existing model, verify its cash-flow basis, discount timing, terminal-value method, and equity bridge against [the workbook model](references/workbook-model.md). If a convention is unknown, ask for it. If the source uses a different convention, explain the difference and get the user's agreement before creating a new valuation on this workbook's basis.
+4. **Create the workbook.** Use a new .xlsx path. Keep FCFF by year, WACC and terminal growth editable for every case. Display the dated sources and assumptions alongside the model in the workbook.
+5. **Verify the workbook.** Recalculate, then compare exported formula results with [the valuation calculator](scripts/valuation.py) using the same full-precision inputs and year-end timing. Match each case's enterprise value and per-share value. For a faithful export, also match the reviewed model's available values to its displayed precision and resolve any difference before delivery. Match the grid center to Base and check that editing a forecast or discount rate updates the relevant outputs. Check that invalid inputs are visible and withhold their dependent outputs.
+6. **Deliver.** Link the actual .xlsx file with its as-of date and any material limitations. Describe the editable inputs in the user's language. Apply the finance disclosure for investment-related output. If the host cannot create or recalculate Excel files, say which step was unavailable.
