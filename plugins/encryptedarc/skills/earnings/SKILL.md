@@ -1,6 +1,9 @@
 ---
 name: earnings
 description: "Use when a user asks to read, explain, or break down a listed company's quarterly or interim results (earnings release, 10-Q, 6-K, SET interim financial statements and MD&A) for US, Thai, or other markets, or invokes the command with a ticker such as `earnings GOOG` or `earnings PTT.BK Q2 2026`. Explains what changed in the quarter in plain language for a beginner. Do not use for full business-quality reviews, fair value or target-price work, price-only requests, or trade recommendations."
+metadata:
+  author: "Encrypted Arc <36179756+encryptedarc@users.noreply.github.com>"
+  tags: [finance, earnings, equities]
 ---
 
 # Earnings
