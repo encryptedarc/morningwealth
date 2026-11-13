@@ -1,1 +1,2 @@
 plugins/encryptedarc/skills/*/local/
+__pycache__/
