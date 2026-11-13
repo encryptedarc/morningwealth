@@ -3,7 +3,7 @@ name: valuation-deep-dive-xlsx
 description: "Use when the user explicitly requests an editable Excel or .xlsx workbook for a forward corporate DCF valuation, including when exporting an existing reviewed DCF model. General valuation, bare tickers, and unspecified reports belong to valuation-deep-dive. Standalone HTML requests belong to valuation-deep-dive-html-report."
 metadata:
   author: "Encrypted Arc <36179756+encryptedarc@users.noreply.github.com>"
-  tags: [finance, valuation, dcf, excel]
+  tags: "finance, valuation, dcf, excel"
 ---
 
 # DCF Valuation Workbook

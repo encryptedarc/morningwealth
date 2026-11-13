@@ -3,7 +3,7 @@ name: fundamental
 description: "Use when a user asks, in English or another language, for a beginner-friendly fundamental analysis of a listed company, including its business model, revenue quality, financial health, moat, management execution, capital allocation, or fundamental risks. Do not use for price-only requests, news-only requests, short-term trading, portfolio allocation, or fair value or target-price work."
 metadata:
   author: "Encrypted Arc <36179756+encryptedarc@users.noreply.github.com>"
-  tags: [finance, fundamental-analysis, equities]
+  tags: "finance, fundamental-analysis, equities"
 ---
 
 # Fundamental

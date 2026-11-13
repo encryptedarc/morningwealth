@@ -3,7 +3,7 @@ name: valuation-deep-dive
 description: "Use for equity valuation, fair value, intrinsic value, target price, DCF, reverse DCF, WACC, P/E, P/BV, EV/EBITDA, EV/Sales, DDM, residual income, SOTP, NCAV, FFO/AFFO, scenarios, peer comparisons, or a bare ticker. Default to Markdown in chat, including when a report is requested without a file format. Route explicit HTML valuation files to valuation-deep-dive-html-report and explicit forward DCF Excel workbooks to valuation-deep-dive-xlsx. Use earnings for a single reporting period and fundamental for business-quality analysis without valuation."
 metadata:
   author: "Encrypted Arc <36179756+encryptedarc@users.noreply.github.com>"
-  tags: [finance, valuation, dcf, equities]
+  tags: "finance, valuation, dcf, equities"
 ---
 
 # Valuation Deep-Dive

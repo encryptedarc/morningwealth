@@ -3,7 +3,7 @@ name: valuation-deep-dive-html-report
 description: "Use when the user explicitly requests a standalone HTML equity-valuation report, a self-contained HTML valuation file, or exporting a valuation to HTML. Do not select for a bare ticker, a general fair-value or DCF request, or a report with no specified file format; use valuation-deep-dive for those Markdown chat requests."
 metadata:
   author: "Encrypted Arc <36179756+encryptedarc@users.noreply.github.com>"
-  tags: [finance, valuation, html-report]
+  tags: "finance, valuation, html-report"
 ---
 
 # Valuation Deep-Dive HTML Report
