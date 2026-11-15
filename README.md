@@ -12,13 +12,13 @@ The skills are provider-neutral: they do not require a particular model, API key
 
 | Skill | Use it when | Output |
 |---|---|---|
-| `fundamental` | You need a beginner-friendly, filing-first review of business quality and financial health in clear English. | Markdown chat |
+| `fundamental` | You need a beginner-friendly, filing-first review of business quality and financial health in your requested language. | Markdown chat |
 | `earnings` | You need a clearly structured quarterly review, management Q&A and guidance tracking for US, Thai, or other markets. | Markdown chat; quarter record when saving is authorized |
 | `valuation-deep-dive` | You need a cited, multi-method equity valuation in the conversation. | Markdown chat |
 | `valuation-deep-dive-html-report` | You need the same analysis as a shareable report. | Self-contained HTML |
 | `valuation-deep-dive-xlsx` | You need an editable forward corporate DCF with Bear, Base, and Bull cases and a sensitivity table. | Excel workbook |
 
-The `fundamental` skill explains in clear English how a company makes money, selects financial metrics that fit its business model, checks earnings quality and capital allocation, and separates business quality from share-price attractiveness.
+The `fundamental` skill explains how a company makes money, selects financial metrics that fit its business model, checks earnings quality and capital allocation, and separates business quality from share-price attractiveness. It follows the requested language or the language of the question, explains specialist terms on first use, and connects material figures to their business implications. It asks for the company only when missing or ambiguous.
 
 The `earnings` skill reads one reporting period. It compares the quarter with the prior year and prior quarter, separates operating results from one-off, tax, FX, and share-count effects, and ends with what to watch at the next report. In hosts that support skill commands, call it with a ticker and an optional period, such as `/earnings GOOG` or `/earnings PTT.BK Q2 2026`.
 
@@ -54,7 +54,7 @@ The skills inspect a page's actual origin, date, period, and content type instea
 
 ## Plain-language reports
 
-The `fundamental` skill defaults to clear English even when the request is written in another language. Valuation reports follow the user's language and explain specialist terminology where it first appears. An abbreviation is introduced only when it will recur, and a translated term must also explain what the measure means and why it matters to the valuation.
+The `fundamental` skill follows the user's requested language or, when unspecified, the language of the question, including headings, score rationales, verdicts, data-gap labels, and the educational disclaimer. It retains standard English technical terms with a short explanation on first use. Valuation reports also follow the user's language and explain specialist terminology where it first appears. An abbreviation is introduced only when it will recur, and a translated term must also explain what the measure means and why it matters to the valuation.
 
 For example, a Thai valuation report should not leave phrases such as `diluted shares`, `discount-rate story`, `LSEG via CNBC`, or `reverse DCF` unexplained. It should instead describe the economic meaning in Thai, identify who compiled and who published a sourced estimate, and then place the English term or abbreviation in parentheses when useful. Valuation table and section headings follow the user's language as well.
 

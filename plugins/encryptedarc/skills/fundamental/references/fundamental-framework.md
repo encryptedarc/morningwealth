@@ -22,7 +22,7 @@ A hybrid company may use multiple archetypes, but state which framework applies 
 
 - Company name, ticker, exchange, and fiscal year-end
 - Research date, latest annual period, and latest interim period
-- One plain-English sentence explaining what the company does
+- One plain-language sentence in the output language explaining what the company does
 - Missing or stale sources disclosed at the outset
 
 ### 2) Business, Customers, and Revenue Model
@@ -134,9 +134,9 @@ Every score requires a one-line rationale and a supporting citation. Do not calc
 
 End with a concise summary:
 
-1. What the business does in plain English
+1. What the business does in plain language, using the output language
 2. Three strengths
 3. Three risks
 4. What type of investor may find the company worth further study, without recommending a purchase or sale
-5. Verdict: `Strong fundamentals`, `Good fundamentals with material watchpoints`, `Weak fundamentals`, or `Insufficient data to assess`
+5. An evidence-based verdict using the localized wording in `SKILL.md`
 6. Which document or KPI should be checked before considering an investment

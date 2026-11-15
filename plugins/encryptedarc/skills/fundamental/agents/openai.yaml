@@ -1,6 +1,6 @@
 interface:
   display_name: "Fundamental Analysis"
   short_description: "Beginner-friendly, filing-first stock analysis"
-  default_prompt: "Use $fundamental to explain this company's fundamentals in clear English for a beginner."
+  default_prompt: "Use $fundamental to explain this company's fundamentals in my language for a beginner, using filing evidence and clear reasons for strengths, risks, and scores."
 policy:
   allow_implicit_invocation: true

@@ -8,7 +8,13 @@ metadata:
 
 # Fundamental
 
-Analyze the business quality and financial condition of a listed company for a beginner. Explain the evidence in clear English so the user understands how the company makes money, how strong its fundamentals are, and what to investigate next. Do not issue buy or sell recommendations.
+Analyze the business quality and financial condition of a listed company for a beginner. Explain the evidence so the user understands how the company makes money, how strong its fundamentals are, and what to investigate next. Do not issue buy or sell recommendations.
+
+## Language and writing voice
+
+Use the user's requested language; otherwise use the language of the question. Apply this to headings, explanations, score rationales, verdicts, data-gap labels, and the educational disclaimer. Keep standard technical terms such as margin, FCF, ROIC, NIM, and AFFO in English, with a brief plain-language explanation in parentheses on first use.
+
+Write in a conversational investor voice: accessible to a beginner, concrete, and direct. Explain what each material figure means for the business rather than merely listing ratios. Connect strengths and weaknesses to evidence; avoid generic praise and unsupported narratives. Keep explanations concise without dropping material evidence or uncertainty.
 
 ## Load before research
 
@@ -26,13 +32,12 @@ Analyze the business quality and financial condition of a listed company for a b
 
 ### 1. Resolve the company
 
-State the current date first. Confirm the company name, ticker, and exchange. If the name is ambiguous or the ticker exists on multiple exchanges, ask one clarifying question before researching.
+State the current date first. If no company is supplied, ask for its name or ticker. If the name is ambiguous or the ticker exists on multiple exchanges, ask one clarifying question before researching. When the supplied company is unambiguous, identify its name, ticker, and exchange in the output and proceed without asking for confirmation.
 
 Use these defaults when the user does not specify them:
 
 - Data horizon: the latest three annual periods plus the latest quarter or interim period compared year over year
 - Output: Markdown in chat
-- Language: clear English
 - Audience: a beginner seeking to understand the fundamentals, not a trade setup
 
 ### 2. Classify before choosing metrics
@@ -71,11 +76,9 @@ Use the eight-part structure in `references/fundamental-framework.md`. Omit imma
 
 Financial tables must include signed YoY changes for annual periods and both signed YoY and QoQ changes for standalone quarters. Apply the comparison formulas, percentage-point rules, and table layouts in `references/fundamental-framework.md`. A short chat summary must retain material evidence, comparison bases, and score rationales, or explicitly link to their location in an inspected full report.
 
-Define specialized terms in plain English the first time they appear. Use standard technical terms such as revenue, margin, FCF, ROIC, NIM, and AFFO normally.
-
 ## Verdict rules
 
-Choose one evidence-based verdict:
+Choose one evidence-based verdict, rendered in the output language:
 
 - `Strong fundamentals`
 - `Good fundamentals with material watchpoints`
@@ -84,6 +87,6 @@ Choose one evidence-based verdict:
 
 Keep company quality separate from stock-price attractiveness. A good company can be an expensive stock, and a cheap stock can represent a weak business.
 
-End every analysis with:
+End every analysis with the following disclaimer in the output language:
 
 > This material is for educational purposes only and is not investment advice. Consult a licensed adviser before making investment decisions.
